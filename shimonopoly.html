@@ -257,6 +257,36 @@
         .form-group:has(#awsCredentials) {
             display: none;
         }
+
+        /* Fireworks styles */
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -338,13 +368,16 @@
 
     <!-- End Screen -->
     <div id="endScreen" class="screen">
-        <h1>Game Over!</h1>
+        <h1 id="endScreenTitle">Game Over!</h1>
         
         <div class="score-display">
             <div class="score-label">Final Score</div>
             <div class="final-score" id="finalScore">0</div>
             <div class="score-label">Cities Restored: <span id="citiesRestored">0</span></div>
         </div>
+
+        <!-- Fireworks container -->
+        <div id="fireworks" style="display: none;"></div>
 
         <div class="button-group">
             <button id="saveScoreButton" style="display: none;">Save Score</button>
@@ -1868,6 +1901,23 @@
             // Display final score and cities restored
             const finalScore = gameController.getScore();
             const citiesRestored = gameController.getRestoredCities().length;
+            const totalDamagedCities = gameController.cityManager.cities.filter(c => c.damaged).length;
+            
+            // Check if all cities were restored
+            const allCitiesRestored = citiesRestored === totalDamagedCities;
+            
+            // Update title based on completion
+            const titleEl = document.getElementById('endScreenTitle');
+            if (allCitiesRestored) {
+                titleEl.textContent = 'Congratulations - you fixed them all!';
+                // Show fireworks for 10 seconds
+                showFireworks();
+                setTimeout(() => {
+                    hideFireworks();
+                }, 10000);
+            } else {
+                titleEl.textContent = 'Good game';
+            }
 
             document.getElementById('finalScore').textContent = 
                 gameController.config.advancedMode ? finalScore.toFixed(1) : finalScore;
@@ -1881,6 +1931,75 @@
             // Load leaderboard if AWS credentials are available
             if (dynamoDBClient) {
                 loadLeaderboard();
+            }
+        }
+
+        /**
+         * Show fireworks animation
+         */
+        function showFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            fireworksContainer.style.display = 'block';
+            
+            // Create fireworks at intervals
+            const fireworkInterval = setInterval(() => {
+                createFirework();
+            }, 300);
+            
+            // Store interval ID to clear it later
+            fireworksContainer.dataset.intervalId = fireworkInterval;
+        }
+
+        /**
+         * Hide fireworks animation
+         */
+        function hideFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const intervalId = fireworksContainer.dataset.intervalId;
+            
+            if (intervalId) {
+                clearInterval(parseInt(intervalId));
+            }
+            
+            fireworksContainer.style.display = 'none';
+            fireworksContainer.innerHTML = '';
+        }
+
+        /**
+         * Create a single firework explosion
+         */
+        function createFirework() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
+            
+            // Random position
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * (window.innerHeight * 0.6); // Top 60% of screen
+            
+            // Create particles
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random direction
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 50 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                fireworksContainer.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
             }
         }
 
