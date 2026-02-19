@@ -3,8 +3,7 @@
 The game challenges you to save the country from a devastating solar storm while learning to spell cities!  A solar storm has knocked out the power in much of the USA, destroying the transformer substations.  You are racing against time sending your team to each city and replacing the damaged equipment.
 
 Start now:
-- [Go to Shimonopoly](https://sashagutfraind.github.io/shimonopoly/index.html)
-- Open with your browser and enjoy!
+- [Go to Shimonopoly](https://sashagutfraind.github.io/shimonopoly/game/index.html)
 
 Advanced mode:
 - Each city you recover provides help to cities within 300mi radius (500km), reducing the cost of recovery.  Carefully plan the sequence of cities to build stepping stones, and reach more people
