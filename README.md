@@ -4,6 +4,7 @@ The game challenges you to save the country from a devastating solar storm while
 
 Start now:
 - [Download shimonopoly.html](https://raw.githubusercontent.com/sashagutfraind/shimonopoly/refs/heads/main/shimonopoly.html)
+- <a href="https://raw.githubusercontent.com/sashagutfraind/shimonopoly/refs/heads/main/shimonopoly.html" download>Download shimonopoly.html</a>.
 - Open with your browser and enjoy!
 
 Advanced mode:
