@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shimonopoly - Power Restoration Game</title>
+    <!-- AWS SDK for JavaScript -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1691.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .screen {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .screen.active {
+            display: block;
+        }
+        
+        /* Full-screen game screen */
+        #gameScreen.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: none;
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: monospace;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Game Screen Styles */
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        #gameCanvas {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #f0f8ff;
+            display: block;
+            cursor: crosshair;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .input-area input {
+            flex: 1;
+        }
+
+        /* End Screen Styles */
+        .score-display {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .final-score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .score-label {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .leaderboard {
+            margin-top: 30px;
+        }
+
+        .leaderboard h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .leaderboard-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .leaderboard-entry:last-child {
+            border-bottom: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        /* Hide AWS credentials field and its container */
+        .form-group:has(#awsCredentials) {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Setup Screen -->
+    <div id="setupScreen" class="screen active">
+        <h1>Shimonopoly</h1>
+        <h2>Restore power to cities affected by a solar storm while learning to spell (ages 4-6) </h2>
+        
+        <div class="form-group">
+            <label for="playerName">Player Name</label>
+            <input type="text" id="playerName" value="Player" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="randomSeed">Random Seed</label>
+            <input type="number" id="randomSeed" value="42" required>
+        </div>
+
+        <div class="form-group">
+            <label for="numCities">Number of Cities</label>
+            <input type="number" id="numCities" value="50" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="damagedFraction">Fraction of Cities Damaged (0.5 - 1.0)</label>
+            <input type="number" id="damagedFraction" value="1.0" min="0.5" max="1.0" step="0.1" required>
+            <div class="error-message" id="damagedFractionError">Fraction must be between 0.5 and 1.0</div>
+        </div>
+
+        <div class="form-group">
+            <label for="timerDuration">Timer Duration (seconds)</label>
+            <input type="number" id="timerDuration" value="300" min="1" required>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="advancedMode">
+            <label for="advancedMode">Enable Advanced Mode (population-based scoring & distance-based costs)</label>
+        </div>
+
+        <div class="form-group">
+            <label for="awsCredentials">AWS Credentials (Optional, JSON format)</label>
+            <textarea id="awsCredentials" placeholder='{"accessKeyId": "...", "secretAccessKey": "...", "region": "us-east-1"}'></textarea>
+        </div>
+
+        <button id="startButton">Start Game</button>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #888;">
+            <p style="margin: 5px 0;">Concept and code © 2026 <a href="https://www.linkedin.com/in/gutfraind/"> Alexander Gutfraind</a>. Inspired by collaborative <a href="https://academic.oup.com/comnet/article-abstract/4/2/177/2196849" target="_blank" style="color: #667eea;">Research paper</a></p>
+            <p style="margin: 5px 0;">Map data by <a href="https://simplemaps.com/data/us-cities" target="_blank" style="color: #667eea;">simplemaps.com</a></p>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            <div class="game-stats">
+                <div class="stat">
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value" id="timerDisplay">0:00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="scoreDisplay">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Transformers</div>
+                    <div class="stat-value" id="transformersDisplay">0</div>
+                </div>
+            </div>
+
+            <canvas id="gameCanvas"></canvas>
+
+            <div class="input-area">
+                <input type="text" id="cityInput" placeholder="Enter city name to restore..." autocomplete="off">
+                <button id="submitCity">Fix city</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="endScreen" class="screen">
+        <h1>Game Over!</h1>
+        
+        <div class="score-display">
+            <div class="score-label">Final Score</div>
+            <div class="final-score" id="finalScore">0</div>
+            <div class="score-label">Cities Restored: <span id="citiesRestored">0</span></div>
+        </div>
+
+        <div class="button-group">
+            <button id="saveScoreButton" style="display: none;">Save Score</button>
+            <button id="playAgainButton">Play Again</button>
+        </div>
+
+        <div class="leaderboard" id="leaderboard" style="display: none;">
+            <h3>Leaderboard</h3>
+            <div id="leaderboardEntries"></div>
+        </div>
+
+        <div class="error-message" id="endScreenError"></div>
+    </div>
+
+    <script>
+        // ============================================
+        // Core Utility Classes
+        // ============================================
+
+        /**
+         * SeededRandom - Deterministic random number generator
+         * Uses a simple Linear Congruential Generator (LCG) algorithm
+         */
+        class SeededRandom {
+            constructor(seed) {
+                this.seed = seed % 2147483647;
+                if (this.seed <= 0) this.seed += 2147483646;
+            }
+
+            /**
+             * Generate next random number between 0 and 1
+             * @returns {number} Random number in range [0, 1)
+             */
+            next() {
+                this.seed = (this.seed * 16807) % 2147483647;
+                return (this.seed - 1) / 2147483646;
+            }
+
+            /**
+             * Shuffle array in place using Fisher-Yates algorithm
+             * @param {Array} array - Array to shuffle
+             * @returns {Array} The shuffled array (same reference)
+             */
+            shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(this.next() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+        }
+
+        /**
+         * DistanceCalculator - Calculate distances between geographic coordinates
+         */
+        class DistanceCalculator {
+            static EARTH_RADIUS_MILES = 3959;
+
+            /**
+             * Calculate distance between two points using Haversine formula
+             * @param {number} lat1 - Latitude of first point in degrees
+             * @param {number} lon1 - Longitude of first point in degrees
+             * @param {number} lat2 - Latitude of second point in degrees
+             * @param {number} lon2 - Longitude of second point in degrees
+             * @returns {number} Distance in miles
+             */
+            static calculateDistance(lat1, lon1, lat2, lon2) {
+                // Convert degrees to radians
+                const toRad = (deg) => deg * Math.PI / 180;
+                
+                const lat1Rad = toRad(lat1);
+                const lat2Rad = toRad(lat2);
+                const deltaLat = toRad(lat2 - lat1);
+                const deltaLon = toRad(lon2 - lon1);
+
+                // Haversine formula
+                const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+                         Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+                         Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+                
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                
+                return DistanceCalculator.EARTH_RADIUS_MILES * c;
+            }
+
+            /**
+             * Find all cities within a specified radius of a center city
+             * @param {Object} centerCity - City object with lat and lon properties
+             * @param {Array} allCities - Array of city objects to search
+             * @param {number} radiusMiles - Radius in miles
+             * @returns {Array} Array of cities within the radius
+             */
+            static findCitiesWithinRadius(centerCity, allCities, radiusMiles) {
+                return allCities.filter(city => {
+                    if (city === centerCity) return false;
+                    const distance = DistanceCalculator.calculateDistance(
+                        centerCity.lat, centerCity.lon,
+                        city.lat, city.lon
+                    );
+                    return distance <= radiusMiles;
+                });
+            }
+        }
+
+        // Embedded city data - avoids CORS issues when opening file directly
+        const EMBEDDED_CITY_DATA = [{"name": "New York", "population": 19940.3, "lat": 40.7222, "lon": -74.0225}, {"name": "Los Angeles", "population": 12927.6, "lat": 34.2215, "lon": -118.1494}, {"name": "Chicago", "population": 9406.9, "lat": 41.6675, "lon": -87.9597}, {"name": "Dallas", "population": 8344.0, "lat": 32.8495, "lon": -96.9704}, {"name": "Houston", "population": 7796.2, "lat": 29.8422, "lon": -95.3855}, {"name": "Miami", "population": 6458.0, "lat": 26.1573, "lon": -80.5059}, {"name": "Washington", "population": 6437.9, "lat": 38.8446, "lon": -77.5092}, {"name": "Atlanta", "population": 6409.0, "lat": 33.7338, "lon": -84.3922}, {"name": "Philadelphia", "population": 6330.4, "lat": 39.9056, "lon": -75.302}, {"name": "Phoenix", "population": 5187.0, "lat": 33.1859, "lon": -112.0707}, {"name": "Boston", "population": 5025.5, "lat": 42.5584, "lon": -71.1007}, {"name": "Riverside", "population": 4744.2, "lat": 34.5517, "lon": -116.1297}, {"name": "San Francisco", "population": 4648.5, "lat": 37.7809, "lon": -122.1668}, {"name": "Detroit", "population": 4400.6, "lat": 42.7196, "lon": -83.2329}, {"name": "Seattle", "population": 4145.5, "lat": 47.5574, "lon": -121.8506}, {"name": "Minneapolis", "population": 3758.0, "lat": 45.1034, "lon": -93.2753}, {"name": "Tampa", "population": 3424.6, "lat": 28.1538, "lon": -82.405}, {"name": "San Diego", "population": 3298.8, "lat": 33.0343, "lon": -116.735}, {"name": "Denver", "population": 3050.5, "lat": 39.4337, "lon": -104.8944}, {"name": "Orlando", "population": 2940.5, "lat": 28.4343, "lon": -81.363}, {"name": "Charlotte", "population": 2883.4, "lat": 35.1686, "lon": -80.7954}, {"name": "Baltimore", "population": 2859.0, "lat": 39.3386, "lon": -76.5807}, {"name": "St. Louis, MO", "population": 2809.5, "lat": 38.7352, "lon": -90.3501}, {"name": "San Antonio", "population": 2763.0, "lat": 29.4287, "lon": -98.6023}, {"name": "Austin", "population": 2550.6, "lat": 30.2622, "lon": -97.6544}, {"name": "Portland", "population": 2537.1, "lat": 45.5984, "lon": -122.4783}, {"name": "Sacramento", "population": 2463.1, "lat": 38.7805, "lon": -120.9972}, {"name": "Pittsburgh, PA", "population": 2429.9, "lat": 40.4744, "lon": -79.8632}, {"name": "Las Vegas", "population": 2398.9, "lat": 36.2152, "lon": -115.0135}, {"name": "Cincinnati, OH", "population": 2304.8, "lat": 39.0811, "lon": -84.4646}, {"name": "Kansas City, MO", "population": 2254.3, "lat": 38.9371, "lon": -94.4444}, {"name": "Columbus, OH", "population": 2225.4, "lat": 39.9681, "lon": -82.8369}, {"name": "Indianapolis", "population": 2173.3, "lat": 39.7929, "lon": -86.1216}, {"name": "Cleveland, OH", "population": 2171.9, "lat": 41.462, "lon": -81.4392}, {"name": "Nashville", "population": 2151.7, "lat": 36.0891, "lon": -86.7245}, {"name": "San Jose", "population": 1995.5, "lat": 36.9095, "lon": -121.3759}, {"name": "Virginia Beach", "population": 1796.7, "lat": 36.8251, "lon": -76.4746}, {"name": "Jacksonville, FL", "population": 1760.5, "lat": 30.2366, "lon": -81.7923}, {"name": "Providence", "population": 1700.9, "lat": 41.7186, "lon": -71.4001}, {"name": "Milwaukee", "population": 1574.5, "lat": 43.1767, "lon": -88.1725}, {"name": "Raleigh", "population": 1562.0, "lat": 35.7573, "lon": -78.4608}, {"name": "Oklahoma City, OK", "population": 1497.8, "lat": 35.4299, "lon": -97.5039}, {"name": "Louisville/Jefferson County, KY", "population": 1396.8, "lat": 38.2244, "lon": -85.7024}, {"name": "Richmond, VA", "population": 1368.2, "lat": 37.4127, "lon": -77.4467}, {"name": "Memphis, TN", "population": 1337.7, "lat": 35.0074, "lon": -89.8147}, {"name": "Salt Lake City", "population": 1300.8, "lat": 40.4706, "lon": -113.0105}, {"name": "Birmingham, AL", "population": 1192.6, "lat": 33.4638, "lon": -86.8139}, {"name": "Fresno, CA", "population": 1189.6, "lat": 36.88, "lon": -119.6793}, {"name": "Grand Rapids", "population": 1178.8, "lat": 42.9898, "lon": -85.4162}, {"name": "Hartford", "population": 1169.0, "lat": 41.7089, "lon": -72.5528}, {"name": "Buffalo", "population": 1160.2, "lat": 42.9109, "lon": -78.7367}, {"name": "Tucson, AZ", "population": 1080.1, "lat": 32.0974, "lon": -111.7899}, {"name": "Tulsa, OK", "population": 1060.4, "lat": 36.2504, "lon": -96.1662}, {"name": "Rochester, NY", "population": 1057.2, "lat": 43.0076, "lon": -77.5585}, {"name": "Omaha, NE", "population": 1001.2, "lat": 41.2901, "lon": -95.9991}, {"name": "Urban Honolulu, HI", "population": 998.7, "lat": 21.4899, "lon": -158.0739}, {"name": "Greenville", "population": 996.7, "lat": 34.6851, "lon": -82.4139}, {"name": "Bridgeport", "population": 972.7, "lat": 41.3061, "lon": -73.4028}, {"name": "New Orleans", "population": 966.2, "lat": 29.7832, "lon": -89.957}, {"name": "Knoxville, TN", "population": 957.4, "lat": 36.0448, "lon": -84.1375}, {"name": "North Port", "population": 935.0, "lat": 27.3479, "lon": -82.3223}, {"name": "Albuquerque, NM", "population": 929.9, "lat": 35.1223, "lon": -106.4716}, {"name": "Bakersfield", "population": 922.5, "lat": 35.3426, "lon": -118.7301}, {"name": "McAllen", "population": 914.8, "lat": 26.3969, "lon": -98.1812}, {"name": "Albany", "population": 913.5, "lat": 42.7885, "lon": -73.942}, {"name": "Allentown", "population": 886.4, "lat": 40.7894, "lon": -75.4039}, {"name": "Baton Rouge, LA", "population": 882.7, "lat": 30.5173, "lon": -91.127}, {"name": "Worcester, MA", "population": 881.2, "lat": 42.3514, "lon": -71.9077}, {"name": "El Paso, TX", "population": 877.8, "lat": 31.5131, "lon": -105.541}, {"name": "Columbia, SC", "population": 871.2, "lat": 34.0918, "lon": -81.0424}, {"name": "Charleston", "population": 869.9, "lat": 33.0425, "lon": -80.0443}, {"name": "Cape Coral", "population": 861.0, "lat": 26.578, "lon": -81.8332}, {"name": "Lakeland", "population": 852.9, "lat": 27.9489, "lon": -81.6976}, {"name": "Boise City, ID", "population": 845.0, "lat": 43.016, "lon": -116.1432}, {"name": "Oxnard", "population": 835.4, "lat": 34.4561, "lon": -119.0836}, {"name": "Dayton", "population": 821.7, "lat": 39.8295, "lon": -84.1419}, {"name": "Stockton", "population": 816.1, "lat": 37.9348, "lon": -121.2714}, {"name": "Greensboro", "population": 800.7, "lat": 36.0259, "lon": -79.7916}, {"name": "Colorado Springs, CO", "population": 777.6, "lat": 38.8426, "lon": -104.6578}, {"name": "Little Rock", "population": 771.0, "lat": 34.7573, "lon": -92.3972}, {"name": "Provo", "population": 760.2, "lat": 39.8645, "lon": -112.3526}, {"name": "Des Moines", "population": 753.9, "lat": 41.5757, "lon": -93.7618}, {"name": "Deltona", "population": 739.5, "lat": 29.174, "lon": -81.2197}, {"name": "Kiryas Joel", "population": 711.7, "lat": 41.5827, "lon": -74.0257}, {"name": "Madison, WI", "population": 707.6, "lat": 43.0802, "lon": -89.5922}, {"name": "Winston", "population": 705.2, "lat": 36.0767, "lon": -80.3458}, {"name": "Akron, OH", "population": 702.2, "lat": 41.1487, "lon": -81.3495}, {"name": "Ogden, UT", "population": 669.2, "lat": 41.1189, "lon": -111.8703}, {"name": "Wichita, KS", "population": 661.2, "lat": 37.6387, "lon": -97.2454}, {"name": "Palm Bay", "population": 658.4, "lat": 28.2937, "lon": -80.7323}, {"name": "Syracuse, NY", "population": 655.2, "lat": 43.1545, "lon": -76.0336}, {"name": "Augusta", "population": 636.7, "lat": 33.461, "lon": -81.9829}, {"name": "Durham", "population": 620.5, "lat": 35.991, "lon": -79.0997}, {"name": "Harrisburg", "population": 615.4, "lat": 40.3267, "lon": -77.1012}, {"name": "Jackson, MS", "population": 605.8, "lat": 32.4278, "lon": -90.136}, {"name": "Fayetteville", "population": 605.5, "lat": 36.1084, "lon": -94.0755}, {"name": "Spokane", "population": 605.0, "lat": 48.0811, "lon": -117.6709}, {"name": "Toledo, OH", "population": 601.4, "lat": 41.4982, "lon": -83.7825}, {"name": "Chattanooga, TN", "population": 588.8, "lat": 35.052, "lon": -85.3601}, {"name": "New Haven, CT", "population": 576.7, "lat": 41.3613, "lon": -72.8445}, {"name": "Reno, NV", "population": 575.3, "lat": 40.2587, "lon": -119.5532}, {"name": "Scranton", "population": 574.0, "lat": 41.3232, "lon": -75.8957}, {"name": "Portland", "population": 571.5, "lat": 43.6961, "lon": -70.4692}, {"name": "Lancaster, PA", "population": 563.3, "lat": 40.0424, "lon": -76.2477}, {"name": "Modesto, CA", "population": 557.0, "lat": 37.5591, "lon": -120.9977}, {"name": "Port St. Lucie, FL", "population": 556.3, "lat": 27.2199, "lon": -80.4508}, {"name": "Huntsville, AL", "population": 542.3, "lat": 34.7832, "lon": -86.7347}, {"name": "Pensacola", "population": 538.9, "lat": 30.688, "lon": -87.1562}, {"name": "Lexington", "population": 533.4, "lat": 38.0905, "lon": -84.4331}, {"name": "Killeen", "population": 509.5, "lat": 31.2078, "lon": -97.7876}, {"name": "Springfield, MO", "population": 500.0, "lat": 37.3617, "lon": -93.1771}, {"name": "Santa Rosa", "population": 485.4, "lat": 38.529, "lon": -122.8882}, {"name": "Visalia, CA", "population": 483.5, "lat": 36.2202, "lon": -118.8005}, {"name": "Wilmington, NC", "population": 480.5, "lat": 34.2907, "lon": -78.0514}, {"name": "Lansing", "population": 480.0, "lat": 42.7133, "lon": -84.607}, {"name": "York", "population": 471.2, "lat": 39.92, "lon": -76.7265}, {"name": "Springfield, MA", "population": 464.2, "lat": 42.1351, "lon": -72.6316}, {"name": "Fort Wayne, IN", "population": 463.0, "lat": 41.0054, "lon": -85.2168}, {"name": "Waterbury", "population": 462.2, "lat": 41.5231, "lon": -73.086}, {"name": "Vallejo, CA", "population": 455.1, "lat": 38.27, "lon": -121.9328}, {"name": "Corpus Christi, TX", "population": 448.9, "lat": 27.8951, "lon": -97.4811}, {"name": "Santa Maria", "population": 444.5, "lat": 34.6729, "lon": -120.0169}, {"name": "Salem, OR", "population": 443.4, "lat": 44.9034, "lon": -122.9032}, {"name": "Reading, PA", "population": 439.1, "lat": 40.4163, "lon": -75.926}, {"name": "Salinas, CA", "population": 436.3, "lat": 36.2171, "lon": -121.2388}, {"name": "Brownsville", "population": 431.9, "lat": 26.1333, "lon": -97.5187}, {"name": "Savannah, GA", "population": 431.6, "lat": 32.1306, "lon": -81.3019}, {"name": "Manchester", "population": 430.5, "lat": 42.9153, "lon": -71.7161}, {"name": "Ocala, FL", "population": 428.9, "lat": 29.2102, "lon": -82.0567}, {"name": "Gulfport", "population": 426.8, "lat": 30.5569, "lon": -89.0377}, {"name": "Youngstown", "population": 426.1, "lat": 41.1962, "lon": -80.7673}, {"name": "Asheville, NC", "population": 422.3, "lat": 35.6173, "lon": -82.571}, {"name": "Lafayette, LA", "population": 419.7, "lat": 30.0509, "lon": -92.1275}, {"name": "Naples", "population": 416.2, "lat": 26.1108, "lon": -81.3474}, {"name": "Myrtle Beach", "population": 413.4, "lat": 33.9216, "lon": -78.9969}, {"name": "Mobile, AL", "population": 412.3, "lat": 30.7877, "lon": -88.2058}, {"name": "Anchorage, AK", "population": 407.2, "lat": 62.2431, "lon": -149.5439}, {"name": "Flint, MI", "population": 402.3, "lat": 43.0217, "lon": -83.7067}, {"name": "Canton", "population": 400.6, "lat": 40.7187, "lon": -81.2535}, {"name": "Tallahassee, FL", "population": 399.1, "lat": 30.405, "lon": -84.2862}, {"name": "Beaumont", "population": 398.7, "lat": 30.1021, "lon": -94.2081}, {"name": "Spartanburg, SC", "population": 395.9, "lat": 34.8379, "lon": -81.8476}, {"name": "Fayetteville, NC", "population": 393.8, "lat": 35.0371, "lon": -78.9804}, {"name": "Trenton", "population": 392.1, "lat": 40.2834, "lon": -74.7018}, {"name": "Montgomery, AL", "population": 386.6, "lat": 32.3606, "lon": -86.4032}, {"name": "Shreveport", "population": 383.3, "lat": 32.4387, "lon": -93.7451}, {"name": "Eugene", "population": 382.4, "lat": 43.9387, "lon": -122.8479}, {"name": "Davenport", "population": 381.4, "lat": 41.3969, "lon": -90.4659}, {"name": "Fort Collins", "population": 374.6, "lat": 40.6664, "lon": -105.4611}, {"name": "Ann Arbor, MI", "population": 373.9, "lat": 42.2532, "lon": -83.8388}, {"name": "Hickory", "population": 373.0, "lat": 35.8129, "lon": -81.4543}, {"name": "Atlantic City", "population": 373.0, "lat": 39.3737, "lon": -74.7054}, {"name": "Greeley, CO", "population": 369.7, "lat": 40.5548, "lon": -104.3925}, {"name": "Lubbock, TX", "population": 367.5, "lat": 33.4636, "lon": -101.8808}, {"name": "Huntington", "population": 366.8, "lat": 38.3587, "lon": -82.5685}, {"name": "Peoria, IL", "population": 365.7, "lat": 40.7892, "lon": -89.5159}, {"name": "Gainesville, FL", "population": 360.9, "lat": 29.5163, "lon": -82.6007}, {"name": "Lincoln, NE", "population": 351.9, "lat": 40.8199, "lon": -96.8708}, {"name": "Clarksville, TN", "population": 344.0, "lat": 36.6929, "lon": -87.6231}, {"name": "Rockford, IL", "population": 337.1, "lat": 42.3316, "lon": -89.0421}, {"name": "Green Bay, WI", "population": 334.7, "lat": 44.773, "lon": -88.0767}, {"name": "Boulder, CO", "population": 330.3, "lat": 40.0925, "lon": -105.3577}, {"name": "Columbus, GA", "population": 328.2, "lat": 32.4182, "lon": -84.8439}, {"name": "South Bend", "population": 325.3, "lat": 41.7736, "lon": -86.1341}, {"name": "Kennewick", "population": 319.4, "lat": 46.3635, "lon": -119.2544}, {"name": "Roanoke, VA", "population": 315.5, "lat": 37.2861, "lon": -79.9466}, {"name": "Kingsport", "population": 314.3, "lat": 36.6078, "lon": -82.4426}, {"name": "Hagerstown", "population": 313.0, "lat": 39.5499, "lon": -77.9814}, {"name": "Crestview", "population": 310.1, "lat": 30.6657, "lon": -86.3657}, {"name": "Sioux Falls, SD", "population": 308.7, "lat": 43.5273, "lon": -96.8739}, {"name": "Waco, TX", "population": 305.8, "lat": 31.5945, "lon": -97.2829}, {"name": "Olympia", "population": 302.9, "lat": 46.9256, "lon": -122.8333}, {"name": "Merced, CA", "population": 296.8, "lat": 37.1919, "lon": -120.7177}, {"name": "Longview, TX", "population": 295.5, "lat": 32.4311, "lon": -94.6752}, {"name": "College Station", "population": 288.8, "lat": 30.7565, "lon": -96.489}, {"name": "Utica", "population": 287.9, "lat": 43.3371, "lon": -75.1814}, {"name": "Norwich", "population": 282.6, "lat": 41.5023, "lon": -72.1}, {"name": "San Luis Obispo", "population": 281.8, "lat": 35.3871, "lon": -120.4044}, {"name": "Duluth, MN", "population": 281.8, "lat": 47.3333, "lon": -92.4089}, {"name": "Bremerton", "population": 281.4, "lat": 47.6127, "lon": -122.6762}, {"name": "Tuscaloosa, AL", "population": 281.1, "lat": 33.1098, "lon": -87.7645}, {"name": "Cedar Rapids, IA", "population": 278.7, "lat": 42.0915, "lon": -91.6313}, {"name": "Amarillo, TX", "population": 278.3, "lat": 35.2489, "lon": -101.9095}, {"name": "Slidell", "population": 277.6, "lat": 30.4103, "lon": -89.9584}, {"name": "Laredo, TX", "population": 272.8, "lat": 27.7611, "lon": -99.3315}, {"name": "Evansville, IN", "population": 271.8, "lat": 38.0488, "lon": -87.5818}, {"name": "Fargo, ND", "population": 267.8, "lat": 46.9178, "lon": -96.9655}, {"name": "Erie, PA", "population": 267.8, "lat": 41.9925, "lon": -80.0327}, {"name": "Lynchburg, VA", "population": 267.4, "lat": 37.365, "lon": -79.2198}, {"name": "Kalamazoo", "population": 264.8, "lat": 42.2455, "lon": -85.5312}, {"name": "Bend, OR", "population": 264.4, "lat": 44.1663, "lon": -120.8839}, {"name": "Santa Cruz", "population": 262.4, "lat": 37.0562, "lon": -122.0018}, {"name": "Daphne", "population": 261.6, "lat": 30.7277, "lon": -87.7226}, {"name": "Yakima, WA", "population": 258.5, "lat": 46.4571, "lon": -120.7385}, {"name": "Prescott Valley", "population": 252.0, "lat": 34.5998, "lon": -112.5538}, {"name": "Tyler, TX", "population": 249.1, "lat": 32.375, "lon": -95.2692}, {"name": "Appleton, WI", "population": 249.0, "lat": 44.289, "lon": -88.3712}, {"name": "Binghamton, NY", "population": 244.0, "lat": 42.1645, "lon": -76.0251}, {"name": "Lake Charles, LA", "population": 243.7, "lat": 30.0661, "lon": -93.173}, {"name": "Champaign", "population": 243.3, "lat": 40.2267, "lon": -88.2945}, {"name": "Hilton Head Island", "population": 237.4, "lat": 32.4109, "lon": -80.8773}, {"name": "Macon", "population": 236.6, "lat": 32.8577, "lon": -83.7149}, {"name": "Bellingham, WA", "population": 235.0, "lat": 48.8259, "lon": -121.7199}, {"name": "Fort Smith, AR", "population": 232.8, "lat": 35.4392, "lon": -94.4484}, {"name": "Topeka, KS", "population": 232.6, "lat": 39.0438, "lon": -95.8031}, {"name": "Barnstable Town, MA", "population": 232.6, "lat": 41.7244, "lon": -70.2903}, {"name": "Lafayette", "population": 231.4, "lat": 40.4772, "lon": -87.0234}, {"name": "Rochester, MN", "population": 230.7, "lat": 43.956, "lon": -92.3381}, {"name": "Burlington", "population": 229.6, "lat": 44.6868, "lon": -73.0315}, {"name": "Las Cruces, NM", "population": 229.4, "lat": 32.3526, "lon": -106.8328}, {"name": "Lake Havasu City", "population": 226.5, "lat": 35.7041, "lon": -113.7579}, {"name": "Panama City", "population": 226.2, "lat": 30.4075, "lon": -85.6388}, {"name": "Charlottesville, VA", "population": 226.1, "lat": 37.9501, "lon": -78.593}, {"name": "Monroe, LA", "population": 222.1, "lat": 32.6718, "lon": -92.0496}, {"name": "Athens", "population": 221.8, "lat": 33.949, "lon": -83.2138}, {"name": "Gainesville, GA", "population": 221.7, "lat": 34.3171, "lon": -83.8196}, {"name": "Medford, OR", "population": 221.3, "lat": 42.4322, "lon": -122.7285}, {"name": "Yuma, AZ", "population": 220.3, "lat": 32.7695, "lon": -113.9056}, {"name": "Columbia, MO", "population": 218.0, "lat": 38.9838, "lon": -92.5793}, {"name": "Johnson City, TN", "population": 215.7, "lat": 36.2538, "lon": -82.3345}, {"name": "Jacksonville, NC", "population": 213.0, "lat": 34.7322, "lon": -77.4322}, {"name": "Punta Gorda, FL", "population": 212.1, "lat": 26.9058, "lon": -81.9114}, {"name": "Lexington Park, MD", "population": 211.4, "lat": 38.3921, "lon": -76.592}, {"name": "Chico, CA", "population": 208.3, "lat": 39.6669, "lon": -121.6007}, {"name": "St. George, UT", "population": 207.9, "lat": 37.2804, "lon": -113.5047}, {"name": "Elkhart", "population": 207.4, "lat": 41.5974, "lon": -85.8587}, {"name": "Joplin, MO", "population": 207.1, "lat": 37.0924, "lon": -94.5011}, {"name": "Springfield, IL", "population": 206.4, "lat": 39.8296, "lon": -89.6969}, {"name": "St. Cloud, MN", "population": 205.9, "lat": 45.5859, "lon": -94.4721}, {"name": "Auburn", "population": 205.4, "lat": 32.4939, "lon": -85.5235}, {"name": "Warner Robins, GA", "population": 204.1, "lat": 32.4903, "lon": -83.712}, {"name": "Florence, SC", "population": 200.5, "lat": 34.152, "lon": -79.8084}, {"name": "Charleston, WV", "population": 200.1, "lat": 38.2717, "lon": -81.4917}, {"name": "Houma", "population": 199.2, "lat": 29.4838, "lon": -90.6656}, {"name": "Racine", "population": 198.7, "lat": 42.7475, "lon": -88.0613}, {"name": "Bowling Green, KY", "population": 197.7, "lat": 37.0386, "lon": -86.407}, {"name": "Dover, DE", "population": 192.7, "lat": 39.086, "lon": -75.5686}, {"name": "Billings, MT", "population": 192.5, "lat": 45.64, "lon": -108.8219}, {"name": "Coeur d'Alene, ID", "population": 188.3, "lat": 47.6744, "lon": -116.7018}, {"name": "Midland, TX", "population": 188.1, "lat": 32.0897, "lon": -101.991}, {"name": "Saginaw, MI", "population": 187.7, "lat": 43.335, "lon": -84.0532}, {"name": "Yuba City, CA", "population": 186.0, "lat": 39.1553, "lon": -121.5179}, {"name": "Jackson, TN", "population": 183.7, "lat": 35.7463, "lon": -88.8811}, {"name": "Blacksburg", "population": 183.3, "lat": 37.1209, "lon": -80.5329}, {"name": "Burlington, NC", "population": 183.0, "lat": 36.0437, "lon": -79.3995}, {"name": "Kingston, NY", "population": 183.0, "lat": 41.8881, "lon": -74.2586}, {"name": "Iowa City, IA", "population": 182.7, "lat": 41.5113, "lon": -91.65}, {"name": "Abilene, TX", "population": 182.0, "lat": 32.4497, "lon": -99.7177}, {"name": "El Centro, CA", "population": 181.7, "lat": 33.0395, "lon": -115.3653}, {"name": "Redding, CA", "population": 181.1, "lat": 40.7637, "lon": -122.0405}, {"name": "Greenville, NC", "population": 180.8, "lat": 35.5933, "lon": -77.3745}, {"name": "Muskegon", "population": 177.4, "lat": 43.2912, "lon": -86.152}, {"name": "Eau Claire, WI", "population": 176.2, "lat": 44.9388, "lon": -91.2822}, {"name": "Oshkosh", "population": 173.3, "lat": 44.0689, "lon": -88.6446}, {"name": "Sebastian", "population": 172.1, "lat": 27.6943, "lon": -80.6064}, {"name": "Bloomington, IL", "population": 172.1, "lat": 40.4909, "lon": -88.8473}, {"name": "Idaho Falls, ID", "population": 171.8, "lat": 43.6225, "lon": -112.4279}, {"name": "La Crosse", "population": 170.8, "lat": 43.6983, "lon": -91.1076}, {"name": "Homosassa Springs, FL", "population": 170.2, "lat": 28.8489, "lon": -82.4794}, {"name": "Waterloo", "population": 170.1, "lat": 42.5362, "lon": -92.4712}, {"name": "Odessa, TX", "population": 170.0, "lat": 31.8692, "lon": -102.5429}, {"name": "Pueblo, CO", "population": 169.9, "lat": 38.1735, "lon": -104.5127}, {"name": "Kenosha, WI", "population": 168.8, "lat": 42.5769, "lon": -88.0424}, {"name": "Terre Haute, IN", "population": 166.6, "lat": 39.3919, "lon": -87.344}, {"name": "Janesville", "population": 165.5, "lat": 42.6712, "lon": -89.0716}, {"name": "Amherst Town", "population": 165.4, "lat": 42.3402, "lon": -72.6638}, {"name": "Kahului", "population": 163.8, "lat": 20.8628, "lon": -156.569}, {"name": "Bloomington, IN", "population": 162.6, "lat": 39.2347, "lon": -86.676}, {"name": "Grand Junction, CO", "population": 161.3, "lat": 39.0183, "lon": -108.4664}, {"name": "Jackson, MI", "population": 160.2, "lat": 42.2485, "lon": -84.4234}, {"name": "Logan, UT", "population": 160.1, "lat": 41.8896, "lon": -111.769}, {"name": "State College, PA", "population": 159.8, "lat": 40.9189, "lon": -77.8199}, {"name": "Decatur, AL", "population": 159.7, "lat": 34.4906, "lon": -87.1026}, {"name": "Chambersburg, PA", "population": 159.3, "lat": 39.9274, "lon": -77.7213}, {"name": "Santa Fe, NM", "population": 157.8, "lat": 35.5069, "lon": -105.9763}, {"name": "Bangor, ME", "population": 156.8, "lat": 45.4006, "lon": -68.6495}, {"name": "Traverse City, MI", "population": 156.6, "lat": 44.725, "lon": -85.5519}, {"name": "Hattiesburg, MS", "population": 156.4, "lat": 31.1874, "lon": -89.2288}, {"name": "Florence", "population": 156.3, "lat": 34.8083, "lon": -87.724}, {"name": "Monroe, MI", "population": 156.0, "lat": 41.9291, "lon": -83.5394}, {"name": "Vineland, NJ", "population": 155.7, "lat": 39.3739, "lon": -75.1107}, {"name": "Hanford", "population": 154.9, "lat": 36.0752, "lon": -119.8155}, {"name": "Dothan, AL", "population": 154.8, "lat": 31.2529, "lon": -85.4617}, {"name": "Wildwood", "population": 154.7, "lat": 28.7048, "lon": -82.081}, {"name": "Rapid City, SD", "population": 153.5, "lat": 44.1915, "lon": -102.8999}, {"name": "Valdosta, GA", "population": 153.2, "lat": 30.8294, "lon": -83.2415}, {"name": "Jefferson City, MO", "population": 152.8, "lat": 38.6398, "lon": -92.0917}, {"name": "Niles, MI", "population": 152.7, "lat": 41.9547, "lon": -86.4123}, {"name": "Sherman", "population": 150.5, "lat": 33.6268, "lon": -96.6777}, {"name": "Wichita Falls, TX", "population": 149.9, "lat": 33.7747, "lon": -98.4914}, {"name": "Alexandria, LA", "population": 148.0, "lat": 31.3306, "lon": -92.5418}, {"name": "Winchester, VA", "population": 148.0, "lat": 39.2722, "lon": -78.4739}, {"name": "Rocky Mount, NC", "population": 147.1, "lat": 35.941, "lon": -77.7985}, {"name": "Dalton, GA", "population": 146.4, "lat": 34.7963, "lon": -84.8481}, {"name": "Texarkana, TX", "population": 146.2, "lat": 33.4736, "lon": -94.214}, {"name": "Albany, GA", "population": 146.1, "lat": 31.6465, "lon": -84.1153}, {"name": "Sioux City, IA", "population": 145.6, "lat": 42.5189, "lon": -96.3088}, {"name": "Lebanon, PA", "population": 145.3, "lat": 40.3672, "lon": -76.4577}, {"name": "Flagstaff, AZ", "population": 145.2, "lat": 35.8387, "lon": -111.7705}, {"name": "Morgantown, WV", "population": 142.8, "lat": 39.5273, "lon": -79.8045}, {"name": "Hammond, LA", "population": 139.8, "lat": 30.6266, "lon": -90.4057}, {"name": "Wausau, WI", "population": 139.1, "lat": 44.8983, "lon": -89.7591}, {"name": "Harrisonburg, VA", "population": 138.8, "lat": 38.5105, "lon": -78.8757}, {"name": "Bismarck, ND", "population": 138.8, "lat": 46.8841, "lon": -100.9786}, {"name": "Jonesboro, AR", "population": 138.2, "lat": 35.6981, "lon": -90.6484}, {"name": "Wheeling, WV", "population": 135.1, "lat": 39.9748, "lon": -80.8413}, {"name": "Springfield, OH", "population": 135.0, "lat": 39.9167, "lon": -83.7844}, {"name": "Manhattan, KS", "population": 134.9, "lat": 39.2714, "lon": -96.5594}, {"name": "Battle Creek, MI", "population": 133.8, "lat": 42.2465, "lon": -85.0056}, {"name": "Mount Vernon", "population": 132.7, "lat": 48.4795, "lon": -121.729}, {"name": "Napa, CA", "population": 132.7, "lat": 38.507, "lon": -122.3306}, {"name": "Albany, OR", "population": 132.5, "lat": 44.4887, "lon": -122.5343}, {"name": "Cleveland, TN", "population": 132.1, "lat": 35.1345, "lon": -84.6674}, {"name": "Salisbury, MD", "population": 131.6, "lat": 38.251, "lon": -75.683}, {"name": "Johnstown, PA", "population": 130.1, "lat": 40.4951, "lon": -78.7134}, {"name": "Ames, IA", "population": 129.2, "lat": 42.0364, "lon": -93.6983}, {"name": "Pittsfield, MA", "population": 128.7, "lat": 42.3707, "lon": -73.2063}, {"name": "Staunton", "population": 128.5, "lat": 38.1629, "lon": -79.1289}, {"name": "Elizabethtown, KY", "population": 127.7, "lat": 37.6531, "lon": -85.8852}, {"name": "Wenatchee", "population": 127.0, "lat": 47.8185, "lon": -120.2656}, {"name": "Bozeman, MT", "population": 127.0, "lat": 45.5404, "lon": -111.1704}, {"name": "Morristown, TN", "population": 126.9, "lat": 36.1107, "lon": -83.3818}, {"name": "Missoula, MT", "population": 126.6, "lat": 47.0718, "lon": -114.2664}, {"name": "Lawton, OK", "population": 126.5, "lat": 34.5241, "lon": -98.4348}, {"name": "Sierra Vista", "population": 125.8, "lat": 31.8796, "lon": -109.7512}, {"name": "Glens Falls, NY", "population": 125.1, "lat": 43.4435, "lon": -73.6488}, {"name": "Mansfield, OH", "population": 124.9, "lat": 40.7747, "lon": -82.5365}, {"name": "Lawrence, KS", "population": 122.0, "lat": 38.8847, "lon": -95.2926}, {"name": "San Angelo, TX", "population": 121.4, "lat": 31.3637, "lon": -100.673}, {"name": "Twin Falls, ID", "population": 121.3, "lat": 42.4358, "lon": -114.5708}, {"name": "Farmington, NM", "population": 120.8, "lat": 36.5085, "lon": -108.3206}, {"name": "Goldsboro, NC", "population": 120.3, "lat": 35.364, "lon": -78.004}, {"name": "Altoona, PA", "population": 120.3, "lat": 40.4811, "lon": -78.3483}, {"name": "St. Joseph, MO", "population": 119.2, "lat": 39.8341, "lon": -94.7838}, {"name": "Sheboygan, WI", "population": 118.3, "lat": 43.7212, "lon": -87.9454}, {"name": "Anniston", "population": 116.4, "lat": 33.7714, "lon": -85.826}, {"name": "Brunswick", "population": 116.1, "lat": 31.3109, "lon": -81.6381}, {"name": "Lewiston", "population": 115.3, "lat": 44.1658, "lon": -70.2065}, {"name": "Longview", "population": 114.0, "lat": 46.1932, "lon": -122.681}, {"name": "Sandusky, OH", "population": 113.5, "lat": 41.4523, "lon": -82.8853}, {"name": "Williamsport, PA", "population": 113.2, "lat": 41.3434, "lon": -77.0645}, {"name": "Watertown", "population": 113.1, "lat": 44.0495, "lon": -75.9203}, {"name": "Muncie, IN", "population": 113.0, "lat": 40.2275, "lon": -85.3969}, {"name": "Owensboro, KY", "population": 112.8, "lat": 37.6611, "lon": -87.1488}, {"name": "Weirton", "population": 112.7, "lat": 40.388, "lon": -80.7043}, {"name": "Michigan City", "population": 111.3, "lat": 41.546, "lon": -86.74}, {"name": "Beckley, WV", "population": 111.0, "lat": 37.9062, "lon": -81.1609}, {"name": "Sebring, FL", "population": 109.8, "lat": 27.3433, "lon": -81.341}, {"name": "Pinehurst", "population": 108.4, "lat": 35.3106, "lon": -79.4814}, {"name": "Gettysburg, PA", "population": 107.9, "lat": 39.8715, "lon": -77.2179}, {"name": "Kankakee, IL", "population": 106.4, "lat": 41.1377, "lon": -87.8618}, {"name": "Ithaca, NY", "population": 105.6, "lat": 42.452, "lon": -76.4736}, {"name": "Mankato, MN", "population": 105.2, "lat": 44.1544, "lon": -94.1356}, {"name": "Sumter, SC", "population": 104.8, "lat": 33.9162, "lon": -80.3822}, {"name": "Fond du Lac, WI", "population": 104.3, "lat": 43.7536, "lon": -88.4883}, {"name": "Grand Forks, ND", "population": 104.2, "lat": 47.836, "lon": -96.8444}, {"name": "Gadsden, AL", "population": 103.2, "lat": 34.0453, "lon": -86.0348}, {"name": "Bay City, MI", "population": 102.7, "lat": 43.7075, "lon": -83.9924}, {"name": "Cheyenne, WY", "population": 101.8, "lat": 41.307, "lon": -104.6895}, {"name": "Rome, GA", "population": 101.4, "lat": 34.2632, "lon": -85.2143}, {"name": "Lima, OH", "population": 100.9, "lat": 40.7715, "lon": -84.1058}, {"name": "Cape Girardeau, MO", "population": 100.8, "lat": 37.3245, "lon": -89.7698}, {"name": "Decatur, IL", "population": 100.7, "lat": 39.86, "lon": -88.9616}, {"name": "Hot Springs, AR", "population": 99.9, "lat": 34.5767, "lon": -93.1504}, {"name": "Paducah, KY", "population": 99.8, "lat": 37.0953, "lon": -88.7169}, {"name": "Dubuque, IA", "population": 99.2, "lat": 42.4688, "lon": -90.8825}, {"name": "Corvallis, OR", "population": 98.9, "lat": 44.4918, "lon": -123.4293}, {"name": "Victoria, TX", "population": 98.4, "lat": 28.7279, "lon": -97.195}, {"name": "Helena, MT", "population": 96.3, "lat": 46.7205, "lon": -112.1422}, {"name": "Fairbanks", "population": 95.0, "lat": 64.8078, "lon": -146.5654}, {"name": "Pocatello, ID", "population": 91.0, "lat": 42.6685, "lon": -112.2246}, {"name": "Hinesville, GA", "population": 89.7, "lat": 31.7959, "lon": -81.602}, {"name": "Grants Pass, OR", "population": 88.3, "lat": 42.3655, "lon": -123.5555}, {"name": "Parkersburg", "population": 87.1, "lat": 39.1389, "lon": -81.4628}, {"name": "Columbus, IN", "population": 84.7, "lat": 39.206, "lon": -85.8976}, {"name": "Great Falls, MT", "population": 84.5, "lat": 47.3079, "lon": -111.347}, {"name": "Kokomo, IN", "population": 84.1, "lat": 40.4836, "lon": -86.1169}, {"name": "Midland, MI", "population": 84.0, "lat": 43.6468, "lon": -84.3881}, {"name": "Elmira, NY", "population": 81.1, "lat": 42.1413, "lon": -76.76}, {"name": "Casper, WY", "population": 80.4, "lat": 42.9622, "lon": -106.7986}, {"name": "Grand Island, NE", "population": 77.3, "lat": 41.0867, "lon": -98.3653}, {"name": "Minot, ND", "population": 75.8, "lat": 48.3188, "lon": -101.2077}, {"name": "Lewiston, ID", "population": 65.4, "lat": 46.2691, "lon": -116.9437}, {"name": "Walla Walla, WA", "population": 62.1, "lat": 46.2298, "lon": -118.4784}, {"name": "Enid, OK", "population": 62.0, "lat": 36.3791, "lon": -97.7827}, {"name": "Eagle Pass, TX", "population": 58.8, "lat": 28.7426, "lon": -100.3145}, {"name": "Carson City, NV", "population": 58.1, "lat": 39.1511, "lon": -119.7476}];
+
+        // ============================================
+        // Data Loading
+        // ============================================
+
+        /**
+         * DataLoader - Load and parse city data from JSONL file
+         */
+        class DataLoader {
+            /**
+             * Load city data from a JSONL file
+             * @param {string} url - URL or path to the JSONL file
+             * @returns {Promise<Array>} Promise resolving to array of city objects
+             */
+            static async loadCityData(url) {
+                // Try embedded data first (avoids CORS issues)
+                if (typeof EMBEDDED_CITY_DATA !== 'undefined' && EMBEDDED_CITY_DATA.length > 0) {
+                    console.log(`Using embedded city data (${EMBEDDED_CITY_DATA.length} cities)`);
+                    const cities = EMBEDDED_CITY_DATA.map(city => ({
+                        name: city.name,
+                        population: city.population,
+                        lat: city.lat,
+                        lon: city.lon,
+                        damaged: false,
+                        restored: false
+                    }));
+                    return cities;
+                }
+                
+                // Fallback to fetching from URL (deprecated)
+                console.log('Embedded data not available, fetching from:', url);
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load city data: ${response.status} ${response.statusText}`);
+                    }
+                    
+                    const text = await response.text();
+                    const cities = [];
+                    const lines = text.split('\n');
+                    
+                    for (let i = 0; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        
+                        // Skip empty lines
+                        if (!line) continue;
+                        
+                        try {
+                            const city = JSON.parse(line);
+                            
+                            // Validate required fields
+                            if (!DataLoader.isValidCity(city)) {
+                                console.warn(`Skipping malformed city record at line ${i + 1}:`, line);
+                                continue;
+                            }
+                            
+                            // Initialize city state
+                            cities.push({
+                                name: city.name,
+                                population: city.population,
+                                lat: city.lat,
+                                lon: city.lon,
+                                damaged: false,
+                                restored: false
+                            });
+                        } catch (parseError) {
+                            console.warn(`Skipping invalid JSON at line ${i + 1}:`, line);
+                            continue;
+                        }
+                    }
+                    
+                    if (cities.length === 0) {
+                        throw new Error('No valid city records found in data file');
+                    }
+                    
+                    console.log(`Loaded ${cities.length} cities from ${url}`);
+                    return cities;
+                    
+                } catch (error) {
+                    console.error('Error loading city data:', error);
+                    throw error;
+                }
+            }
+            
+            /**
+             * Validate that a city object has all required fields
+             * @param {Object} city - City object to validate
+             * @returns {boolean} True if city has all required fields with valid types
+             */
+            static isValidCity(city) {
+                if (!city || typeof city !== 'object') return false;
+                
+                // Check required fields exist
+                if (!city.name || !city.hasOwnProperty('population') || 
+                    !city.hasOwnProperty('lat') || !city.hasOwnProperty('lon')) {
+                    return false;
+                }
+                
+                // Check field types
+                if (typeof city.name !== 'string') return false;
+                if (typeof city.population !== 'number' || isNaN(city.population)) return false;
+                if (typeof city.lat !== 'number' || isNaN(city.lat)) return false;
+                if (typeof city.lon !== 'number' || isNaN(city.lon)) return false;
+                
+                // Check coordinate ranges
+                if (city.lat < -90 || city.lat > 90) return false;
+                if (city.lon < -180 || city.lon > 180) return false;
+                
+                return true;
+            }
+        }
+
+        // ============================================
+        // City Management
+        // ============================================
+
+        /**
+         * CityManager - Manage city selection, damage assignment, and lookup
+         */
+        class CityManager {
+            /**
+             * Create a CityManager
+             * @param {Array} cities - Array of city objects
+             * @param {number} randomSeed - Seed for random number generation
+             */
+            constructor(cities, randomSeed) {
+                this.allCities = cities;
+                this.random = new SeededRandom(randomSeed);
+                this.cities = [];
+            }
+
+            /**
+             * Select a random subset of cities
+             * @param {number} count - Number of cities to select
+             * @returns {Array} Array of selected cities
+             */
+            selectCities(count) {
+                // If count is greater than available cities, use all cities
+                const actualCount = Math.min(count, this.allCities.length);
+                
+                // Sort cities by population (descending) and take the top N
+                const sortedByPopulation = [...this.allCities].sort((a, b) => b.population - a.population);
+                this.cities = sortedByPopulation.slice(0, actualCount);
+                
+                return this.cities;
+            }
+
+            /**
+             * Mark a fraction of cities as damaged
+             * @param {number} fraction - Fraction of cities to damage (0.5 to 1.0)
+             */
+            damageCities(fraction) {
+                // Validate fraction
+                if (fraction < 0.5 || fraction > 1.0) {
+                    throw new Error('Damage fraction must be between 0.5 and 1.0');
+                }
+                
+                // Calculate number of cities to damage
+                const numToDamage = Math.round(this.cities.length * fraction);
+                
+                // Create a copy of cities array and shuffle it
+                const shuffled = [...this.cities];
+                this.random.shuffle(shuffled);
+                
+                // Mark the first numToDamage cities as damaged
+                for (let i = 0; i < numToDamage; i++) {
+                    shuffled[i].damaged = true;
+                }
+            }
+
+            /**
+             * Find a city by name (case-insensitive)
+             * @param {string} name - City name to search for
+             * @returns {Object|null} City object if found, null otherwise
+             */
+            findCityByName(name) {
+                if (!name || typeof name !== 'string') {
+                    return null;
+                }
+                
+                const searchName = name.trim().toLowerCase();
+                
+                return this.cities.find(city => 
+                    city.name.toLowerCase() === searchName
+                ) || null;
+            }
+
+            /**
+             * Get all damaged cities
+             * @returns {Array} Array of damaged cities
+             */
+            getDamagedCities() {
+                return this.cities.filter(city => city.damaged && !city.restored);
+            }
+
+            /**
+             * Get all restored cities
+             * @returns {Array} Array of restored cities
+             */
+            getRestoredCities() {
+                return this.cities.filter(city => city.restored);
+            }
+
+            /**
+             * Get all cities
+             * @returns {Array} Array of all cities
+             */
+            getCities() {
+                return this.cities;
+            }
+        }
+
+        // ============================================
+        // Scoring Engine
+        // ============================================
+
+        /**
+         * ScoringEngine - Calculate points and restoration costs
+         */
+        class ScoringEngine {
+            /**
+             * Create a ScoringEngine
+             * @param {boolean} advancedMode - Whether advanced mode is enabled
+             */
+            constructor(advancedMode) {
+                this.advancedMode = advancedMode;
+            }
+
+            /**
+             * Calculate points earned for restoring a city
+             * @param {Object} city - City object with population property
+             * @returns {number} Points earned
+             */
+            calculatePoints(city) {
+                if (this.advancedMode) {
+                    // Advanced mode: population / 1000
+                    return city.population / 1000;
+                } else {
+                    // Basic mode: 1 point per city
+                    return 1;
+                }
+            }
+
+            /**
+             * Calculate restoration cost for a city
+             * @param {Object} city - City being restored
+             * @param {Array} restoredCities - Array of already restored cities
+             * @returns {number} Transformer cost
+             */
+            calculateRestorationCost(city, restoredCities) {
+                if (this.advancedMode) {
+                    // Advanced mode: 1 / (1 + count of restored cities within 300 miles)
+                    const citiesWithin300Miles = DistanceCalculator.findCitiesWithinRadius(
+                        city,
+                        restoredCities,
+                        300
+                    );
+                    const count = citiesWithin300Miles.length;
+                    return 1 / (1 + count);
+                } else {
+                    // Basic mode: 1 transformer per city
+                    return 1;
+                }
+            }
+        }
+
+        // ============================================
+        // Game Controller
+        // ============================================
+
+        /**
+         * GameController - Manages game state and coordinates game logic
+         */
+        class GameController {
+            /**
+             * Create a GameController
+             * @param {Object} config - Game configuration object
+             */
+            constructor(config) {
+                this.config = config;
+                this.cityManager = null;
+                this.scoringEngine = null;
+                this.state = {
+                    transformers: 0,
+                    score: 0,
+                    timeRemaining: config.timerDuration,
+                    timerStarted: false,
+                    gameEnded: false
+                };
+                this.timerInterval = null;
+            }
+
+            /**
+             * Initialize game with city data
+             * @param {string} cityDataUrl - URL to JSONL city data file
+             * @returns {Promise<void>}
+             */
+            async initialize(cityDataUrl) {
+                try {
+                    // Load city data
+                    const allCities = await DataLoader.loadCityData(cityDataUrl);
+                    
+                    // Initialize city manager
+                    this.cityManager = new CityManager(allCities, this.config.randomSeed);
+                    
+                    // Select cities
+                    this.cityManager.selectCities(this.config.numCities);
+                    
+                    // Damage cities
+                    this.cityManager.damageCities(this.config.damagedFraction);
+                    
+                    // Initialize scoring engine
+                    this.scoringEngine = new ScoringEngine(this.config.advancedMode);
+                    
+                    // Initialize game state
+                    const damagedCities = this.cityManager.getDamagedCities();
+                    this.state.transformers = damagedCities.length;
+                    this.state.score = 0;
+                    this.state.timeRemaining = this.config.timerDuration;
+                    this.state.timerStarted = false;
+                    this.state.gameEnded = false;
+                    
+                    console.log(`Game initialized: ${damagedCities.length} cities damaged, ${this.state.transformers} transformers available`);
+                    
+                } catch (error) {
+                    console.error('Failed to initialize game:', error);
+                    throw error;
+                }
+            }
+
+            /**
+             * Attempt to restore a city
+             * @param {string} cityName - Name of city to restore
+             * @returns {Object} Result object with success status and details
+             */
+            restoreCity(cityName) {
+                // Check if game has ended
+                if (this.state.gameEnded) {
+                    return {
+                        success: false,
+                        message: 'Game has ended',
+                        shouldClearInput: false
+                    };
+                }
+                
+                // Find the city
+                const city = this.cityManager.findCityByName(cityName);
+                
+                // Invalid city name - maintain state unchanged
+                if (!city) {
+                    return {
+                        success: false,
+                        message: 'City not found',
+                        shouldClearInput: false
+                    };
+                }
+                
+                // City is not damaged - maintain state unchanged
+                if (!city.damaged) {
+                    return {
+                        success: false,
+                        message: 'City is not damaged',
+                        shouldClearInput: false
+                    };
+                }
+                
+                // City is already restored - maintain state unchanged
+                if (city.restored) {
+                    return {
+                        success: false,
+                        message: 'City already restored',
+                        shouldClearInput: false
+                    };
+                }
+                
+                // Calculate restoration cost
+                const restoredCities = this.cityManager.getRestoredCities();
+                const cost = this.scoringEngine.calculateRestorationCost(city, restoredCities);
+                
+                // Check if we have enough transformers
+                if (this.state.transformers < cost) {
+                    return {
+                        success: false,
+                        message: 'Not enough transformers',
+                        shouldClearInput: false
+                    };
+                }
+                
+                // Start timer on first valid restoration
+                if (!this.state.timerStarted) {
+                    this.startTimer();
+                }
+                
+                // Restore the city
+                city.restored = true;
+                
+                // Update transformers
+                this.state.transformers -= cost;
+                
+                // Calculate and add points
+                const points = this.scoringEngine.calculatePoints(city);
+                this.state.score += points;
+                
+                // Check if all cities are restored (win condition)
+                const damagedCities = this.cityManager.getDamagedCities();
+                if (damagedCities.length === 0) {
+                    // All cities restored - end the game
+                    this.endGame();
+                }
+                
+                return {
+                    success: true,
+                    message: `${city.name} restored!`,
+                    pointsEarned: points,
+                    transformersUsed: cost,
+                    shouldClearInput: true
+                };
+            }
+
+            /**
+             * Start the game timer
+             */
+            startTimer() {
+                if (this.state.timerStarted) {
+                    return;
+                }
+                
+                this.state.timerStarted = true;
+                
+                // Update timer every second
+                this.timerInterval = setInterval(() => {
+                    this.updateTimer();
+                }, 1000);
+                
+                console.log('Timer started');
+            }
+
+            /**
+             * Update the timer (called every second)
+             */
+            updateTimer() {
+                if (this.state.gameEnded) {
+                    return;
+                }
+                
+                this.state.timeRemaining--;
+                
+                // Update UI if in browser context
+                if (typeof updateGameUI === 'function') {
+                    updateGameUI();
+                }
+                
+                // Check if time has run out
+                if (this.state.timeRemaining <= 0) {
+                    this.state.timeRemaining = 0;
+                    this.endGame();
+                }
+            }
+
+            /**
+             * End the game
+             */
+            endGame() {
+                if (this.state.gameEnded) {
+                    return;
+                }
+                
+                this.state.gameEnded = true;
+                
+                // Stop the timer
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+                
+                console.log('Game ended');
+                console.log(`Final score: ${this.state.score}`);
+                console.log(`Cities restored: ${this.cityManager.getRestoredCities().length}`);
+                
+                // Trigger transition to end screen if in browser context
+                if (typeof transitionToEndScreen === 'function') {
+                    transitionToEndScreen();
+                }
+            }
+
+            /**
+             * Get current game state
+             * @returns {Object} Current game state
+             */
+            getState() {
+                return {
+                    ...this.state,
+                    cities: this.cityManager ? this.cityManager.getCities() : [],
+                    damagedCities: this.cityManager ? this.cityManager.getDamagedCities() : [],
+                    restoredCities: this.cityManager ? this.cityManager.getRestoredCities() : []
+                };
+            }
+
+            /**
+             * Get cities for map rendering
+             * @returns {Array} Array of all cities
+             */
+            getCities() {
+                return this.cityManager ? this.cityManager.getCities() : [];
+            }
+
+            /**
+             * Get restored cities for map rendering
+             * @returns {Array} Array of restored cities
+             */
+            getRestoredCities() {
+                return this.cityManager ? this.cityManager.getRestoredCities() : [];
+            }
+
+            /**
+             * Check if timer has started
+             * @returns {boolean} True if timer has started
+             */
+            isTimerStarted() {
+                return this.state.timerStarted;
+            }
+
+            /**
+             * Check if game has ended
+             * @returns {boolean} True if game has ended
+             */
+            isGameEnded() {
+                return this.state.gameEnded;
+            }
+
+            /**
+             * Get current score
+             * @returns {number} Current score
+             */
+            getScore() {
+                return this.state.score;
+            }
+
+            /**
+             * Get remaining transformers
+             * @returns {number} Remaining transformers
+             */
+            getTransformers() {
+                return this.state.transformers;
+            }
+
+            /**
+             * Get time remaining
+             * @returns {number} Time remaining in seconds
+             */
+            getTimeRemaining() {
+                return this.state.timeRemaining;
+            }
+        }
+
+        // ============================================
+        // Map Rendering
+        // ============================================
+
+        /**
+         * MapRenderer - Render cities and restoration radius on canvas
+         */
+        class MapRenderer {
+            /**
+             * Create a MapRenderer
+             * @param {HTMLCanvasElement} canvasElement - Canvas element to render on
+             */
+            constructor(canvasElement) {
+                this.canvas = canvasElement;
+                this.ctx = canvasElement.getContext('2d');
+                
+                // Set canvas size to match display size
+                this.resizeCanvas();
+                
+                // Map projection bounds (US-focused)
+                this.bounds = {
+                    minLat: 24,   // Southern tip of Florida
+                    maxLat: 50,   // Northern border
+                    minLon: -125, // West coast
+                    maxLon: -65   // East coast
+                };
+                
+                // Padding around the map
+                this.padding = 20;
+                
+                // Store cities for tooltip functionality
+                this.cities = [];
+                
+                // Tooltip state
+                this.hoveredCity = null;
+                
+                // Add mouse move listener for tooltips
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            }
+
+            /**
+             * Draw rough outline of Continental US
+             */
+            drawCONUSOutline() {
+                // Simplified CONUS border points (lat, lon)
+                const borderPoints = [
+                    // West coast (north to south)
+                    [48.5, -124.7], [47.5, -124.5], [46.0, -124.0], [43.0, -124.3],
+                    [42.0, -124.4], [40.0, -124.4], [38.0, -123.0], [36.0, -121.5],
+                    [34.0, -120.0], [33.0, -117.5], [32.5, -117.1],
+                    // Mexico border (west to east)
+                    [32.5, -117.1], [32.5, -114.8], [31.5, -111.0], [31.5, -108.2],
+                    [31.8, -106.5], [31.8, -104.0], [32.0, -103.0], [29.5, -101.0],
+                    [28.0, -99.0], [26.5, -97.5], [26.0, -97.2],
+                    // Gulf coast (west to east)
+                    [26.0, -97.2], [28.0, -96.5], [29.0, -95.0], [29.5, -94.0],
+                    [30.0, -93.5], [30.0, -89.0], [30.5, -88.5], [30.5, -87.5],
+                    [30.0, -85.0], [29.0, -84.0], [28.0, -82.5], [26.0, -80.0],
+                    [25.5, -80.3],
+                    // East coast (south to north)
+                    [25.5, -80.3], [27.0, -80.0], [29.0, -80.8], [31.0, -81.0],
+                    [33.0, -79.0], [34.0, -78.0], [35.5, -75.5], [37.0, -76.0],
+                    [38.0, -75.0], [39.5, -74.5], [40.5, -74.0], [41.0, -72.0],
+                    [41.5, -71.0], [42.5, -70.5], [43.5, -70.0], [44.5, -67.0],
+                    [45.0, -67.0], [47.5, -69.0],
+                    // Canada border (east to west)
+                    [47.5, -69.0], [47.5, -70.0], [46.0, -71.0], [45.0, -74.5],
+                    [45.0, -75.5], [44.5, -76.5], [44.0, -79.0], [43.0, -79.5],
+                    [42.5, -82.5], [42.0, -83.5], [46.5, -84.5], [47.0, -87.5],
+                    [47.5, -90.0], [48.0, -95.0], [49.0, -95.0], [49.0, -97.0],
+                    [49.0, -104.0], [49.0, -111.0], [49.0, -117.0], [49.0, -122.5],
+                    [49.0, -124.5], [48.5, -124.7]
+                ];
+
+                this.ctx.beginPath();
+                borderPoints.forEach((point, index) => {
+                    const { x, y } = this.projectToCanvas(point[0], point[1]);
+                    if (index === 0) {
+                        this.ctx.moveTo(x, y);
+                    } else {
+                        this.ctx.lineTo(x, y);
+                    }
+                });
+                this.ctx.closePath();
+                this.ctx.strokeStyle = '#999';
+                this.ctx.lineWidth = 2;
+                this.ctx.stroke();
+            }
+
+            /**
+             * Handle mouse move for tooltips
+             */
+            handleMouseMove(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                // Find city under mouse (within 10 pixels)
+                let foundCity = null;
+                for (const city of this.cities) {
+                    const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                    const distance = Math.sqrt((mouseX - x) ** 2 + (mouseY - y) ** 2);
+                    if (distance <= 10) {
+                        foundCity = city;
+                        break;
+                    }
+                }
+
+                // Update tooltip if city changed
+                if (foundCity !== this.hoveredCity) {
+                    this.hoveredCity = foundCity;
+                    this.renderCities(this.cities); // Re-render to show/hide tooltip
+                }
+            }
+
+            /**
+             * Resize canvas to match its display size
+             */
+            resizeCanvas() {
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvas.width = rect.width;
+                this.canvas.height = rect.height;
+            }
+
+            /**
+             * Convert latitude/longitude to canvas x/y coordinates
+             * @param {number} lat - Latitude in degrees
+             * @param {number} lon - Longitude in degrees
+             * @returns {Object} Object with x and y canvas coordinates
+             */
+            projectToCanvas(lat, lon) {
+                // Calculate normalized position (0 to 1)
+                const normalizedX = (lon - this.bounds.minLon) / (this.bounds.maxLon - this.bounds.minLon);
+                const normalizedY = (this.bounds.maxLat - lat) / (this.bounds.maxLat - this.bounds.minLat);
+                
+                // Map to canvas coordinates with padding
+                const x = this.padding + normalizedX * (this.canvas.width - 2 * this.padding);
+                const y = this.padding + normalizedY * (this.canvas.height - 2 * this.padding);
+                
+                return { x, y };
+            }
+
+            /**
+             * Calculate radius in pixels for a given distance in miles
+             * @param {number} miles - Distance in miles
+             * @returns {number} Radius in pixels
+             */
+            milesToPixels(miles) {
+                // Calculate degrees per mile at approximately 40° latitude (middle of US)
+                const degreesPerMile = 1 / 69; // Approximate miles per degree of latitude
+                const radiusDegrees = miles * degreesPerMile;
+                
+                // Convert to pixels using the latitude scale
+                const pixelsPerDegree = (this.canvas.height - 2 * this.padding) / (this.bounds.maxLat - this.bounds.minLat);
+                return radiusDegrees * pixelsPerDegree;
+            }
+
+            /**
+             * Clear the canvas
+             */
+            clear() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            /**
+             * Render all cities on the map
+             * @param {Array} cities - Array of city objects
+             */
+            renderCities(cities) {
+                console.log(`MapRenderer.renderCities called with ${cities.length} cities`);
+                console.log(`Canvas size: ${this.canvas.width}x${this.canvas.height}`);
+                
+                // Store cities for tooltip functionality
+                this.cities = cities;
+                
+                this.clear();
+                
+                // Draw CONUS outline
+                this.drawCONUSOutline();
+                
+                // First render all radius circles (so they appear behind cities)
+                const restoredCities = cities.filter(city => city.restored);
+                console.log(`Rendering ${restoredCities.length} restored cities with radius circles`);
+                this.renderRadiusCircles(restoredCities);
+                
+                // Then render all cities
+                cities.forEach(city => {
+                    this.renderCity(city);
+                });
+                
+                // Render city labels if less than 100 cities
+                if (cities.length < 100) {
+                    cities.forEach(city => {
+                        this.renderCityLabel(city);
+                    });
+                }
+                
+                // Render tooltip for hovered city
+                if (this.hoveredCity) {
+                    this.renderTooltip(this.hoveredCity);
+                }
+                
+                console.log('Map rendering complete');
+            }
+
+            /**
+             * Render city label
+             * @param {Object} city - City object
+             */
+            renderCityLabel(city) {
+                const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                
+                this.ctx.font = '10px Arial';
+                this.ctx.fillStyle = '#333';
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText(city.name, x, y - 8);
+            }
+
+            /**
+             * Render tooltip for a city
+             * @param {Object} city - City object
+             */
+            renderTooltip(city) {
+                const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                
+                // Tooltip content
+                const lines = [
+                    city.name,
+                    `Pop: ${city.population.toFixed(1)}k`,
+                    city.restored ? 'Restored' : (city.damaged ? 'Damaged' : 'Undamaged')
+                ];
+                
+                // Measure text
+                this.ctx.font = '12px Arial';
+                const maxWidth = Math.max(...lines.map(line => this.ctx.measureText(line).width));
+                const padding = 8;
+                const lineHeight = 16;
+                const tooltipWidth = maxWidth + padding * 2;
+                const tooltipHeight = lines.length * lineHeight + padding;
+                
+                // Position tooltip (offset from city)
+                let tooltipX = x + 15;
+                let tooltipY = y - tooltipHeight / 2;
+                
+                // Keep tooltip on screen
+                if (tooltipX + tooltipWidth > this.canvas.width) {
+                    tooltipX = x - tooltipWidth - 15;
+                }
+                if (tooltipY < 0) tooltipY = 0;
+                if (tooltipY + tooltipHeight > this.canvas.height) {
+                    tooltipY = this.canvas.height - tooltipHeight;
+                }
+                
+                // Draw tooltip background
+                this.ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                this.ctx.strokeStyle = '#333';
+                this.ctx.lineWidth = 1;
+                this.ctx.fillRect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
+                this.ctx.strokeRect(tooltipX, tooltipY, tooltipWidth, tooltipHeight);
+                
+                // Draw tooltip text
+                this.ctx.fillStyle = '#333';
+                this.ctx.font = '12px Arial';
+                this.ctx.textAlign = 'left';
+                lines.forEach((line, index) => {
+                    this.ctx.fillText(line, tooltipX + padding, tooltipY + padding + (index + 1) * lineHeight - 4);
+                });
+            }
+
+            /**
+             * Render a single city
+             * @param {Object} city - City object with lat, lon, damaged, and restored properties
+             */
+            renderCity(city) {
+                const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                
+                // Determine city color based on state
+                let color;
+                if (city.restored) {
+                    color = '#2ecc71'; // Green for restored
+                } else if (city.damaged) {
+                    color = '#e74c3c'; // Red for damaged
+                } else {
+                    color = '#3498db'; // Blue for undamaged
+                }
+                
+                // Draw city circle
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                this.ctx.fillStyle = color;
+                this.ctx.fill();
+                
+                // Add border for better visibility
+                this.ctx.strokeStyle = '#fff';
+                this.ctx.lineWidth = 1;
+                this.ctx.stroke();
+            }
+
+            /**
+             * Render 300-mile radius circles around restored cities
+             * @param {Array} restoredCities - Array of restored city objects
+             */
+            renderRadiusCircles(restoredCities) {
+                restoredCities.forEach(city => {
+                    const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                    const radius = this.milesToPixels(300);
+                    
+                    // Draw radius circle
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                    this.ctx.strokeStyle = 'rgba(46, 204, 113, 0.3)'; // Semi-transparent green
+                    this.ctx.lineWidth = 2;
+                    this.ctx.stroke();
+                    
+                    // Fill with very light green
+                    this.ctx.fillStyle = 'rgba(46, 204, 113, 0.1)';
+                    this.ctx.fill();
+                });
+            }
+
+            /**
+             * Update a single city's rendering (for incremental updates)
+             * @param {Object} city - City object to update
+             * @param {Array} allCities - All cities (needed for full re-render)
+             */
+            updateCity(city, allCities) {
+                // For simplicity, re-render all cities
+                // This ensures radius circles and overlapping cities are handled correctly
+                this.renderCities(allCities);
+            }
+        }
+
+        // ============================================
+        // DynamoDB Integration
+        // ============================================
+
+        /**
+         * DynamoDBClient - Handle score persistence to AWS DynamoDB
+         * Requires AWS SDK to be loaded from CDN
+         */
+        class DynamoDBClient {
+            /**
+             * Create a DynamoDBClient
+             * @param {Object} credentials - AWS credentials object
+             * @param {string} credentials.accessKeyId - AWS access key ID
+             * @param {string} credentials.secretAccessKey - AWS secret access key
+             * @param {string} credentials.region - AWS region (e.g., 'us-east-1')
+             */
+            constructor(credentials) {
+                if (!credentials || !credentials.accessKeyId || !credentials.secretAccessKey || !credentials.region) {
+                    throw new Error('Invalid AWS credentials: accessKeyId, secretAccessKey, and region are required');
+                }
+
+                this.credentials = credentials;
+                this.tableName = 'shimonopoly-scores';
+                this.dynamoDB = null;
+                this.docClient = null;
+                
+                // Initialize AWS SDK if available
+                this.initializeAWS();
+            }
+
+            /**
+             * Initialize AWS SDK with credentials
+             */
+            initializeAWS() {
+                try {
+                    // Check if AWS SDK is loaded
+                    if (typeof AWS === 'undefined') {
+                        throw new Error('AWS SDK not loaded. Please include the AWS SDK script in your HTML.');
+                    }
+
+                    // Configure AWS credentials
+                    AWS.config.update({
+                        accessKeyId: this.credentials.accessKeyId,
+                        secretAccessKey: this.credentials.secretAccessKey,
+                        region: this.credentials.region
+                    });
+
+                    // Create DynamoDB clients
+                    this.dynamoDB = new AWS.DynamoDB();
+                    this.docClient = new AWS.DynamoDB.DocumentClient();
+                    
+                    console.log('AWS SDK initialized successfully');
+                } catch (error) {
+                    console.error('Failed to initialize AWS SDK:', error);
+                    throw error;
+                }
+            }
+
+            /**
+             * Store a score record in DynamoDB
+             * @param {Object} record - Score record to store
+             * @param {string} record.playerName - Player's name
+             * @param {number} record.score - Final score
+             * @param {number} record.timestamp - Unix timestamp
+             * @param {Object} record.config - Game configuration
+             * @returns {Promise<void>}
+             */
+            async storeScore(record) {
+                try {
+                    // Validate record
+                    if (!record || !record.playerName || typeof record.score !== 'number' || 
+                        !record.timestamp || !record.config) {
+                        throw new Error('Invalid score record: playerName, score, timestamp, and config are required');
+                    }
+
+                    // Generate a unique game ID
+                    const gameId = this.generateGameId();
+
+                    // Prepare DynamoDB item
+                    const item = {
+                        gameId: gameId,
+                        timestamp: record.timestamp,
+                        playerName: record.playerName,
+                        score: record.score,
+                        citiesRestored: record.citiesRestored || 0,
+                        config: {
+                            numCities: record.config.numCities,
+                            damagedFraction: record.config.damagedFraction,
+                            timerDuration: record.config.timerDuration,
+                            advancedMode: record.config.advancedMode,
+                            randomSeed: record.config.randomSeed
+                        }
+                    };
+
+                    // Store in DynamoDB
+                    const params = {
+                        TableName: this.tableName,
+                        Item: item
+                    };
+
+                    await this.docClient.put(params).promise();
+                    
+                    console.log('Score stored successfully:', item);
+                } catch (error) {
+                    console.error('Failed to store score:', error);
+                    
+                    // Provide user-friendly error messages
+                    if (error.code === 'ResourceNotFoundException') {
+                        throw new Error(`DynamoDB table '${this.tableName}' not found. Please create the table first.`);
+                    } else if (error.code === 'UnrecognizedClientException' || error.code === 'InvalidSignatureException') {
+                        throw new Error('Invalid AWS credentials. Please check your access key and secret key.');
+                    } else if (error.code === 'NetworkingError' || error.code === 'TimeoutError') {
+                        throw new Error('Network error: Unable to connect to DynamoDB. Please check your internet connection.');
+                    } else {
+                        throw new Error(`Failed to save score: ${error.message}`);
+                    }
+                }
+            }
+
+            /**
+             * Retrieve top scores from DynamoDB
+             * @param {number} limit - Maximum number of scores to retrieve
+             * @param {boolean} advancedMode - Filter by advanced mode (optional)
+             * @returns {Promise<Array>} Array of score records
+             */
+            async getTopScores(limit = 10, advancedMode = null) {
+                try {
+                    // If advancedMode filter is specified, use the GSI
+                    if (advancedMode !== null) {
+                        const params = {
+                            TableName: this.tableName,
+                            IndexName: 'score-index',
+                            KeyConditionExpression: 'advancedMode = :mode',
+                            ExpressionAttributeValues: {
+                                ':mode': advancedMode
+                            },
+                            ScanIndexForward: false, // Sort descending by score
+                            Limit: limit
+                        };
+
+                        const result = await this.docClient.query(params).promise();
+                        return result.Items || [];
+                    } else {
+                        // Without filter, scan the table and sort by score
+                        // Note: This is less efficient for large tables
+                        const params = {
+                            TableName: this.tableName,
+                            Limit: 100 // Scan more items to find top scores
+                        };
+
+                        const result = await this.docClient.scan(params).promise();
+                        const items = result.Items || [];
+                        
+                        // Sort by score descending and take top N
+                        items.sort((a, b) => b.score - a.score);
+                        return items.slice(0, limit);
+                    }
+                } catch (error) {
+                    console.error('Failed to retrieve scores:', error);
+                    
+                    // Provide user-friendly error messages
+                    if (error.code === 'ResourceNotFoundException') {
+                        throw new Error(`DynamoDB table '${this.tableName}' not found. Please create the table first.`);
+                    } else if (error.code === 'UnrecognizedClientException' || error.code === 'InvalidSignatureException') {
+                        throw new Error('Invalid AWS credentials. Please check your access key and secret key.');
+                    } else if (error.code === 'NetworkingError' || error.code === 'TimeoutError') {
+                        throw new Error('Network error: Unable to connect to DynamoDB. Please check your internet connection.');
+                    } else {
+                        throw new Error(`Failed to retrieve scores: ${error.message}`);
+                    }
+                }
+            }
+
+            /**
+             * Generate a unique game ID
+             * @returns {string} UUID v4 string
+             */
+            generateGameId() {
+                // Simple UUID v4 generator
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0;
+                    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+
+            /**
+             * Test connection to DynamoDB
+             * @returns {Promise<boolean>} True if connection is successful
+             */
+            async testConnection() {
+                try {
+                    // Try to describe the table
+                    const params = {
+                        TableName: this.tableName
+                    };
+                    
+                    await this.dynamoDB.describeTable(params).promise();
+                    return true;
+                } catch (error) {
+                    console.error('Connection test failed:', error);
+                    return false;
+                }
+            }
+        }
+
+        // ============================================
+        // Application Initialization
+        // ============================================
+
+        // Global game state
+        let gameController = null;
+        let mapRenderer = null;
+        let dynamoDBClient = null;
+
+        // ============================================
+        // Setup Screen Event Handlers
+        // ============================================
+
+        /**
+         * Validate damage fraction input
+         * @param {number} fraction - Fraction value to validate
+         * @returns {boolean} True if valid
+         */
+        function validateDamageFraction(fraction) {
+            return fraction >= 0.5 && fraction <= 1.0;
+        }
+
+        /**
+         * Validate all setup form inputs
+         * @returns {Object} Validation result with isValid flag and errors object
+         */
+        function validateSetupForm() {
+            const errors = {};
+            let isValid = true;
+
+            // Get form values
+            const playerName = document.getElementById('playerName').value.trim();
+            const randomSeed = parseInt(document.getElementById('randomSeed').value);
+            const numCities = parseInt(document.getElementById('numCities').value);
+            const damagedFraction = parseFloat(document.getElementById('damagedFraction').value);
+            const timerDuration = parseInt(document.getElementById('timerDuration').value);
+
+            // Validate player name
+            if (!playerName) {
+                errors.playerName = 'Player name is required';
+                isValid = false;
+            }
+
+            // Validate random seed
+            if (isNaN(randomSeed)) {
+                errors.randomSeed = 'Random seed must be a number';
+                isValid = false;
+            }
+
+            // Validate number of cities
+            if (isNaN(numCities) || numCities <= 0) {
+                errors.numCities = 'Number of cities must be greater than 0';
+                isValid = false;
+            }
+
+            // Validate damage fraction
+            if (isNaN(damagedFraction) || !validateDamageFraction(damagedFraction)) {
+                errors.damagedFraction = 'Fraction must be between 0.5 and 1.0';
+                isValid = false;
+            }
+
+            // Validate timer duration
+            if (isNaN(timerDuration) || timerDuration <= 0) {
+                errors.timerDuration = 'Timer duration must be greater than 0';
+                isValid = false;
+            }
+
+            return { isValid, errors };
+        }
+
+        /**
+         * Display validation errors on the form
+         * @param {Object} errors - Object with field names as keys and error messages as values
+         */
+        function displayValidationErrors(errors) {
+            // Clear all existing error messages
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.remove('show');
+            });
+
+            // Display new error messages
+            if (errors.damagedFraction) {
+                const errorEl = document.getElementById('damagedFractionError');
+                errorEl.textContent = errors.damagedFraction;
+                errorEl.classList.add('show');
+            }
+
+            // For other fields, we could add error message elements if needed
+            // For now, we'll use console logging for non-damage-fraction errors
+            Object.keys(errors).forEach(field => {
+                if (field !== 'damagedFraction') {
+                    console.error(`Validation error for ${field}: ${errors[field]}`);
+                }
+            });
+        }
+
+        /**
+         * Parse AWS credentials from JSON textarea
+         * @returns {Object|null} Credentials object or null if empty/invalid
+         */
+        function parseAWSCredentials() {
+            const credentialsText = document.getElementById('awsCredentials').value.trim();
+            
+            if (!credentialsText) {
+                return null; // No credentials provided
+            }
+
+            try {
+                const credentials = JSON.parse(credentialsText);
+                
+                // Validate required fields
+                if (!credentials.accessKeyId || !credentials.secretAccessKey || !credentials.region) {
+                    throw new Error('Missing required fields: accessKeyId, secretAccessKey, region');
+                }
+
+                return credentials;
+            } catch (error) {
+                throw new Error(`Invalid AWS credentials JSON: ${error.message}`);
+            }
+        }
+
+        /**
+         * Start the game with validated configuration
+         */
+        async function startGame() {
+            try {
+                // Validate form
+                const validation = validateSetupForm();
+                
+                if (!validation.isValid) {
+                    displayValidationErrors(validation.errors);
+                    return;
+                }
+
+                // Clear any previous errors
+                displayValidationErrors({});
+
+                // Get form values
+                const config = {
+                    playerName: document.getElementById('playerName').value.trim(),
+                    randomSeed: parseInt(document.getElementById('randomSeed').value),
+                    numCities: parseInt(document.getElementById('numCities').value),
+                    damagedFraction: parseFloat(document.getElementById('damagedFraction').value),
+                    timerDuration: parseInt(document.getElementById('timerDuration').value),
+                    advancedMode: document.getElementById('advancedMode').checked
+                };
+
+                // Parse AWS credentials if provided
+                try {
+                    const awsCredentials = parseAWSCredentials();
+                    if (awsCredentials) {
+                        config.awsCredentials = awsCredentials;
+                        // Initialize DynamoDB client
+                        dynamoDBClient = new DynamoDBClient(awsCredentials);
+                    }
+                } catch (error) {
+                    alert(`AWS Credentials Error: ${error.message}\n\nThe game will start without score saving functionality.`);
+                    dynamoDBClient = null;
+                }
+
+                // Disable start button to prevent double-clicks
+                const startButton = document.getElementById('startButton');
+                startButton.disabled = true;
+                startButton.textContent = 'Loading...';
+
+                // Initialize game controller
+                gameController = new GameController(config);
+                
+                // Load city data and initialize game
+                await gameController.initialize('cities.jsonl');
+
+                // Initialize map renderer
+                const canvas = document.getElementById('gameCanvas');
+                mapRenderer = new MapRenderer(canvas);
+
+                // Transition to game screen
+                transitionToGameScreen();
+
+            } catch (error) {
+                console.error('Failed to start game:', error);
+                alert(`Failed to start game: ${error.message}`);
+                
+                // Re-enable start button
+                const startButton = document.getElementById('startButton');
+                startButton.disabled = false;
+                startButton.textContent = 'Start Game';
+            }
+        }
+
+        /**
+         * Transition from setup screen to game screen
+         */
+        function transitionToGameScreen() {
+            // Hide setup screen
+            document.getElementById('setupScreen').classList.remove('active');
+            
+            // Show game screen
+            document.getElementById('gameScreen').classList.add('active');
+
+            // Resize canvas now that it's visible
+            mapRenderer.resizeCanvas();
+
+            // Initialize game UI
+            updateGameUI();
+            
+            // Render initial map
+            const cities = gameController.getCities();
+            console.log(`Rendering ${cities.length} cities on map`);
+            mapRenderer.renderCities(cities);
+
+            // Focus on city input
+            document.getElementById('cityInput').focus();
+        }
+
+        // Attach event listener to start button
+        document.getElementById('startButton').addEventListener('click', startGame);
+
+        // Add real-time validation for damage fraction
+        document.getElementById('damagedFraction').addEventListener('input', function(e) {
+            const value = parseFloat(e.target.value);
+            const errorEl = document.getElementById('damagedFractionError');
+            
+            if (isNaN(value) || !validateDamageFraction(value)) {
+                errorEl.classList.add('show');
+            } else {
+                errorEl.classList.remove('show');
+            }
+        });
+
+        // Allow Enter key to submit form
+        document.getElementById('setupScreen').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                startGame();
+            }
+        });
+
+        // ============================================
+        // Game Screen Event Handlers
+        // ============================================
+
+        /**
+         * Update game UI displays (timer, score, transformers)
+         */
+        function updateGameUI() {
+            // Update timer display
+            const timeRemaining = gameController.getTimeRemaining();
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Update score display
+            const score = gameController.getScore();
+            document.getElementById('scoreDisplay').textContent = 
+                gameController.config.advancedMode ? score.toFixed(1) : score;
+
+            // Update transformers display
+            const transformers = gameController.getTransformers();
+            document.getElementById('transformersDisplay').textContent = 
+                gameController.config.advancedMode ? transformers.toFixed(2) : transformers;
+        }
+
+        /**
+         * Handle city restoration attempt
+         */
+        function handleCitySubmit() {
+            console.log('handleCitySubmit called');
+            
+            if (!gameController) {
+                console.error('gameController is null!');
+                return;
+            }
+            
+            if (gameController.isGameEnded()) {
+                console.log('Game has ended, ignoring input');
+                return;
+            }
+
+            const cityInput = document.getElementById('cityInput');
+            const cityName = cityInput.value.trim();
+
+            console.log(`Attempting to restore: "${cityName}"`);
+
+            if (!cityName) {
+                console.log('Empty city name, ignoring');
+                return;
+            }
+
+            // Attempt to restore the city
+            const result = gameController.restoreCity(cityName);
+            console.log('Restore result:', result);
+
+            // Clear input if restoration was successful
+            if (result.shouldClearInput) {
+                cityInput.value = '';
+                cityInput.style.color = 'black'; // Reset color
+            }
+
+            // Update UI
+            updateGameUI();
+
+            // Update map
+            const cities = gameController.getCities();
+            mapRenderer.renderCities(cities);
+
+            // Check if game has ended
+            if (gameController.isGameEnded()) {
+                transitionToEndScreen();
+            }
+        }
+
+        /**
+         * Transition from game screen to end screen
+         */
+        function transitionToEndScreen() {
+            // Hide game screen
+            document.getElementById('gameScreen').classList.remove('active');
+            
+            // Show end screen
+            document.getElementById('endScreen').classList.add('active');
+
+            // Display final score and cities restored
+            const finalScore = gameController.getScore();
+            const citiesRestored = gameController.getRestoredCities().length;
+
+            document.getElementById('finalScore').textContent = 
+                gameController.config.advancedMode ? finalScore.toFixed(1) : finalScore;
+            document.getElementById('citiesRestored').textContent = citiesRestored;
+
+            // Show save score button if AWS credentials are available
+            if (dynamoDBClient) {
+                document.getElementById('saveScoreButton').style.display = 'block';
+            }
+
+            // Load leaderboard if AWS credentials are available
+            if (dynamoDBClient) {
+                loadLeaderboard();
+            }
+        }
+
+        /**
+         * Load and display leaderboard
+         */
+        async function loadLeaderboard() {
+            try {
+                const scores = await dynamoDBClient.getTopScores(10, gameController.config.advancedMode);
+                
+                if (scores.length > 0) {
+                    const leaderboardDiv = document.getElementById('leaderboard');
+                    const entriesDiv = document.getElementById('leaderboardEntries');
+                    
+                    // Clear existing entries
+                    entriesDiv.innerHTML = '';
+                    
+                    // Add score entries
+                    scores.forEach((score, index) => {
+                        const entry = document.createElement('div');
+                        entry.className = 'leaderboard-entry';
+                        entry.innerHTML = `
+                            <span>${index + 1}. ${score.playerName}</span>
+                            <span>${gameController.config.advancedMode ? score.score.toFixed(1) : score.score}</span>
+                        `;
+                        entriesDiv.appendChild(entry);
+                    });
+                    
+                    // Show leaderboard
+                    leaderboardDiv.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Failed to load leaderboard:', error);
+                const errorEl = document.getElementById('endScreenError');
+                errorEl.textContent = `Failed to load leaderboard: ${error.message}`;
+                errorEl.classList.add('show');
+            }
+        }
+
+        /**
+         * Save score to DynamoDB
+         */
+        async function saveScore() {
+            try {
+                const saveButton = document.getElementById('saveScoreButton');
+                saveButton.disabled = true;
+                saveButton.textContent = 'Saving...';
+
+                const record = {
+                    playerName: gameController.config.playerName,
+                    score: gameController.getScore(),
+                    timestamp: Date.now(),
+                    citiesRestored: gameController.getRestoredCities().length,
+                    config: gameController.config
+                };
+
+                await dynamoDBClient.storeScore(record);
+                
+                saveButton.textContent = 'Saved!';
+                
+                // Reload leaderboard to show updated scores
+                await loadLeaderboard();
+                
+            } catch (error) {
+                console.error('Failed to save score:', error);
+                const errorEl = document.getElementById('endScreenError');
+                errorEl.textContent = `Failed to save score: ${error.message}`;
+                errorEl.classList.add('show');
+                
+                const saveButton = document.getElementById('saveScoreButton');
+                saveButton.disabled = false;
+                saveButton.textContent = 'Save Score';
+            }
+        }
+
+        /**
+         * Restart the game
+         */
+        function playAgain() {
+            // Reset global state
+            gameController = null;
+            mapRenderer = null;
+            
+            // Hide end screen
+            document.getElementById('endScreen').classList.remove('active');
+            
+            // Show setup screen
+            document.getElementById('setupScreen').classList.add('active');
+            
+            // Re-enable start button
+            const startButton = document.getElementById('startButton');
+            startButton.disabled = false;
+            startButton.textContent = 'Start Game';
+            
+            // Clear any error messages
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.remove('show');
+            });
+        }
+
+        // Attach event listeners for game screen
+        const submitButton = document.getElementById('submitCity');
+        if (submitButton) {
+            submitButton.addEventListener('click', handleCitySubmit);
+            console.log('Submit button event listener attached');
+        } else {
+            console.error('Submit button not found!');
+        }
+        
+        const cityInput = document.getElementById('cityInput');
+        if (cityInput) {
+            // Handle Enter key
+            cityInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleCitySubmit();
+                }
+            });
+            
+            // Real-time validation with color feedback
+            cityInput.addEventListener('input', function(e) {
+                if (!gameController || !gameController.cityManager) {
+                    return;
+                }
+                
+                const input = e.target.value.trim().toLowerCase();
+                
+                if (!input) {
+                    e.target.style.color = 'black';
+                    return;
+                }
+                
+                const cities = gameController.getCities();
+                const damagedCities = cities.filter(c => c.damaged && !c.restored);
+                
+                // Check for exact match
+                const exactMatch = damagedCities.find(city => 
+                    city.name.toLowerCase() === input
+                );
+                
+                if (exactMatch) {
+                    e.target.style.color = 'green';
+                    return;
+                }
+                
+                // Check for partial matches
+                const partialMatches = damagedCities.filter(city =>
+                    city.name.toLowerCase().includes(input)
+                );
+                
+                if (partialMatches.length > 0) {
+                    e.target.style.color = 'black';
+                } else {
+                    e.target.style.color = 'red';
+                }
+            });
+            
+            console.log('City input event listeners attached');
+        } else {
+            console.error('City input not found!');
+        }
+
+        // Attach event listeners for end screen
+        document.getElementById('saveScoreButton').addEventListener('click', saveScore);
+        document.getElementById('playAgainButton').addEventListener('click', playAgain);
+
+        console.log('Shimonopoly initialized');
+        console.log('SeededRandom, DistanceCalculator, DataLoader, CityManager, ScoringEngine, GameController, MapRenderer, and DynamoDBClient classes loaded');
+    </script>
+</body>
+</html>
