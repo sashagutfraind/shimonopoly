@@ -3,7 +3,7 @@
 The game challenges you to save the country from a devastating solar storm while learning to spell cities!  A solar storm has knocked out the power in much of the USA, destroying the transformer substations.  You are racing against time sending your team to each city and replacing the damaged equipment.
 
 Start now:
-- Download [shimonopoly.html](shimonopoly.html)
+- <a href="shimonopoly.html" download>Download shimonopoly.html</a>
 - Open with your browser and enjoy!
 
 Advanced mode:
@@ -11,7 +11,8 @@ Advanced mode:
 - Larger cities are worth more points
 
 About
-- Implemented in one hour using Amazon Kiro
+- Original research papers: [paper 1](https://www.researchgate.net/publication/276455107_Modelling_the_neighbour_aid_phenomenon_for_installing_costly_complex_networks), [paper 2](https://www.levreyzin.com/assets/pdf/GutfraindKLR16.pdf)
+- Implemented in one hour using [Amazon Kiro](https://kiro.dev/)
 - Contained in a single HTML file to allow downloading
 
 ![Shimonopoly Map](shimonopoly_map.png)

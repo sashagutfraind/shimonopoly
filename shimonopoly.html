@@ -1324,9 +1324,23 @@
                     color = '#3498db'; // Blue for undamaged
                 }
                 
+                // Calculate radius based on square root of population
+                // This makes area proportional to population
+                const minRadius = 3;
+                const maxRadius = minRadius * 3; // 9 pixels
+                
+                // Normalize population to [0, 1] range using square root
+                // Assuming population ranges from ~250 to ~20000
+                const minPop = 250;
+                const maxPop = 20000;
+                const normalizedPop = Math.sqrt(Math.max(minPop, Math.min(maxPop, city.population))) / Math.sqrt(maxPop);
+                
+                // Scale to radius range
+                const radius = minRadius + normalizedPop * (maxRadius - minRadius);
+                
                 // Draw city circle
                 this.ctx.beginPath();
-                this.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
                 this.ctx.fillStyle = color;
                 this.ctx.fill();
                 
