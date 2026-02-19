@@ -3,7 +3,7 @@
 The game challenges you to save the country from a devastating solar storm while learning to spell cities!  A solar storm has knocked out the power in much of the USA, destroying the transformer substations.  You are racing against time sending your team to each city and replacing the damaged equipment.
 
 Start now:
-- <a href="[shimonopoly.html](https://github.com/sashagutfraind/shimonopoly/raw/refs/heads/main/shimonopoly.html)" download>Download shimonopoly.html</a>
+- <a href="https://github.com/sashagutfraind/shimonopoly/raw/refs/heads/main/shimonopoly.html" download>Download shimonopoly.html</a>
 - Open with your browser and enjoy!
 
 Advanced mode:
