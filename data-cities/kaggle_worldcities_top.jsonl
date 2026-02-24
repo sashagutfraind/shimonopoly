@@ -1,0 +1,61 @@
+{"name": "Tokyo", "population": 37785.0, "lat": 35.687, "lon": 139.7495, "country_code": "JP"}
+{"name": "Jakarta", "population": 33756.0, "lat": -6.175, "lon": 106.8275, "country_code": "ID"}
+{"name": "Delhi", "population": 32226.0, "lat": 28.61, "lon": 77.23, "country_code": "IN"}
+{"name": "Guangzhou", "population": 26940.0, "lat": 23.13, "lon": 113.26, "country_code": "CN"}
+{"name": "Mumbai", "population": 24973.0, "lat": 19.0761, "lon": 72.8775, "country_code": "IN"}
+{"name": "Manila", "population": 24922.0, "lat": 14.5958, "lon": 120.9772, "country_code": "PH"}
+{"name": "Shanghai", "population": 24073.0, "lat": 31.2286, "lon": 121.4747, "country_code": "CN"}
+{"name": "Sao Paulo", "population": 23086.0, "lat": -23.5504, "lon": -46.6339, "country_code": "BR"}
+{"name": "Seoul", "population": 23016.0, "lat": 37.5667, "lon": 126.9833, "country_code": "KR"}
+{"name": "Mexico City", "population": 21804.0, "lat": 19.4333, "lon": -99.1333, "country_code": "MX"}
+{"name": "Kolkata", "population": 21747.0, "lat": 22.5675, "lon": 88.37, "country_code": "IN"}
+{"name": "Cairo", "population": 20296.0, "lat": 30.0444, "lon": 31.2358, "country_code": "EG"}
+{"name": "Karachi", "population": 20249.0, "lat": 24.86, "lon": 67.01, "country_code": "PK"}
+{"name": "Dhaka", "population": 19134.0, "lat": 23.7289, "lon": 90.3944, "country_code": "BD"}
+{"name": "New York", "population": 18832.416, "lat": 40.6943, "lon": -73.9249, "country_code": "US"}
+{"name": "Beijing", "population": 18522.0, "lat": 39.9067, "lon": 116.3975, "country_code": "CN"}
+{"name": "Bangkok", "population": 18007.0, "lat": 13.7525, "lon": 100.4942, "country_code": "TH"}
+{"name": "Shenzhen", "population": 17619.0, "lat": 22.5415, "lon": 114.0596, "country_code": "CN"}
+{"name": "Moscow", "population": 17332.0, "lat": 55.7506, "lon": 37.6175, "country_code": "RU"}
+{"name": "Buenos Aires", "population": 16710.0, "lat": -34.6036, "lon": -58.3814, "country_code": "AR"}
+{"name": "Lagos", "population": 16637.0, "lat": 6.455, "lon": 3.3841, "country_code": "NG"}
+{"name": "Bangalore", "population": 15386.0, "lat": 12.9789, "lon": 77.5917, "country_code": "IN"}
+{"name": "Ho Chi Minh City", "population": 15136.0, "lat": 10.7756, "lon": 106.7019, "country_code": "VN"}
+{"name": "Osaka", "population": 15126.0, "lat": 34.6939, "lon": 135.5022, "country_code": "JP"}
+{"name": "Chengdu", "population": 14645.0, "lat": 30.66, "lon": 104.0633, "country_code": "CN"}
+{"name": "Istanbul", "population": 14441.0, "lat": 41.0136, "lon": 28.955, "country_code": "TR"}
+{"name": "Tehran", "population": 14148.0, "lat": 35.6889, "lon": 51.3897, "country_code": "IR"}
+{"name": "Kinshasa", "population": 12836.0, "lat": -4.3219, "lon": 15.3119, "country_code": "CD"}
+{"name": "Rio de Janeiro", "population": 12592.0, "lat": -22.9111, "lon": -43.2056, "country_code": "BR"}
+{"name": "Chennai", "population": 12395.0, "lat": 13.0825, "lon": 80.275, "country_code": "IN"}
+{"name": "Xi'an", "population": 12328.0, "lat": 34.2611, "lon": 108.9422, "country_code": "CN"}
+{"name": "Lahore", "population": 12306.0, "lat": 31.5497, "lon": 74.3436, "country_code": "PK"}
+{"name": "Chongqing", "population": 12135.0, "lat": 29.5637, "lon": 106.5504, "country_code": "CN"}
+{"name": "Los Angeles", "population": 11885.717, "lat": 34.1141, "lon": -118.4068, "country_code": "US"}
+{"name": "London", "population": 11262.0, "lat": 51.5072, "lon": -0.1275, "country_code": "GB"}
+{"name": "Paris", "population": 11060.0, "lat": 48.8567, "lon": 2.3522, "country_code": "FR"}
+{"name": "Linyi", "population": 10820.0, "lat": 35.1038, "lon": 118.3564, "country_code": "CN"}
+{"name": "Dongguan", "population": 10646.0, "lat": 23.021, "lon": 113.752, "country_code": "CN"}
+{"name": "Baoding", "population": 10546.831, "lat": 38.874, "lon": 115.464, "country_code": "CN"}
+{"name": "Hyderabad", "population": 10494.0, "lat": 17.3617, "lon": 78.4747, "country_code": "IN"}
+{"name": "Tianjin", "population": 10368.0, "lat": 39.1336, "lon": 117.2054, "country_code": "CN"}
+{"name": "Lima", "population": 10320.0, "lat": -12.06, "lon": -77.0375, "country_code": "PE"}
+{"name": "Wuhan", "population": 10251.0, "lat": 30.5934, "lon": 114.3046, "country_code": "CN"}
+{"name": "Luanda", "population": 9051.0, "lat": -8.8383, "lon": 13.2344, "country_code": "AO"}
+{"name": "Kuala Lumpur", "population": 8911.0, "lat": 3.1686, "lon": 101.698, "country_code": "MY"}
+{"name": "Bogota", "population": 8034.649, "lat": 4.7111, "lon": -74.0722, "country_code": "CO"}
+{"name": "Dar es Salaam", "population": 7962.0, "lat": -6.8161, "lon": 39.2803, "country_code": "TZ"}
+{"name": "Khartoum", "population": 7869.0, "lat": 15.6031, "lon": 32.5265, "country_code": "SD"}
+{"name": "Johannesburg", "population": 7860.781, "lat": -26.2044, "lon": 28.0456, "country_code": "ZA"}
+{"name": "Hong Kong", "population": 7450.0, "lat": 22.3, "lon": 114.2, "country_code": "HK"}
+{"name": "Riyadh", "population": 7237.0, "lat": 24.65, "lon": 46.71, "country_code": "SA"}
+{"name": "Santiago", "population": 7171.0, "lat": -33.4372, "lon": -70.6506, "country_code": "CL"}
+{"name": "Rangoon", "population": 6874.0, "lat": 16.795, "lon": 96.16, "country_code": "MM"}
+{"name": "Madrid", "population": 6211.0, "lat": 40.4169, "lon": -3.7033, "country_code": "ES"}
+{"name": "Baghdad", "population": 6183.0, "lat": 33.3153, "lon": 44.3661, "country_code": "IQ"}
+{"name": "Singapore", "population": 5983.0, "lat": 1.3, "lon": 103.8, "country_code": "SG"}
+{"name": "Douala", "population": 5768.4, "lat": 4.05, "lon": 9.7, "country_code": "CM"}
+{"name": "Addis Ababa", "population": 5704.0, "lat": 9.03, "lon": 38.74, "country_code": "ET"}
+{"name": "Toronto", "population": 5647.656, "lat": 43.7417, "lon": -79.3733, "country_code": "CA"}
+{"name": "Nairobi", "population": 5545.0, "lat": -1.2864, "lon": 36.8172, "country_code": "KE"}
+{"name": "Melbourne", "population": 5031.195, "lat": -37.8142, "lon": 144.9631, "country_code": "AU"}
