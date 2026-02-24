@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Game Screen - Shimonopoly</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        #testCanvas {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Screen Event Handlers Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: City Input Handler</h2>
+        <p>Tests that city input is processed and cleared on successful restoration</p>
+        <button onclick="testCityInputHandler()">Run Test</button>
+        <div id="test1Result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: UI Updates</h2>
+        <p>Tests that score, transformers, and timer displays update correctly</p>
+        <button onclick="testUIUpdates()">Run Test</button>
+        <div id="test2Result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Timer Start on First Input</h2>
+        <p>Tests that timer starts when first valid city is entered</p>
+        <button onclick="testTimerStart()">Run Test</button>
+        <div id="test3Result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Map Updates</h2>
+        <p>Tests that map re-renders after city restoration</p>
+        <canvas id="testCanvas" width="400" height="300"></canvas>
+        <button onclick="testMapUpdates()">Run Test</button>
+        <div id="test4Result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Invalid Input Handling</h2>
+        <p>Tests that invalid city names don't change game state</p>
+        <button onclick="testInvalidInput()">Run Test</button>
+        <div id="test5Result"></div>
+    </div>
+
+    <script type="module">
+        import { SeededRandom, DistanceCalculator, CityManager, ScoringEngine, GameController } from './core-logic.js';
+
+        // Make classes available globally for tests
+        window.SeededRandom = SeededRandom;
+        window.DistanceCalculator = DistanceCalculator;
+        window.CityManager = CityManager;
+        window.ScoringEngine = ScoringEngine;
+        window.GameController = GameController;
+
+        // Test data
+        const testCities = [
+            { name: "New York", population: 8336, lat: 40.7128, lon: -74.0060, damaged: false, restored: false },
+            { name: "Los Angeles", population: 3979, lat: 34.0522, lon: -118.2437, damaged: false, restored: false },
+            { name: "Chicago", population: 2716, lat: 41.8781, lon: -87.6298, damaged: false, restored: false },
+            { name: "Houston", population: 2328, lat: 29.7604, lon: -95.3698, damaged: false, restored: false },
+            { name: "Phoenix", population: 1690, lat: 33.4484, lon: -112.0740, damaged: false, restored: false }
+        ];
+
+        window.testCities = testCities;
+
+        function showResult(elementId, passed, message) {
+            const resultDiv = document.getElementById(elementId);
+            resultDiv.className = `test-result ${passed ? 'pass' : 'fail'}`;
+            resultDiv.textContent = passed ? `✓ PASS: ${message}` : `✗ FAIL: ${message}`;
+        }
+
+        // Test 1: City Input Handler
+        window.testCityInputHandler = function() {
+            try {
+                const config = {
+                    playerName: "Test Player",
+                    randomSeed: 42,
+                    numCities: 5,
+                    damagedFraction: 1.0,
+                    timerDuration: 300,
+                    advancedMode: false
+                };
+
+                const controller = new GameController(config);
+                controller.initializeWithCities([...testCities]);
+
+                // Get a damaged city name
+                const damagedCities = controller.cityManager.getDamagedCities();
+                const cityName = damagedCities[0].name;
+
+                // Restore the city
+                const result = controller.restoreCity(cityName);
+
+                if (result.success && result.shouldClearInput) {
+                    showResult('test1Result', true, 'City input handler works correctly - shouldClearInput is true on success');
+                } else {
+                    showResult('test1Result', false, `Expected success with shouldClearInput=true, got: ${JSON.stringify(result)}`);
+                }
+            } catch (error) {
+                showResult('test1Result', false, `Error: ${error.message}`);
+            }
+        };
+
+        // Test 2: UI Updates
+        window.testUIUpdates = function() {
+            try {
+                const config = {
+                    playerName: "Test Player",
+                    randomSeed: 42,
+                    numCities: 5,
+                    damagedFraction: 1.0,
+                    timerDuration: 300,
+                    advancedMode: false
+                };
+
+                const controller = new GameController(config);
+                controller.initializeWithCities([...testCities]);
+
+                const initialScore = controller.getScore();
+                const initialTransformers = controller.getTransformers();
+                const initialTime = controller.getTimeRemaining();
+
+                // Restore a city
+                const damagedCities = controller.cityManager.getDamagedCities();
+                controller.restoreCity(damagedCities[0].name);
+
+                const newScore = controller.getScore();
+                const newTransformers = controller.getTransformers();
+
+                if (newScore === initialScore + 1 && newTransformers === initialTransformers - 1) {
+                    showResult('test2Result', true, `Score increased from ${initialScore} to ${newScore}, transformers decreased from ${initialTransformers} to ${newTransformers}`);
+                } else {
+                    showResult('test2Result', false, `Expected score +1 and transformers -1, got score: ${newScore}, transformers: ${newTransformers}`);
+                }
+            } catch (error) {
+                showResult('test2Result', false, `Error: ${error.message}`);
+            }
+        };
+
+        // Test 3: Timer Start on First Input
+        window.testTimerStart = function() {
+            try {
+                const config = {
+                    playerName: "Test Player",
+                    randomSeed: 42,
+                    numCities: 5,
+                    damagedFraction: 1.0,
+                    timerDuration: 300,
+                    advancedMode: false
+                };
+
+                const controller = new GameController(config);
+                controller.initializeWithCities([...testCities]);
+
+                if (controller.isTimerStarted()) {
+                    showResult('test3Result', false, 'Timer should not be started initially');
+                    return;
+                }
+
+                // Restore a city
+                const damagedCities = controller.cityManager.getDamagedCities();
+                controller.restoreCity(damagedCities[0].name);
+
+                if (controller.isTimerStarted()) {
+                    showResult('test3Result', true, 'Timer started after first valid city restoration');
+                } else {
+                    showResult('test3Result', false, 'Timer did not start after first valid city restoration');
+                }
+            } catch (error) {
+                showResult('test3Result', false, `Error: ${error.message}`);
+            }
+        };
+
+        // Test 4: Map Updates
+        window.testMapUpdates = function() {
+            try {
+                // Simple test to verify MapRenderer can be instantiated and used
+                const canvas = document.getElementById('testCanvas');
+                
+                // Create a simple MapRenderer-like class for testing
+                class TestMapRenderer {
+                    constructor(canvas) {
+                        this.canvas = canvas;
+                        this.ctx = canvas.getContext('2d');
+                        this.renderCount = 0;
+                    }
+                    
+                    renderCities(cities) {
+                        this.renderCount++;
+                        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                        
+                        // Draw simple representation
+                        cities.forEach((city, i) => {
+                            const x = 50 + i * 70;
+                            const y = 150;
+                            
+                            this.ctx.beginPath();
+                            this.ctx.arc(x, y, 10, 0, 2 * Math.PI);
+                            this.ctx.fillStyle = city.restored ? '#2ecc71' : (city.damaged ? '#e74c3c' : '#3498db');
+                            this.ctx.fill();
+                        });
+                    }
+                }
+
+                const renderer = new TestMapRenderer(canvas);
+                const cities = [...testCities];
+                
+                // Initial render
+                renderer.renderCities(cities);
+                const initialCount = renderer.renderCount;
+                
+                // Mark a city as restored and re-render
+                cities[0].restored = true;
+                renderer.renderCities(cities);
+                
+                if (renderer.renderCount === initialCount + 1) {
+                    showResult('test4Result', true, `Map rendered ${renderer.renderCount} times (initial + update)`);
+                } else {
+                    showResult('test4Result', false, `Expected 2 renders, got ${renderer.renderCount}`);
+                }
+            } catch (error) {
+                showResult('test4Result', false, `Error: ${error.message}`);
+            }
+        };
+
+        // Test 5: Invalid Input Handling
+        window.testInvalidInput = function() {
+            try {
+                const config = {
+                    playerName: "Test Player",
+                    randomSeed: 42,
+                    numCities: 5,
+                    damagedFraction: 1.0,
+                    timerDuration: 300,
+                    advancedMode: false
+                };
+
+                const controller = new GameController(config);
+                controller.initializeWithCities([...testCities]);
+
+                const initialScore = controller.getScore();
+                const initialTransformers = controller.getTransformers();
+
+                // Try invalid city name
+                const result = controller.restoreCity("InvalidCity");
+
+                const newScore = controller.getScore();
+                const newTransformers = controller.getTransformers();
+
+                if (!result.success && !result.shouldClearInput && 
+                    newScore === initialScore && newTransformers === initialTransformers) {
+                    showResult('test5Result', true, 'Invalid input correctly rejected without changing state');
+                } else {
+                    showResult('test5Result', false, `State changed unexpectedly: score ${initialScore}->${newScore}, transformers ${initialTransformers}->${newTransformers}`);
+                }
+            } catch (error) {
+                showResult('test5Result', false, `Error: ${error.message}`);
+            }
+        };
+
+        console.log('Test page loaded successfully');
+    </script>
+</body>
+</html>

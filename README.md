@@ -20,3 +20,4 @@ About
 ## Future functionality
 - leaderboard on AWS
 - more configurability
+- better UI for mobile

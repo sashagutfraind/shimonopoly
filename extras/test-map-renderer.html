@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapRenderer Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        canvas {
+            border: 2px solid #333;
+            background: #f0f8ff;
+            display: block;
+            margin: 20px 0;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+        }
+        .undamaged { background: #3498db; }
+        .damaged { background: #e74c3c; }
+        .restored { background: #2ecc71; }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        .info {
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>MapRenderer Visual Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Basic City Rendering</h2>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-circle undamaged"></div>
+                <span>Undamaged</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-circle damaged"></div>
+                <span>Damaged</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-circle restored"></div>
+                <span>Restored</span>
+            </div>
+        </div>
+        <canvas id="canvas1" width="800" height="400"></canvas>
+        <div class="info">Shows major US cities with different states</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Restoration Radius Circles</h2>
+        <canvas id="canvas2" width="800" height="400"></canvas>
+        <div class="info">Shows 300-mile radius circles around restored cities</div>
+        <button id="restoreBtn">Restore Next City</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Coordinate Projection</h2>
+        <div id="projectionTest"></div>
+    </div>
+
+    <script>
+        // Copy MapRenderer class from shimonopoly.html
+        class MapRenderer {
+            constructor(canvasElement) {
+                this.canvas = canvasElement;
+                this.ctx = canvasElement.getContext('2d');
+                
+                // Map projection bounds (US-focused)
+                this.bounds = {
+                    minLat: 24,   // Southern tip of Florida
+                    maxLat: 50,   // Northern border
+                    minLon: -125, // West coast
+                    maxLon: -65   // East coast
+                };
+                
+                // Padding around the map
+                this.padding = 20;
+            }
+
+            projectToCanvas(lat, lon) {
+                // Calculate normalized position (0 to 1)
+                const normalizedX = (lon - this.bounds.minLon) / (this.bounds.maxLon - this.bounds.minLon);
+                const normalizedY = (this.bounds.maxLat - lat) / (this.bounds.maxLat - this.bounds.minLat);
+                
+                // Map to canvas coordinates with padding
+                const x = this.padding + normalizedX * (this.canvas.width - 2 * this.padding);
+                const y = this.padding + normalizedY * (this.canvas.height - 2 * this.padding);
+                
+                return { x, y };
+            }
+
+            milesToPixels(miles) {
+                // Calculate degrees per mile at approximately 40° latitude (middle of US)
+                const degreesPerMile = 1 / 69; // Approximate miles per degree of latitude
+                const radiusDegrees = miles * degreesPerMile;
+                
+                // Convert to pixels using the latitude scale
+                const pixelsPerDegree = (this.canvas.height - 2 * this.padding) / (this.bounds.maxLat - this.bounds.minLat);
+                return radiusDegrees * pixelsPerDegree;
+            }
+
+            clear() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            renderCities(cities) {
+                this.clear();
+                
+                // First render all radius circles (so they appear behind cities)
+                const restoredCities = cities.filter(city => city.restored);
+                this.renderRadiusCircles(restoredCities);
+                
+                // Then render all cities
+                cities.forEach(city => {
+                    this.renderCity(city);
+                });
+            }
+
+            renderCity(city) {
+                const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                
+                // Determine city color based on state
+                let color;
+                if (city.restored) {
+                    color = '#2ecc71'; // Green for restored
+                } else if (city.damaged) {
+                    color = '#e74c3c'; // Red for damaged
+                } else {
+                    color = '#3498db'; // Blue for undamaged
+                }
+                
+                // Draw city circle
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                this.ctx.fillStyle = color;
+                this.ctx.fill();
+                
+                // Add border for better visibility
+                this.ctx.strokeStyle = '#fff';
+                this.ctx.lineWidth = 1;
+                this.ctx.stroke();
+            }
+
+            renderRadiusCircles(restoredCities) {
+                restoredCities.forEach(city => {
+                    const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                    const radius = this.milesToPixels(300);
+                    
+                    // Draw radius circle
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                    this.ctx.strokeStyle = 'rgba(46, 204, 113, 0.3)'; // Semi-transparent green
+                    this.ctx.lineWidth = 2;
+                    this.ctx.stroke();
+                    
+                    // Fill with very light green
+                    this.ctx.fillStyle = 'rgba(46, 204, 113, 0.1)';
+                    this.ctx.fill();
+                });
+            }
+
+            updateCity(city, allCities) {
+                // For simplicity, re-render all cities
+                this.renderCities(allCities);
+            }
+        }
+
+        // Test data: Major US cities
+        const testCities = [
+            { name: 'New York', lat: 40.7128, lon: -74.0060, damaged: false, restored: false },
+            { name: 'Los Angeles', lat: 34.0522, lon: -118.2437, damaged: true, restored: false },
+            { name: 'Chicago', lat: 41.8781, lon: -87.6298, damaged: true, restored: false },
+            { name: 'Houston', lat: 29.7604, lon: -95.3698, damaged: false, restored: false },
+            { name: 'Phoenix', lat: 33.4484, lon: -112.0740, damaged: true, restored: false },
+            { name: 'Philadelphia', lat: 39.9526, lon: -75.1652, damaged: false, restored: false },
+            { name: 'San Antonio', lat: 29.4241, lon: -98.4936, damaged: true, restored: false },
+            { name: 'San Diego', lat: 32.7157, lon: -117.1611, damaged: false, restored: false },
+            { name: 'Dallas', lat: 32.7767, lon: -96.7970, damaged: true, restored: false },
+            { name: 'San Jose', lat: 37.3382, lon: -121.8863, damaged: false, restored: false },
+            { name: 'Seattle', lat: 47.6062, lon: -122.3321, damaged: true, restored: false },
+            { name: 'Denver', lat: 39.7392, lon: -104.9903, damaged: false, restored: false },
+            { name: 'Boston', lat: 42.3601, lon: -71.0589, damaged: true, restored: false },
+            { name: 'Miami', lat: 25.7617, lon: -80.1918, damaged: false, restored: false },
+            { name: 'Atlanta', lat: 33.7490, lon: -84.3880, damaged: true, restored: false }
+        ];
+
+        // Test 1: Basic rendering
+        const renderer1 = new MapRenderer(document.getElementById('canvas1'));
+        renderer1.renderCities(testCities);
+
+        // Test 2: Interactive restoration
+        const canvas2 = document.getElementById('canvas2');
+        const renderer2 = new MapRenderer(canvas2);
+        
+        let cities2 = JSON.parse(JSON.stringify(testCities)); // Deep copy
+        let currentIndex = 0;
+        
+        renderer2.renderCities(cities2);
+        
+        document.getElementById('restoreBtn').addEventListener('click', () => {
+            // Find next damaged city
+            const damagedCities = cities2.filter(c => c.damaged && !c.restored);
+            if (damagedCities.length > 0) {
+                damagedCities[0].restored = true;
+                renderer2.renderCities(cities2);
+            }
+        });
+        
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            cities2 = JSON.parse(JSON.stringify(testCities));
+            renderer2.renderCities(cities2);
+        });
+
+        // Test 3: Coordinate projection
+        const projectionDiv = document.getElementById('projectionTest');
+        const testRenderer = new MapRenderer(document.createElement('canvas'));
+        
+        const projectionTests = [
+            { name: 'Northwest corner', lat: 50, lon: -125 },
+            { name: 'Northeast corner', lat: 50, lon: -65 },
+            { name: 'Southwest corner', lat: 24, lon: -125 },
+            { name: 'Southeast corner', lat: 24, lon: -65 },
+            { name: 'Center', lat: 37, lon: -95 }
+        ];
+        
+        let projectionHTML = '<table style="width: 100%; border-collapse: collapse;">';
+        projectionHTML += '<tr><th>Location</th><th>Lat</th><th>Lon</th><th>Canvas X</th><th>Canvas Y</th></tr>';
+        
+        projectionTests.forEach(test => {
+            const { x, y } = testRenderer.projectToCanvas(test.lat, test.lon);
+            projectionHTML += `<tr>
+                <td>${test.name}</td>
+                <td>${test.lat}°</td>
+                <td>${test.lon}°</td>
+                <td>${x.toFixed(2)}</td>
+                <td>${y.toFixed(2)}</td>
+            </tr>`;
+        });
+        
+        projectionHTML += '</table>';
+        projectionDiv.innerHTML = projectionHTML;
+
+        console.log('MapRenderer tests loaded successfully');
+        console.log('Test cities:', testCities);
+    </script>
+</body>
+</html>

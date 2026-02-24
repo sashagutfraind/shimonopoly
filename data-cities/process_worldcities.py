@@ -2,7 +2,7 @@
 """
 Process kaggle_worldcities.csv to generate:
 1. kaggle_worldcities.jsonl - all cities in JSONL format
-2. kaggle_worldcities_top.jsonl - cities with population > 10M + biggest city per country if > 5M
+2. kaggle_worldcities_top.jsonl - cities with population >= 2 million
 """
 
 import csv
@@ -47,29 +47,14 @@ def process_worldcities():
     
     print(f"Generated kaggle_worldcities.jsonl with {len(cities)} cities")
     
-    # Process for top cities
+    # Process for cities with population >= 2 million
     top_cities = []
-    country_biggest = defaultdict(lambda: {'name': '', 'population': 0})
     
-    # Find cities with population > 10M and track biggest city per country
     for city in cities:
         pop_millions = city['population'] / 1000  # Convert thousands to millions
         
-        # Add cities with population > 10M
-        if pop_millions > 10:
-            top_cities.append(city)
-        
-        # Track biggest city per country
-        country = city['country']
-        if city['population'] > country_biggest[country]['population']:
-            country_biggest[country] = city
-    
-    # Add biggest city per country if population > 5M and not already in top_cities
-    top_city_names = {city['name'] for city in top_cities}
-    
-    for country, city in country_biggest.items():
-        pop_millions = city['population'] / 1000
-        if pop_millions > 5 and city['name'] not in top_city_names:
+        # Add cities with population >= 2M
+        if pop_millions >= 2.0:
             top_cities.append(city)
     
     # Sort by population descending
@@ -83,8 +68,7 @@ def process_worldcities():
             f.write(json.dumps(output_city) + '\n')
     
     print(f"Generated kaggle_worldcities_top.jsonl with {len(top_cities)} cities")
-    print(f"  - Cities with population > 10M: {sum(1 for c in top_cities if c['population'] / 1000 > 10)}")
-    print(f"  - Biggest cities per country (5M-10M): {len(top_cities) - sum(1 for c in top_cities if c['population'] / 1000 > 10)}")
+    print(f"  - All cities have population >= 2 million")
 
 
 if __name__ == '__main__':

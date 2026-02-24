@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Screen Test - Shimonopoly</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Setup Screen Validation Tests</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Damage Fraction Validation</h2>
+        <button onclick="testDamageFractionValidation()">Run Test</button>
+        <div id="test1-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Form Validation</h2>
+        <button onclick="testFormValidation()">Run Test</button>
+        <div id="test2-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: AWS Credentials Parsing</h2>
+        <button onclick="testAWSCredentialsParsing()">Run Test</button>
+        <div id="test3-results"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test: Open Shimonopoly</h2>
+        <p>Click the button below to open the actual game and test the setup screen manually:</p>
+        <button onclick="window.open('shimonopoly.html', '_blank')">Open Shimonopoly</button>
+    </div>
+
+    <script>
+        // Extract validation functions from shimonopoly.html for testing
+        function validateDamageFraction(fraction) {
+            return fraction >= 0.5 && fraction <= 1.0;
+        }
+
+        function parseAWSCredentialsTest(credentialsText) {
+            if (!credentialsText.trim()) {
+                return null;
+            }
+
+            try {
+                const credentials = JSON.parse(credentialsText);
+                
+                if (!credentials.accessKeyId || !credentials.secretAccessKey || !credentials.region) {
+                    throw new Error('Missing required fields: accessKeyId, secretAccessKey, region');
+                }
+
+                return credentials;
+            } catch (error) {
+                throw new Error(`Invalid AWS credentials JSON: ${error.message}`);
+            }
+        }
+
+        function displayResult(containerId, testName, passed, message) {
+            const container = document.getElementById(containerId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${passed ? 'pass' : 'fail'}`;
+            resultDiv.textContent = `${testName}: ${passed ? 'PASS' : 'FAIL'} - ${message}`;
+            container.appendChild(resultDiv);
+        }
+
+        function testDamageFractionValidation() {
+            const container = document.getElementById('test1-results');
+            container.innerHTML = '';
+
+            // Test valid values
+            const validTests = [
+                { value: 0.5, expected: true },
+                { value: 0.75, expected: true },
+                { value: 1.0, expected: true },
+                { value: 0.6, expected: true }
+            ];
+
+            validTests.forEach(test => {
+                const result = validateDamageFraction(test.value);
+                displayResult('test1-results', 
+                    `Valid: ${test.value}`, 
+                    result === test.expected,
+                    `Expected ${test.expected}, got ${result}`);
+            });
+
+            // Test invalid values
+            const invalidTests = [
+                { value: 0.4, expected: false },
+                { value: 0.49, expected: false },
+                { value: 1.1, expected: false },
+                { value: 0, expected: false },
+                { value: -1, expected: false },
+                { value: 2.0, expected: false }
+            ];
+
+            invalidTests.forEach(test => {
+                const result = validateDamageFraction(test.value);
+                displayResult('test1-results', 
+                    `Invalid: ${test.value}`, 
+                    result === test.expected,
+                    `Expected ${test.expected}, got ${result}`);
+            });
+        }
+
+        function testFormValidation() {
+            const container = document.getElementById('test2-results');
+            container.innerHTML = '';
+
+            // Test cases for form validation logic
+            const tests = [
+                {
+                    name: 'Valid damage fraction 0.5',
+                    value: 0.5,
+                    expected: true
+                },
+                {
+                    name: 'Valid damage fraction 1.0',
+                    value: 1.0,
+                    expected: true
+                },
+                {
+                    name: 'Invalid damage fraction 0.4',
+                    value: 0.4,
+                    expected: false
+                },
+                {
+                    name: 'Invalid damage fraction 1.1',
+                    value: 1.1,
+                    expected: false
+                }
+            ];
+
+            tests.forEach(test => {
+                const result = validateDamageFraction(test.value);
+                displayResult('test2-results', 
+                    test.name, 
+                    result === test.expected,
+                    `Expected ${test.expected}, got ${result}`);
+            });
+        }
+
+        function testAWSCredentialsParsing() {
+            const container = document.getElementById('test3-results');
+            container.innerHTML = '';
+
+            // Test valid credentials
+            const validCreds = '{"accessKeyId": "test123", "secretAccessKey": "secret456", "region": "us-east-1"}';
+            try {
+                const result = parseAWSCredentialsTest(validCreds);
+                displayResult('test3-results', 
+                    'Valid credentials', 
+                    result !== null && result.accessKeyId === 'test123',
+                    'Successfully parsed valid credentials');
+            } catch (error) {
+                displayResult('test3-results', 
+                    'Valid credentials', 
+                    false,
+                    `Unexpected error: ${error.message}`);
+            }
+
+            // Test empty credentials
+            try {
+                const result = parseAWSCredentialsTest('');
+                displayResult('test3-results', 
+                    'Empty credentials', 
+                    result === null,
+                    'Correctly returned null for empty input');
+            } catch (error) {
+                displayResult('test3-results', 
+                    'Empty credentials', 
+                    false,
+                    `Unexpected error: ${error.message}`);
+            }
+
+            // Test invalid JSON
+            try {
+                const result = parseAWSCredentialsTest('not valid json');
+                displayResult('test3-results', 
+                    'Invalid JSON', 
+                    false,
+                    'Should have thrown an error');
+            } catch (error) {
+                displayResult('test3-results', 
+                    'Invalid JSON', 
+                    true,
+                    `Correctly threw error: ${error.message}`);
+            }
+
+            // Test missing fields
+            try {
+                const result = parseAWSCredentialsTest('{"accessKeyId": "test123"}');
+                displayResult('test3-results', 
+                    'Missing fields', 
+                    false,
+                    'Should have thrown an error');
+            } catch (error) {
+                displayResult('test3-results', 
+                    'Missing fields', 
+                    true,
+                    `Correctly threw error: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+</html>

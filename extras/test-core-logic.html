@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shimonopoly Core Logic Tests</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-section {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ddd;
+        }
+        .test-section.pass {
+            border-left-color: #4CAF50;
+        }
+        .test-section.fail {
+            border-left-color: #f44336;
+        }
+        .test-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .test-result {
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .pass .test-result {
+            background: #4CAF50;
+            color: white;
+        }
+        .fail .test-result {
+            background: #f44336;
+            color: white;
+        }
+        .test-details {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .summary {
+            background: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .error {
+            color: #f44336;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shimonopoly Core Logic Tests</h1>
+    <div id="test-results"></div>
+    <div id="summary" class="summary"></div>
+
+    <script type="module">
+        import { SeededRandom, DistanceCalculator, DataLoader, CityManager, ScoringEngine, GameController } from './core-logic.js';
+
+        const results = [];
+        const testContainer = document.getElementById('test-results');
+        const summaryContainer = document.getElementById('summary');
+
+        function test(name, fn) {
+            const section = document.createElement('div');
+            section.className = 'test-section';
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'test-name';
+            nameDiv.textContent = name;
+            section.appendChild(nameDiv);
+
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'test-result';
+            
+            try {
+                fn();
+                section.classList.add('pass');
+                resultDiv.textContent = '✓ PASS';
+                results.push({ name, pass: true });
+            } catch (error) {
+                section.classList.add('fail');
+                resultDiv.textContent = '✗ FAIL';
+                results.push({ name, pass: false, error: error.message });
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = error.message;
+                section.appendChild(errorDiv);
+            }
+            
+            section.insertBefore(resultDiv, section.children[1]);
+            testContainer.appendChild(section);
+        }
+
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message || 'Assertion failed');
+            }
+        }
+
+        function assertClose(actual, expected, tolerance, message) {
+            if (Math.abs(actual - expected) > tolerance) {
+                throw new Error(message || `Expected ${expected} ± ${tolerance}, got ${actual}`);
+            }
+        }
+
+        // ============================================
+        // SeededRandom Tests
+        // ============================================
+
+        test('SeededRandom: Same seed produces same sequence', () => {
+            const rng1 = new SeededRandom(42);
+            const rng2 = new SeededRandom(42);
+            
+            for (let i = 0; i < 10; i++) {
+                assert(rng1.next() === rng2.next(), 'Random sequences should match');
+            }
+        });
+
+        test('SeededRandom: Different seeds produce different sequences', () => {
+            const rng1 = new SeededRandom(42);
+            const rng2 = new SeededRandom(43);
+            
+            const val1 = rng1.next();
+            const val2 = rng2.next();
+            
+            assert(val1 !== val2, 'Different seeds should produce different values');
+        });
+
+        test('SeededRandom: Shuffle is deterministic', () => {
+            const arr1 = [1, 2, 3, 4, 5];
+            const arr2 = [1, 2, 3, 4, 5];
+            
+            const rng1 = new SeededRandom(42);
+            const rng2 = new SeededRandom(42);
+            
+            rng1.shuffle(arr1);
+            rng2.shuffle(arr2);
+            
+            assert(JSON.stringify(arr1) === JSON.stringify(arr2), 'Shuffles should match');
+        });
+
+        // ============================================
+        // DistanceCalculator Tests
+        // ============================================
+
+        test('DistanceCalculator: Known distance NYC to LA', () => {
+            // NYC: 40.7128° N, 74.0060° W
+            // LA: 34.0522° N, 118.2437° W
+            // Expected: ~2451 miles
+            const distance = DistanceCalculator.calculateDistance(40.7128, -74.0060, 34.0522, -118.2437);
+            assertClose(distance, 2451, 50, `NYC to LA distance should be ~2451 miles, got ${distance}`);
+        });
+
+        test('DistanceCalculator: Same location returns 0', () => {
+            const distance = DistanceCalculator.calculateDistance(40.7128, -74.0060, 40.7128, -74.0060);
+            assertClose(distance, 0, 0.1, 'Same location should have distance 0');
+        });
+
+        test('DistanceCalculator: findCitiesWithinRadius works correctly', () => {
+            const cities = [
+                { name: 'A', lat: 40.7128, lon: -74.0060 },
+                { name: 'B', lat: 40.7589, lon: -73.9851 }, // ~5 miles from A
+                { name: 'C', lat: 34.0522, lon: -118.2437 }  // ~2451 miles from A
+            ];
+            
+            const nearby = DistanceCalculator.findCitiesWithinRadius(cities[0], cities, 100);
+            assert(nearby.length === 1, `Should find 1 city within 100 miles, found ${nearby.length}`);
+            assert(nearby[0].name === 'B', 'Should find city B');
+        });
+
+        // ============================================
+        // DataLoader Tests
+        // ============================================
+
+        test('DataLoader: Parse valid JSONL', () => {
+            const jsonl = '{"name":"New York","population":8336,"lat":40.7128,"lon":-74.0060}\n{"name":"Los Angeles","population":3979,"lat":34.0522,"lon":-118.2437}';
+            const cities = DataLoader.parseCityData(jsonl);
+            
+            assert(cities.length === 2, `Should parse 2 cities, got ${cities.length}`);
+            assert(cities[0].name === 'New York', 'First city should be New York');
+            assert(cities[1].name === 'Los Angeles', 'Second city should be Los Angeles');
+        });
+
+        test('DataLoader: Skip malformed records', () => {
+            const jsonl = '{"name":"Valid","population":100,"lat":40,"lon":-74}\n{"invalid json\n{"name":"Also Valid","population":200,"lat":35,"lon":-118}';
+            const cities = DataLoader.parseCityData(jsonl);
+            
+            assert(cities.length === 2, `Should parse 2 valid cities, got ${cities.length}`);
+        });
+
+        test('DataLoader: Skip records with missing fields', () => {
+            const jsonl = '{"name":"Valid","population":100,"lat":40,"lon":-74}\n{"name":"Missing Population","lat":40,"lon":-74}\n{"name":"Also Valid","population":200,"lat":35,"lon":-118}';
+            const cities = DataLoader.parseCityData(jsonl);
+            
+            assert(cities.length === 2, `Should parse 2 valid cities, got ${cities.length}`);
+        });
+
+        test('DataLoader: Validate coordinate ranges', () => {
+            const jsonl = '{"name":"Valid","population":100,"lat":40,"lon":-74}\n{"name":"Invalid Lat","population":100,"lat":100,"lon":-74}\n{"name":"Invalid Lon","population":100,"lat":40,"lon":200}';
+            const cities = DataLoader.parseCityData(jsonl);
+            
+            assert(cities.length === 1, `Should parse 1 valid city, got ${cities.length}`);
+        });
+
+        // ============================================
+        // CityManager Tests
+        // ============================================
+
+        test('CityManager: Deterministic city selection', () => {
+            const cities = [
+                { name: 'A', population: 100, lat: 40, lon: -74 },
+                { name: 'B', population: 200, lat: 41, lon: -75 },
+                { name: 'C', population: 300, lat: 42, lon: -76 },
+                { name: 'D', population: 400, lat: 43, lon: -77 },
+                { name: 'E', population: 500, lat: 44, lon: -78 }
+            ];
+            
+            const manager1 = new CityManager(cities, 42);
+            const selected1 = manager1.selectCities(3);
+            
+            const manager2 = new CityManager(cities, 42);
+            const selected2 = manager2.selectCities(3);
+            
+            assert(selected1.length === 3, 'Should select 3 cities');
+            assert(JSON.stringify(selected1) === JSON.stringify(selected2), 'Same seed should produce same selection');
+        });
+
+        test('CityManager: Damage fraction validation', () => {
+            const cities = [{ name: 'A', population: 100, lat: 40, lon: -74 }];
+            const manager = new CityManager(cities, 42);
+            manager.selectCities(1);
+            
+            let errorThrown = false;
+            try {
+                manager.damageCities(0.3); // Invalid: < 0.5
+            } catch (e) {
+                errorThrown = true;
+            }
+            
+            assert(errorThrown, 'Should throw error for fraction < 0.5');
+        });
+
+        test('CityManager: Exact damage fraction', () => {
+            const cities = Array.from({ length: 10 }, (_, i) => ({
+                name: `City${i}`,
+                population: 100,
+                lat: 40 + i,
+                lon: -74
+            }));
+            
+            const manager = new CityManager(cities, 42);
+            manager.selectCities(10);
+            manager.damageCities(0.7);
+            
+            const damaged = manager.getCities().filter(c => c.damaged);
+            assert(damaged.length === 7, `Should damage 7 cities (70% of 10), got ${damaged.length}`);
+        });
+
+        test('CityManager: Case-insensitive city lookup', () => {
+            const cities = [{ name: 'New York', population: 8336, lat: 40.7128, lon: -74.0060 }];
+            const manager = new CityManager(cities, 42);
+            manager.selectCities(1);
+            
+            const found1 = manager.findCityByName('New York');
+            const found2 = manager.findCityByName('new york');
+            const found3 = manager.findCityByName('NEW YORK');
+            
+            assert(found1 !== null, 'Should find "New York"');
+            assert(found2 !== null, 'Should find "new york"');
+            assert(found3 !== null, 'Should find "NEW YORK"');
+            assert(found1 === found2 && found2 === found3, 'All should return same city');
+        });
+
+        test('CityManager: getDamagedCities excludes restored', () => {
+            const cities = [
+                { name: 'A', population: 100, lat: 40, lon: -74 },
+                { name: 'B', population: 200, lat: 41, lon: -75 }
+            ];
+            
+            const manager = new CityManager(cities, 42);
+            manager.selectCities(2);
+            manager.damageCities(1.0);
+            
+            const allCities = manager.getCities();
+            allCities[0].restored = true;
+            
+            const damaged = manager.getDamagedCities();
+            assert(damaged.length === 1, `Should have 1 damaged (non-restored) city, got ${damaged.length}`);
+        });
+
+        // ============================================
+        // ScoringEngine Tests
+        // ============================================
+
+        test('ScoringEngine: Basic mode scoring', () => {
+            const engine = new ScoringEngine(false);
+            const city = { name: 'Test', population: 5000, lat: 40, lon: -74 };
+            
+            const points = engine.calculatePoints(city);
+            assert(points === 1, `Basic mode should give 1 point, got ${points}`);
+        });
+
+        test('ScoringEngine: Advanced mode scoring', () => {
+            const engine = new ScoringEngine(true);
+            const city = { name: 'Test', population: 5000, lat: 40, lon: -74 };
+            
+            const points = engine.calculatePoints(city);
+            assert(points === 5, `Advanced mode should give population/1000 = 5, got ${points}`);
+        });
+
+        test('ScoringEngine: Basic mode restoration cost', () => {
+            const engine = new ScoringEngine(false);
+            const city = { name: 'Test', population: 5000, lat: 40, lon: -74 };
+            const restoredCities = [];
+            
+            const cost = engine.calculateRestorationCost(city, restoredCities);
+            assert(cost === 1, `Basic mode should cost 1 transformer, got ${cost}`);
+        });
+
+        test('ScoringEngine: Advanced mode restoration cost with no nearby cities', () => {
+            const engine = new ScoringEngine(true);
+            const city = { name: 'Test', population: 5000, lat: 40, lon: -74 };
+            const restoredCities = [];
+            
+            const cost = engine.calculateRestorationCost(city, restoredCities);
+            assert(cost === 1, `Should cost 1/(1+0) = 1 transformer, got ${cost}`);
+        });
+
+        test('ScoringEngine: Advanced mode restoration cost with nearby cities', () => {
+            const engine = new ScoringEngine(true);
+            const city = { name: 'Test', population: 5000, lat: 40.7128, lon: -74.0060 };
+            const restoredCities = [
+                { name: 'Nearby1', lat: 40.7589, lon: -73.9851 }, // ~5 miles away
+                { name: 'Nearby2', lat: 40.6782, lon: -73.9442 }, // ~10 miles away
+                { name: 'Far', lat: 34.0522, lon: -118.2437 }     // ~2451 miles away
+            ];
+            
+            const cost = engine.calculateRestorationCost(city, restoredCities);
+            const expected = 1 / (1 + 2); // 2 cities within 300 miles
+            assertClose(cost, expected, 0.01, `Should cost 1/(1+2) = 0.333, got ${cost}`);
+        });
+
+        test('ScoringEngine: Restoration radius boundary (300 miles)', () => {
+            const engine = new ScoringEngine(true);
+            
+            // Test with a city just within 300 miles
+            const city = { name: 'Test', lat: 40, lon: -74 };
+            
+            // Create a city at approximately 299 miles (well within the boundary)
+            // Using a more accurate calculation: moving ~4.3 degrees latitude
+            const restoredCities = [
+                { name: 'Within300', lat: 40 + 4.3, lon: -74 }
+            ];
+            
+            const cost = engine.calculateRestorationCost(city, restoredCities);
+            // Should be 1/(1+1) = 0.5 since the city is within 300 miles
+            assertClose(cost, 0.5, 0.01, `City within 300 miles should be counted, cost should be 0.5, got ${cost}`);
+        });
+
+        test('ScoringEngine: Cities beyond 300 miles not counted', () => {
+            const engine = new ScoringEngine(true);
+            
+            // Test with a city beyond 300 miles
+            const city = { name: 'Test', lat: 40, lon: -74 };
+            
+            // Create a city far away (using NYC to LA distance ~2451 miles)
+            const restoredCities = [
+                { name: 'Far', lat: 34.0522, lon: -118.2437 }
+            ];
+            
+            const cost = engine.calculateRestorationCost(city, restoredCities);
+            // Should be 1/(1+0) = 1 since no cities are within 300 miles
+            assert(cost === 1, `City beyond 300 miles should not be counted, cost should be 1, got ${cost}`);
+        });
+
+        // ============================================
+        // GameController Tests
+        // ============================================
+
+        test('GameController: Initial state is correct', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 5,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = Array.from({ length: 10 }, (_, i) => ({
+                name: `City${i}`,
+                population: 100 + i * 10,
+                lat: 40 + i,
+                lon: -74
+            }));
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const state = controller.getState();
+            assert(state.score === 0, 'Initial score should be 0');
+            assert(state.transformers === 5, `Initial transformers should equal damaged cities (5), got ${state.transformers}`);
+            assert(state.timeRemaining === 300, 'Initial time should be 300');
+            assert(state.timerStarted === false, 'Timer should not be started');
+            assert(state.gameEnded === false, 'Game should not be ended');
+        });
+
+        test('GameController: Timer starts on first valid restoration', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 3,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 },
+                { name: 'CityC', population: 300, lat: 42, lon: -76 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            assert(!controller.isTimerStarted(), 'Timer should not be started initially');
+            
+            // Get a damaged city name
+            const damagedCity = controller.getState().damagedCities[0];
+            controller.restoreCity(damagedCity.name);
+            
+            assert(controller.isTimerStarted(), 'Timer should start after first valid restoration');
+        });
+
+        test('GameController: Valid restoration in basic mode', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 3,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 },
+                { name: 'CityC', population: 300, lat: 42, lon: -76 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const initialTransformers = controller.getTransformers();
+            const damagedCity = controller.getState().damagedCities[0];
+            
+            const result = controller.restoreCity(damagedCity.name);
+            
+            assert(result.success === true, 'Restoration should succeed');
+            assert(result.shouldClearInput === true, 'Input should be cleared');
+            assert(result.pointsEarned === 1, 'Should earn 1 point in basic mode');
+            assert(result.transformersUsed === 1, 'Should use 1 transformer in basic mode');
+            assert(controller.getScore() === 1, 'Score should be 1');
+            assert(controller.getTransformers() === initialTransformers - 1, 'Transformers should decrease by 1');
+        });
+
+        test('GameController: Invalid city name maintains state', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 3,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 },
+                { name: 'CityC', population: 300, lat: 42, lon: -76 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const initialScore = controller.getScore();
+            const initialTransformers = controller.getTransformers();
+            
+            const result = controller.restoreCity('NonExistentCity');
+            
+            assert(result.success === false, 'Restoration should fail');
+            assert(result.shouldClearInput === false, 'Input should not be cleared');
+            assert(controller.getScore() === initialScore, 'Score should be unchanged');
+            assert(controller.getTransformers() === initialTransformers, 'Transformers should be unchanged');
+        });
+
+        test('GameController: Already restored city maintains state', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 3,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 },
+                { name: 'CityC', population: 300, lat: 42, lon: -76 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const damagedCity = controller.getState().damagedCities[0];
+            
+            // Restore city first time
+            controller.restoreCity(damagedCity.name);
+            
+            const scoreAfterFirst = controller.getScore();
+            const transformersAfterFirst = controller.getTransformers();
+            
+            // Try to restore same city again
+            const result = controller.restoreCity(damagedCity.name);
+            
+            assert(result.success === false, 'Second restoration should fail');
+            assert(result.shouldClearInput === false, 'Input should not be cleared');
+            assert(controller.getScore() === scoreAfterFirst, 'Score should be unchanged');
+            assert(controller.getTransformers() === transformersAfterFirst, 'Transformers should be unchanged');
+        });
+
+        test('GameController: Undamaged city maintains state', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 4,
+                damagedFraction: 0.5,
+                timerDuration: 300,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 },
+                { name: 'CityC', population: 300, lat: 42, lon: -76 },
+                { name: 'CityD', population: 400, lat: 43, lon: -77 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            // Find an undamaged city
+            const allCities = controller.getCities();
+            const undamagedCity = allCities.find(c => !c.damaged);
+            
+            if (undamagedCity) {
+                const initialScore = controller.getScore();
+                const initialTransformers = controller.getTransformers();
+                
+                const result = controller.restoreCity(undamagedCity.name);
+                
+                assert(result.success === false, 'Restoration of undamaged city should fail');
+                assert(controller.getScore() === initialScore, 'Score should be unchanged');
+                assert(controller.getTransformers() === initialTransformers, 'Transformers should be unchanged');
+            }
+        });
+
+        test('GameController: Advanced mode scoring', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 2,
+                damagedFraction: 1.0,
+                timerDuration: 300,
+                advancedMode: true
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 5000, lat: 40, lon: -74 },
+                { name: 'CityB', population: 3000, lat: 41, lon: -75 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const damagedCity = controller.getState().damagedCities[0];
+            const result = controller.restoreCity(damagedCity.name);
+            
+            assert(result.success === true, 'Restoration should succeed');
+            const expectedPoints = damagedCity.population / 1000;
+            assertClose(controller.getScore(), expectedPoints, 0.01, `Score should be population/1000 = ${expectedPoints}`);
+        });
+
+        test('GameController: Timer countdown and game end', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 2,
+                damagedFraction: 1.0,
+                timerDuration: 3,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            // Start timer by restoring a city
+            const damagedCity = controller.getState().damagedCities[0];
+            controller.restoreCity(damagedCity.name);
+            
+            assert(controller.getTimeRemaining() === 3, 'Time should be 3');
+            assert(!controller.isGameEnded(), 'Game should not be ended');
+            
+            // Simulate timer updates
+            controller.updateTimer();
+            assert(controller.getTimeRemaining() === 2, 'Time should be 2');
+            
+            controller.updateTimer();
+            assert(controller.getTimeRemaining() === 1, 'Time should be 1');
+            
+            controller.updateTimer();
+            assert(controller.getTimeRemaining() === 0, 'Time should be 0');
+            assert(controller.isGameEnded(), 'Game should be ended');
+        });
+
+        test('GameController: Cannot restore after game ends', () => {
+            const config = {
+                playerName: 'Test',
+                randomSeed: 42,
+                numCities: 2,
+                damagedFraction: 1.0,
+                timerDuration: 1,
+                advancedMode: false
+            };
+            
+            const cities = [
+                { name: 'CityA', population: 100, lat: 40, lon: -74 },
+                { name: 'CityB', population: 200, lat: 41, lon: -75 }
+            ];
+            
+            const controller = new GameController(config);
+            controller.initializeWithCities(cities);
+            
+            const damagedCities = controller.getState().damagedCities;
+            
+            // Start timer and end game
+            controller.restoreCity(damagedCities[0].name);
+            controller.updateTimer();
+            
+            assert(controller.isGameEnded(), 'Game should be ended');
+            
+            // Try to restore another city
+            const result = controller.restoreCity(damagedCities[1].name);
+            
+            assert(result.success === false, 'Restoration should fail after game ends');
+            assert(result.message === 'Game has ended', 'Should indicate game has ended');
+        });
+
+        // ============================================
+        // Display Summary
+        // ============================================
+
+        const passed = results.filter(r => r.pass).length;
+        const failed = results.filter(r => !r.pass).length;
+        const total = results.length;
+
+        summaryContainer.innerHTML = `
+            <strong>Test Summary:</strong><br>
+            Total: ${total} | Passed: ${passed} | Failed: ${failed}<br>
+            ${failed === 0 ? '✓ All tests passed!' : '✗ Some tests failed'}
+        `;
+
+        console.log('Test Results:', results);
+    </script>
+</body>
+</html>
