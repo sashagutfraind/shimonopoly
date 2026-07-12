@@ -53,7 +53,6 @@
 {"name": "Tulsa, OK", "population": 1060.4, "lat": 36.2504, "lon": -96.1662}
 {"name": "Rochester, NY", "population": 1057.2, "lat": 43.0076, "lon": -77.5585}
 {"name": "Omaha, NE", "population": 1001.2, "lat": 41.2901, "lon": -95.9991}
-{"name": "Urban Honolulu, HI", "population": 998.7, "lat": 21.4899, "lon": -158.0739}
 {"name": "Greenville", "population": 996.7, "lat": 34.6851, "lon": -82.4139}
 {"name": "Bridgeport", "population": 972.7, "lat": 41.3061, "lon": -73.4028}
 {"name": "New Orleans", "population": 966.2, "lat": 29.7832, "lon": -89.957}
@@ -134,7 +133,6 @@
 {"name": "Naples", "population": 416.2, "lat": 26.1108, "lon": -81.3474}
 {"name": "Myrtle Beach", "population": 413.4, "lat": 33.9216, "lon": -78.9969}
 {"name": "Mobile, AL", "population": 412.3, "lat": 30.7877, "lon": -88.2058}
-{"name": "Anchorage, AK", "population": 407.2, "lat": 62.2431, "lon": -149.5439}
 {"name": "Flint, MI", "population": 402.3, "lat": 43.0217, "lon": -83.7067}
 {"name": "Canton", "population": 400.6, "lat": 40.7187, "lon": -81.2535}
 {"name": "Tallahassee, FL", "population": 399.1, "lat": 30.405, "lon": -84.2862}
@@ -264,7 +262,6 @@
 {"name": "Terre Haute, IN", "population": 166.6, "lat": 39.3919, "lon": -87.344}
 {"name": "Janesville", "population": 165.5, "lat": 42.6712, "lon": -89.0716}
 {"name": "Amherst Town", "population": 165.4, "lat": 42.3402, "lon": -72.6638}
-{"name": "Kahului", "population": 163.8, "lat": 20.8628, "lon": -156.569}
 {"name": "Bloomington, IN", "population": 162.6, "lat": 39.2347, "lon": -86.676}
 {"name": "Grand Junction, CO", "population": 161.3, "lat": 39.0183, "lon": -108.4664}
 {"name": "Jackson, MI", "population": 160.2, "lat": 42.2485, "lon": -84.4234}
@@ -367,7 +364,6 @@
 {"name": "Corvallis, OR", "population": 98.9, "lat": 44.4918, "lon": -123.4293}
 {"name": "Victoria, TX", "population": 98.4, "lat": 28.7279, "lon": -97.195}
 {"name": "Helena, MT", "population": 96.3, "lat": 46.7205, "lon": -112.1422}
-{"name": "Fairbanks", "population": 95.0, "lat": 64.8078, "lon": -146.5654}
 {"name": "Pocatello, ID", "population": 91.0, "lat": 42.6685, "lon": -112.2246}
 {"name": "Hinesville, GA", "population": 89.7, "lat": 31.7959, "lon": -81.602}
 {"name": "Grants Pass, OR", "population": 88.3, "lat": 42.3655, "lon": -123.5555}

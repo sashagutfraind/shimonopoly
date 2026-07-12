@@ -932,6 +932,13 @@
                     
                 } catch (error) {
                     console.error('Failed to initialize game:', error);
+                    if (error instanceof TypeError && error.message.includes('fetch')) {
+                        throw new Error(
+                            'Could not load city data.\n\n' +
+                            'You need to run a local web server instead of opening the file directly.\n\n' +
+                            'In the game/ folder, run:\n  python start_server.py\n\nThen open: http://localhost:8000/index.html'
+                        );
+                    }
                     throw error;
                 }
             }
