@@ -3,6 +3,8 @@
 Process kaggle_worldcities.csv to generate:
 1. kaggle_worldcities.jsonl - all cities in JSONL format
 2. kaggle_worldcities_top.jsonl - cities with population >= 2 million
+3. iran_cities.jsonl - all cities in Iran
+4. israel_cities.jsonl - all cities in Israel
 """
 
 import csv
@@ -69,6 +71,28 @@ def process_worldcities():
     
     print(f"Generated kaggle_worldcities_top.jsonl with {len(top_cities)} cities")
     print(f"  - All cities have population >= 2 million")
+    
+    # Process Iran cities (country_code: IR)
+    iran_cities = [city for city in cities if city['country_code'] == 'IR']
+    iran_cities.sort(key=lambda x: x['population'], reverse=True)
+    
+    with open('iran_cities.jsonl', 'w', encoding='utf-8') as f:
+        for city in iran_cities:
+            output_city = {k: v for k, v in city.items() if k != 'country'}
+            f.write(json.dumps(output_city) + '\n')
+    
+    print(f"Generated iran_cities.jsonl with {len(iran_cities)} cities")
+    
+    # Process Israel cities (country_code: IL)
+    israel_cities = [city for city in cities if city['country_code'] == 'IL']
+    israel_cities.sort(key=lambda x: x['population'], reverse=True)
+    
+    with open('israel_cities.jsonl', 'w', encoding='utf-8') as f:
+        for city in israel_cities:
+            output_city = {k: v for k, v in city.items() if k != 'country'}
+            f.write(json.dumps(output_city) + '\n')
+    
+    print(f"Generated israel_cities.jsonl with {len(israel_cities)} cities")
 
 
 if __name__ == '__main__':

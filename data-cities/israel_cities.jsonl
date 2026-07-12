@@ -1,0 +1,78 @@
+{"name": "Jerusalem", "population": 936.425, "lat": 31.7789, "lon": 35.2256, "country_code": "IL"}
+{"name": "Haifa", "population": 600.0, "lat": 32.8192, "lon": 34.9992, "country_code": "IL"}
+{"name": "Tel Aviv-Yafo", "population": 467.875, "lat": 32.08, "lon": 34.78, "country_code": "IL"}
+{"name": "Rishon LeZiyyon", "population": 249.86, "lat": 31.95, "lon": 34.8, "country_code": "IL"}
+{"name": "Petah Tiqwa", "population": 236.169, "lat": 32.0833, "lon": 34.8833, "country_code": "IL"}
+{"name": "Ashdod", "population": 220.174, "lat": 31.7978, "lon": 34.6503, "country_code": "IL"}
+{"name": "Netanya", "population": 217.2, "lat": 32.3286, "lon": 34.8567, "country_code": "IL"}
+{"name": "Beersheba", "population": 209.0, "lat": 31.2522, "lon": 34.7867, "country_code": "IL"}
+{"name": "Holon", "population": 194.3, "lat": 32.0167, "lon": 34.7667, "country_code": "IL"}
+{"name": "Bene Beraq", "population": 193.774, "lat": 32.0807, "lon": 34.8338, "country_code": "IL"}
+{"name": "Ramat Gan", "population": 159.2, "lat": 32.07, "lon": 34.8235, "country_code": "IL"}
+{"name": "Ashqelon", "population": 134.454, "lat": 31.6658, "lon": 34.5664, "country_code": "IL"}
+{"name": "Rehovot", "population": 132.671, "lat": 31.8914, "lon": 34.8078, "country_code": "IL"}
+{"name": "Bat Yam", "population": 128.8, "lat": 32.0231, "lon": 34.7503, "country_code": "IL"}
+{"name": "Bet Shemesh", "population": 118.7, "lat": 31.7514, "lon": 34.9886, "country_code": "IL"}
+{"name": "Kefar Sava", "population": 100.8, "lat": 32.1858, "lon": 34.9077, "country_code": "IL"}
+{"name": "Modiin Makkabbim Reut", "population": 97.097, "lat": 31.9339, "lon": 34.9856, "country_code": "IL"}
+{"name": "Hadera", "population": 95.7, "lat": 32.45, "lon": 34.9167, "country_code": "IL"}
+{"name": "Herzliyya", "population": 93.989, "lat": 32.1556, "lon": 34.8422, "country_code": "IL"}
+{"name": "Nazareth", "population": 83.4, "lat": 32.7019, "lon": 35.3033, "country_code": "IL"}
+{"name": "Lod", "population": 75.7, "lat": 31.95, "lon": 34.9, "country_code": "IL"}
+{"name": "Ramla", "population": 75.5, "lat": 31.9275, "lon": 34.8625, "country_code": "IL"}
+{"name": "Raananna", "population": 74.0, "lat": 32.1833, "lon": 34.8667, "country_code": "IL"}
+{"name": "Qiryat Gat", "population": 65.61, "lat": 31.61, "lon": 34.7642, "country_code": "IL"}
+{"name": "Rahat", "population": 64.462, "lat": 31.3925, "lon": 34.7544, "country_code": "IL"}
+{"name": "Afula", "population": 60.0, "lat": 32.6064, "lon": 35.2881, "country_code": "IL"}
+{"name": "Nahariyya", "population": 60.0, "lat": 33.0058, "lon": 35.0989, "country_code": "IL"}
+{"name": "Givatayim", "population": 59.518, "lat": 32.0697, "lon": 34.8117, "country_code": "IL"}
+{"name": "Hod HaSharon", "population": 56.659, "lat": 32.15, "lon": 34.8833, "country_code": "IL"}
+{"name": "Rosh HaAyin", "population": 56.3, "lat": 32.0833, "lon": 34.95, "country_code": "IL"}
+{"name": "Qiryat Ata", "population": 55.464, "lat": 32.8, "lon": 35.1, "country_code": "IL"}
+{"name": "Umm el Fahm", "population": 55.3, "lat": 32.5194, "lon": 35.1536, "country_code": "IL"}
+{"name": "Eilat", "population": 51.935, "lat": 29.55, "lon": 34.95, "country_code": "IL"}
+{"name": "Nes Ziyyona", "population": 50.2, "lat": 31.9333, "lon": 34.8, "country_code": "IL"}
+{"name": "Akko", "population": 48.9, "lat": 32.9278, "lon": 35.0817, "country_code": "IL"}
+{"name": "Elad", "population": 48.763, "lat": 32.0523, "lon": 34.9512, "country_code": "IL"}
+{"name": "Ramat HaSharon", "population": 46.7, "lat": 32.1461, "lon": 34.8394, "country_code": "IL"}
+{"name": "Karmiel", "population": 45.3, "lat": 32.9136, "lon": 35.2961, "country_code": "IL"}
+{"name": "Tiberias", "population": 44.2, "lat": 32.7944, "lon": 35.5333, "country_code": "IL"}
+{"name": "Et Taiyiba", "population": 43.1, "lat": 32.2667, "lon": 35.0, "country_code": "IL"}
+{"name": "Ben Zakkay", "population": 42.314, "lat": 31.8833, "lon": 34.7333, "country_code": "IL"}
+{"name": "Pardes Hanna Karkur", "population": 42.1, "lat": 32.4711, "lon": 34.9675, "country_code": "IL"}
+{"name": "Qiryat Mozqin", "population": 42.0, "lat": 32.8333, "lon": 35.0833, "country_code": "IL"}
+{"name": "Qiryat Ono", "population": 41.9, "lat": 32.0636, "lon": 34.8553, "country_code": "IL"}
+{"name": "Shefar`am", "population": 41.6, "lat": 32.8056, "lon": 35.1694, "country_code": "IL"}
+{"name": "Qiryat Bialik", "population": 39.9, "lat": 32.8333, "lon": 35.0833, "country_code": "IL"}
+{"name": "Qiryat Yam", "population": 39.416, "lat": 32.8333, "lon": 35.0667, "country_code": "IL"}
+{"name": "Or Yehuda", "population": 36.706, "lat": 32.0333, "lon": 34.85, "country_code": "IL"}
+{"name": "Zefat", "population": 35.7, "lat": 32.9658, "lon": 35.4983, "country_code": "IL"}
+{"name": "Dimona", "population": 34.135, "lat": 31.07, "lon": 35.03, "country_code": "IL"}
+{"name": "Tamra", "population": 34.0, "lat": 32.8536, "lon": 35.1978, "country_code": "IL"}
+{"name": "Netivot", "population": 31.314, "lat": 31.4167, "lon": 34.5833, "country_code": "IL"}
+{"name": "Sakhnin", "population": 31.1, "lat": 32.8667, "lon": 35.3, "country_code": "IL"}
+{"name": "Be'er Ya`aqov", "population": 29.852, "lat": 31.9436, "lon": 34.8392, "country_code": "IL"}
+{"name": "Yehud", "population": 29.146, "lat": 32.0333, "lon": 34.8833, "country_code": "IL"}
+{"name": "Ofaqim", "population": 29.0, "lat": 31.2833, "lon": 34.6167, "country_code": "IL"}
+{"name": "Kefar Yona", "population": 28.025, "lat": 32.3171, "lon": 34.9358, "country_code": "IL"}
+{"name": "Rama", "population": 26.641, "lat": 32.8511, "lon": 35.3386, "country_code": "IL"}
+{"name": "Gedera", "population": 26.217, "lat": 31.8139, "lon": 34.7783, "country_code": "IL"}
+{"name": "Et Tira", "population": 26.2, "lat": 32.2328, "lon": 34.9503, "country_code": "IL"}
+{"name": "Migdal Ha`Emeq", "population": 25.6, "lat": 32.6714, "lon": 35.2406, "country_code": "IL"}
+{"name": "Givat Shemu'el", "population": 25.298, "lat": 32.0781, "lon": 34.8489, "country_code": "IL"}
+{"name": "Arad", "population": 24.436, "lat": 31.2603, "lon": 35.2147, "country_code": "IL"}
+{"name": "Yoqneam `Illit", "population": 24.158, "lat": 32.6594, "lon": 35.11, "country_code": "IL"}
+{"name": "Nesher", "population": 23.7, "lat": 32.7711, "lon": 35.0394, "country_code": "IL"}
+{"name": "Maalot Tarshiha", "population": 23.55, "lat": 33.0167, "lon": 35.2708, "country_code": "IL"}
+{"name": "Qiryat Mal'akhi", "population": 23.1, "lat": 31.7333, "lon": 34.75, "country_code": "IL"}
+{"name": "Sederot", "population": 23.09, "lat": 31.525, "lon": 34.5969, "country_code": "IL"}
+{"name": "Qiryat Shemona", "population": 23.076, "lat": 33.2075, "lon": 35.5697, "country_code": "IL"}
+{"name": "Gan Yavne", "population": 22.453, "lat": 31.7886, "lon": 34.7053, "country_code": "IL"}
+{"name": "Tirat Karmel", "population": 22.2, "lat": 32.7667, "lon": 34.9667, "country_code": "IL"}
+{"name": "Kafr Qasim", "population": 21.848, "lat": 32.1142, "lon": 34.9772, "country_code": "IL"}
+{"name": "Qalansuwa", "population": 21.451, "lat": 32.285, "lon": 34.9811, "country_code": "IL"}
+{"name": "Bet She'an", "population": 18.2, "lat": 32.5, "lon": 35.5, "country_code": "IL"}
+{"name": "Or Aqiva", "population": 17.759, "lat": 32.5, "lon": 34.9167, "country_code": "IL"}
+{"name": "Jisr ez Zarqa", "population": 14.93, "lat": 32.5381, "lon": 34.9122, "country_code": "IL"}
+{"name": "Majdal Shams", "population": 11.405, "lat": 33.2667, "lon": 35.7667, "country_code": "IL"}
+{"name": "Atlit", "population": 10.639, "lat": 32.6872, "lon": 34.9383, "country_code": "IL"}

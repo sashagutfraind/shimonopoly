@@ -31,7 +31,7 @@ def extract_polygon_coords(geometry):
         coords = geometry['coordinates'][0]
         # Convert from [lon, lat] to [lat, lon]
         coords = [[lat, lon] for lon, lat in coords]
-        all_coords.append(simplify_coordinates(coords, tolerance=1.0))
+        all_coords.append(simplify_coordinates(coords, tolerance=0.1))
     
     elif geometry['type'] == 'MultiPolygon':
         # MultiPolygon has multiple polygons
@@ -40,7 +40,7 @@ def extract_polygon_coords(geometry):
             coords = polygon[0]
             # Convert from [lon, lat] to [lat, lon]
             coords = [[lat, lon] for lon, lat in coords]
-            simplified = simplify_coordinates(coords, tolerance=1.0)
+            simplified = simplify_coordinates(coords, tolerance=0.1)
             # Only include if it has enough points
             if len(simplified) > 10:
                 all_coords.append(simplified)
@@ -52,8 +52,10 @@ def main():
     with open('../game/countries_features.geojson', 'r') as f:
         data = json.load(f)
     
-    # Extract USA borders
+    # Extract borders for different countries
     usa_regions = []
+    iran_regions = []
+    israel_regions = []
     world_regions = []
     
     for feature in data['features']:
@@ -68,6 +70,22 @@ def main():
             for i, coords in enumerate(coords_list):
                 usa_regions.append({
                     "name": f"USA Region {i+1}",
+                    "points": coords
+                })
+        
+        if name == "Iran":
+            print(f"Found Iran with {len(coords_list)} regions")
+            for i, coords in enumerate(coords_list):
+                iran_regions.append({
+                    "name": f"Iran Region {i+1}",
+                    "points": coords
+                })
+        
+        if name == "Israel":
+            print(f"Found Israel with {len(coords_list)} regions")
+            for i, coords in enumerate(coords_list):
+                israel_regions.append({
+                    "name": f"Israel Region {i+1}",
                     "points": coords
                 })
         
@@ -90,6 +108,24 @@ def main():
             },
             "regions": usa_regions
         },
+        "iran": {
+            "bounds": {
+                "minLat": 25,
+                "maxLat": 40,
+                "minLon": 44,
+                "maxLon": 64
+            },
+            "regions": iran_regions
+        },
+        "israel": {
+            "bounds": {
+                "minLat": 29,
+                "maxLat": 34,
+                "minLon": 34,
+                "maxLon": 36
+            },
+            "regions": israel_regions
+        },
         "world": {
             "bounds": {
                 "minLat": -60,
@@ -106,6 +142,8 @@ def main():
         json.dump(borders, f, indent=2)
     
     print(f"Extracted {len(usa_regions)} USA regions")
+    print(f"Extracted {len(iran_regions)} Iran regions")
+    print(f"Extracted {len(israel_regions)} Israel regions")
     print(f"Extracted {len(world_regions)} world regions")
     print("Borders written to ../game/borders.json")
 

@@ -420,6 +420,8 @@
             <label for="country">Country</label>
             <select id="country" required>
                 <option value="usa">USA</option>
+                <option value="iran">Iran</option>
+                <option value="israel">Israel</option>
                 <option value="world">World</option>
             </select>
         </div>
@@ -444,7 +446,12 @@
                 <div class="error-message" id="damagedFractionError">Fraction must be between 0.5 and 1.0</div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="useTimer" checked>
+                <label for="useTimer">Enable Timer</label>
+            </div>
+
+            <div class="form-group" id="timerDurationGroup">
                 <label for="timerDuration">Timer Duration (seconds)</label>
                 <input type="number" id="timerDuration" value="900" min="1" required>
             </div>
@@ -1027,6 +1034,12 @@
                 }
                 
                 this.state.timerStarted = true;
+
+                // Skip interval if timer is disabled
+                if (!this.config.useTimer) {
+                    console.log('Timer disabled');
+                    return;
+                }
                 
                 // Update timer every second
                 this.timerInterval = setInterval(() => {
@@ -1198,7 +1211,9 @@
              */
             async loadBorders() {
                 try {
-                    const response = await fetch('borders.json');
+                    // Add cache-busting parameter
+                    const cacheBuster = new Date().getTime();
+                    const response = await fetch(`borders.json?v=${cacheBuster}`);
                     if (!response.ok) {
                         throw new Error(`Failed to load borders: ${response.status}`);
                     }
@@ -1206,12 +1221,17 @@
                     this.borders = allBorders[this.country];
                     this.bounds = this.borders.bounds;
                     console.log(`Loaded ${this.borders.regions.length} border regions for ${this.country}`);
+                    console.log(`Bounds: ${JSON.stringify(this.bounds)}`);
                 } catch (error) {
                     console.error('Error loading borders:', error);
                     // Set default bounds if loading fails
-                    this.bounds = this.country === 'world' 
-                        ? { minLat: -60, maxLat: 75, minLon: -180, maxLon: 180 }
-                        : { minLat: 24, maxLat: 50, minLon: -125, maxLon: -65 };
+                    const defaultBounds = {
+                        'world': { minLat: -60, maxLat: 75, minLon: -180, maxLon: 180 },
+                        'usa': { minLat: 24, maxLat: 50, minLon: -125, maxLon: -65 },
+                        'iran': { minLat: 25, maxLat: 40, minLon: 44, maxLon: 64 },
+                        'israel': { minLat: 29, maxLat: 34, minLon: 34, maxLon: 36 }
+                    };
+                    this.bounds = defaultBounds[this.country] || defaultBounds['usa'];
                 }
             }
 
@@ -1220,25 +1240,38 @@
              */
             drawBorders() {
                 if (!this.borders || !this.borders.regions) {
+                    console.log('No borders to draw');
                     return;
                 }
 
-                this.ctx.strokeStyle = '#999';
-                this.ctx.lineWidth = 2;
+                console.log(`Drawing ${this.borders.regions.length} border regions`);
+                this.ctx.strokeStyle = '#333';  // Darker color for better visibility
+                this.ctx.lineWidth = 3;  // Thicker line for better visibility
 
                 for (const region of this.borders.regions) {
+                    if (!region.points || region.points.length === 0) {
+                        console.warn('Region has no points:', region.name);
+                        continue;
+                    }
+                    
+                    console.log(`Drawing region: ${region.name} with ${region.points.length} points`);
                     this.ctx.beginPath();
+                    let pointsDrawn = 0;
                     region.points.forEach((point, index) => {
                         const { x, y } = this.projectToCanvas(point[0], point[1]);
                         if (index === 0) {
                             this.ctx.moveTo(x, y);
+                            console.log(`  Start at: [${x.toFixed(1)}, ${y.toFixed(1)}]`);
                         } else {
                             this.ctx.lineTo(x, y);
                         }
+                        pointsDrawn++;
                     });
                     this.ctx.closePath();
                     this.ctx.stroke();
+                    console.log(`  Drew ${pointsDrawn} points`);
                 }
+                console.log('Borders drawn');
             }
 
             /**
@@ -1283,13 +1316,38 @@
              * @returns {Object} Object with x and y canvas coordinates
              */
             projectToCanvas(lat, lon) {
-                // Calculate normalized position (0 to 1)
-                const normalizedX = (lon - this.bounds.minLon) / (this.bounds.maxLon - this.bounds.minLon);
-                const normalizedY = (this.bounds.maxLat - lat) / (this.bounds.maxLat - this.bounds.minLat);
+                if (!this.bounds) {
+                    console.error('Bounds not set');
+                    return { x: 0, y: 0 };
+                }
                 
-                // Map to canvas coordinates with padding
-                const x = this.padding + normalizedX * (this.canvas.width - 2 * this.padding);
-                const y = this.padding + normalizedY * (this.canvas.height - 2 * this.padding);
+                // Calculate the aspect ratio of the geographic bounds
+                const boundsWidth = this.bounds.maxLon - this.bounds.minLon;
+                const boundsHeight = this.bounds.maxLat - this.bounds.minLat;
+                const boundsAspect = boundsWidth / boundsHeight;
+                
+                // Calculate available canvas space (minus padding)
+                const availableWidth = this.canvas.width - 2 * this.padding;
+                const availableHeight = this.canvas.height - 2 * this.padding;
+                const canvasAspect = availableWidth / availableHeight;
+                
+                // Determine scale to fit bounds in canvas while maintaining aspect ratio
+                let scale, offsetX, offsetY;
+                if (boundsAspect > canvasAspect) {
+                    // Bounds are wider - fit to width
+                    scale = availableWidth / boundsWidth;
+                    offsetX = this.padding;
+                    offsetY = this.padding + (availableHeight - boundsHeight * scale) / 2;
+                } else {
+                    // Bounds are taller - fit to height
+                    scale = availableHeight / boundsHeight;
+                    offsetX = this.padding + (availableWidth - boundsWidth * scale) / 2;
+                    offsetY = this.padding;
+                }
+                
+                // Calculate normalized position
+                const x = offsetX + (lon - this.bounds.minLon) * scale;
+                const y = offsetY + (this.bounds.maxLat - lat) * scale;
                 
                 return { x, y };
             }
@@ -1766,7 +1824,8 @@
             }
 
             // Validate timer duration
-            if (isNaN(timerDuration) || timerDuration <= 0) {
+            const useTimer = document.getElementById('useTimer').checked;
+            if (useTimer && (isNaN(timerDuration) || timerDuration <= 0)) {
                 errors.timerDuration = 'Timer duration must be greater than 0';
                 isValid = false;
             }
@@ -1849,6 +1908,7 @@
                     numCities: parseInt(document.getElementById('numCities').value),
                     damagedFraction: parseFloat(document.getElementById('damagedFraction').value),
                     timerDuration: parseInt(document.getElementById('timerDuration').value),
+                    useTimer: document.getElementById('useTimer').checked,
                     advancedMode: document.getElementById('advancedMode').checked
                 };
 
@@ -1874,7 +1934,16 @@
                 gameController = new GameController(config);
                 
                 // Determine which data file to load based on country selection
-                const dataFile = config.country === 'world' ? 'kaggle_worldcities.jsonl' : 'usmetros.jsonl';
+                let dataFile;
+                if (config.country === 'world') {
+                    dataFile = 'kaggle_worldcities.jsonl';
+                } else if (config.country === 'iran') {
+                    dataFile = 'iran_cities.jsonl';
+                } else if (config.country === 'israel') {
+                    dataFile = 'israel_cities.jsonl';
+                } else {
+                    dataFile = 'usmetros.jsonl';
+                }
                 
                 // Load city data and initialize game
                 await gameController.initialize(dataFile);
@@ -1928,6 +1997,11 @@
         // Attach event listener to start button
         document.getElementById('startButton').addEventListener('click', startGame);
 
+        // Show/hide timer duration field based on useTimer checkbox
+        document.getElementById('useTimer').addEventListener('change', function() {
+            document.getElementById('timerDurationGroup').style.display = this.checked ? '' : 'none';
+        });
+
         // Add toggle for advanced settings
         const advancedSettingsToggle = document.getElementById('advancedSettingsToggle');
         advancedSettingsToggle.addEventListener('click', function() {
@@ -1974,12 +2048,15 @@
          */
         function updateGameUI() {
             // Update timer display
-            const timeRemaining = gameController.getTimeRemaining();
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            document.getElementById('timerDisplay').textContent = 
-                `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
+            if (gameController.config.useTimer) {
+                const timeRemaining = gameController.getTimeRemaining();
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                document.getElementById('timerDisplay').textContent =
+                    `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                document.getElementById('timerDisplay').textContent = '∞';
+            }
             // Update score display
             const score = gameController.getScore();
             document.getElementById('scoreDisplay').textContent = 

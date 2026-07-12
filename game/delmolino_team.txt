@@ -1,0 +1,95 @@
+
+From: "Clarke, Yvonne" <yvonclar@amazon.com>
+To: "Fisher, Jen" <jfisher@amazon.com>, "Valdov, Eric" <evvaldov@amazon.com>,
+	"Troup, Andrew" <aetroup@amazon.com>, "Brown, Victoria" <bvicto@amazon.com>,
+	"Nguyen, Thanh" <ngtha@amazon.com>, "Kroese, Mike" <kroesem@amazon.com>,
+	"Della-Rocco, Liza" <dellaroc@amazon.com>, "Weinstein, Ron"
+	<rweinst@amazon.com>, "Steisslinger, Brian" <steiss@amazon.com>, "Brittain,
+ Eric" <briter@amazon.com>, "Hall, Catherine" <hallcat@amazon.com>,
+	"Fauntleroy, Mike" <fauntlm@amazon.com>, "Sullivan, Michael"
+	<mjsulli@amazon.com>, "Liu (MVP), Mike" <liumike@amazon.com>, "Alok,
+ Akanksha" <akanksal@amazon.com>, "Hwang, Austin" <ajhwang@amazon.com>, "Hall,
+ Ed" <edmhall@amazon.com>, "Trollinger, John" <johntrol@amazon.com>, "Papson,
+ Scott" <papsons@amazon.com>, "Eisen, Brett" <eisbrett@amazon.com>, "Stickel,
+ Zane" <zanesaws@amazon.com>, "Harmison, Zac" <zharmis@amazon.com>, "Shetty,
+ Panna" <shepanna@amazon.com>, "Hamel, Gerry" <ghhamel@amazon.com>, "Amin,
+ Sagar" <sagaamin@amazon.com>, "Blair, Reynolds" <blairedw@amazon.com>,
+	"Kohnstamm, Amy" <amykohns@amazon.com>, "Fitch, Sherri" <sdfitch@amazon.com>,
+	"Everett, Ryan" <ryanaev@amazon.com>, "Monaghan, Stephen"
+	<monaghs@amazon.com>, "Glenn, Ebauni" <ebauni@amazon.com>, "Goodsell, Ryan"
+	<ryangdsl@amazon.com>, "Duah, Cassie" <caduah@amazon.com>, "Decker, Greg"
+	<gadecker@amazon.com>, "Williams, Mikal" <willimiz@amazon.com>, "Ellis, Ian"
+	<ellibian@amazon.com>, "Kirkpatrick, Daniel" <dankirkp@amazon.com>, "O'Neill,
+ Brandon" <brndnnll@amazon.com>, "Teske, Taylor" <tsteske@amazon.com>,
+	"Bingaman, Adam" <adambing@amazon.com>, "Risi, Joseph" <jrisi@amazon.com>,
+	"Ardigo, Ryan" <ardigory@amazon.com>, "Ozkan, Siragan" <siragan@amazon.com>,
+	"Harris, Raquese" <raqueseh@amazon.com>, "Seeman, Mitchell"
+	<seemanmi@amazon.com>, "Weeks, Mike" <xmichawe@amazon.com>, "Scott, David"
+	<djscott@amazon.com>, "Dunn, Robert" <robmdunn@amazon.com>, "Friedman, Marc"
+	<friedmsf@amazon.com>, "Mayernik, Daniel" <daninik@amazon.com>, "Marcus,
+ Matt" <msmaws@amazon.com>, "Craine, Clarke" <crainclk@amazon.com>, "Searls,
+ Jesse" <jpsearls@amazon.com>, "Akhaury, Praveen" <pakhaury@amazon.com>,
+	"Blair, Terry" <awsterry@amazon.com>, "Hollister, Richard"
+	<zzrich@amazon.com>, "Kedar, Moran" <kedarmo@amazon.com>, "Brinson, Julie"
+	<brinsjr@amazon.com>, "Spencer, Zac" <ztspenc@amazon.com>, "Green, Cason"
+	<csgreen@amazon.com>, "Cruz, Chris" <marcicc@amazon.com>, "Hammond, Jon"
+	<awshammo@amazon.com>, "Kim, Jane" <janejkim@amazon.com>, "Rubio, Gabe"
+	<garuu@amazon.com>, "Hanson, Derek" <djhans@amazon.com>, "Rhoads, Annie"
+	<annierh@amazon.com>, "PBS, Aadithya" <aadipbs@amazon.com>, "Sakarya, Alper"
+	<sakaryaa@amazon.com>, "Raghu, Rakesh" <rakeshr@amazon.com>, "Iftikhar,
+ Haris" <hiftikha@amazon.com>, "Kuentz, Mike" <kuentzm@amazon.com>, "Zell,
+ Damian" <damizell@amazon.com>, "Hallahan, Bobby" <rfhall@amazon.com>, "Davis,
+ Oren" <orendavi@amazon.com>, "Nathani, Chanki" <chankin@amazon.com>, "Joshi,
+ Sid" <joshisj@amazon.com>, "Kongdee, Sirirat" <siriratk@amazon.com>,
+	"McCandless, Kevin" <kmccand@amazon.com>, "Tekula, Praneeth Reddy"
+	<tekula@amazon.com>, "Bandara, Damindra" <kbband@amazon.com>, "Bannai,
+ Harish" <bannai@amazon.com>, "Ware, Tyler" <wareaws@amazon.com>, "Thaker,
+ Tejas" <tthaker@amazon.com>, "Khan, Hatim" <hatimk@amazon.com>, "Marpu, Raj"
+	<rajmarpu@amazon.com>, "Bates, Christian" <cwbates@amazon.com>, "Heo, Inseok"
+	<inseok@amazon.com>, "Desiraju, Srinija" <dsrinija@amazon.com>, "Widmann,
+ Matt" <matwidma@amazon.com>, "Khan, Sulaman" <sulamank@amazon.com>, "Boddula,
+ Dinesh" <dboddula@amazon.com>, "Davis, RJ" <rjd@amazon.com>, "McCabe, John"
+	<johmccab@amazon.com>, "Zhou, Jack" <zhojack@amazon.com>, "Dinnouti, Alex"
+	<dinnoua@amazon.com>, "Pandya, Dushyant" <dupandya@amazon.com>, "Habib,
+ Tariq" <tariqha@amazon.com>, "Alemayehu, Eyor" <eyor@amazon.com>, "Zhang,
+ Xian" <zhaxan@amazon.com>, "Weerasinghe, Ravinda" <weerasr@amazon.com>,
+	"McCormick, Melissa" <meliwitt@amazon.com>, "CV, Mohan" <mohancv@amazon.com>,
+	"Prasad, Srinivas" <srinlaxm@amazon.com>, "Palhano, Ricardo"
+	<palhanor@amazon.com>, "Khatri, Bardan" <bardank@amazon.com>, "Kolman, John"
+	<jkolman@amazon.com>, "Pruitt, Karen" <kareprui@amazon.com>, "Fiorey, Erin"
+	<efiorey@amazon.com>, "Aminov, Andre" <aminova@amazon.com>, "Chaudhry,
+ Burhan" <burhc@amazon.com>, "Lopez, Cheyenne" <cheyesco@amazon.com>,
+	"Johannessen, Matt" <mattjoha@amazon.com>, "Nantz, Jason"
+	<knnantz@amazon.com>, "Dunne, Kieran" <dunnekd@amazon.com>, "Lynberg, Nick"
+	<nlynberg@amazon.com>, "Potnis, Durgesh" <dppotnis@amazon.com>, "Murari,
+ Aneel" <aneelm@amazon.com>, "Pitcher, Michael" <awspitch@amazon.com>,
+	"Chawla, Mahinder" <mahindc@amazon.com>, "Mears, Andy" <amears@amazon.com>,
+	"Sullivan, Michael" <slliv@amazon.com>, "Carvajal, Andrea"
+	<andgc@amazon.com>, "Ogunsemowo, Og" <aogunsem@amazon.com>, "Lall, Vikas"
+	<lallaws@amazon.com>, "Pan, Nate" <awspan@amazon.com>, "Venugopal, Bindu"
+	<venbindu@amazon.com>, "Evans, Alex" <evnsale@amazon.com>, "Alexander,
+ Catherine" <ualexanc@amazon.com>, "Tailor, Pinal" <pkt@amazon.com>, "Narayan,
+ Vidya" <vnarayav@amazon.com>, "Replogle, Tyler" <treplogl@amazon.com>,
+	"Akhtar, Asem" <asemakh@amazon.com>, "Cao, Kevin" <kevinqx@amazon.com>,
+	"Mudunuru, Naresh" <mudun@amazon.com>, "Ankrah-Kusi, Kwadwo"
+	<kankrah@amazon.com>, "Chintalapati, Raghunath" <ragchin@amazon.com>, "Hayes,
+ Sean" <hayzer@amazon.com>, "Singh, Ajaypal" <ajaysinw@amazon.com>, "Rau,
+ Peter" <peterrau@amazon.com>, "Mittal, Anant" <ananmitn@amazon.com>,
+	"Divekar, Sharda" <sdive@amazon.com>, "Doggett, Nate" <ndoggett@amazon.com>,
+	"Swaminathan, Sam" <samsks@amazon.com>, "Imeish, Lawrence"
+	<limeish@amazon.com>, "McAllister, Dylan" <dylmcall@amazon.com>, "Nayar,
+ Nikhil" <niknayar@amazon.com>, "Lee, Janet" <janjlee@amazon.com>, "Gardezi,
+ Ali" <gardezia@amazon.com>, "Challa, NagaBharathi" <nbchalla@amazon.com>,
+	"Chinnam, Anil" <akchinna@amazon.com>, "Ma, Changsha" <machangs@amazon.com>,
+	"Wu, Jing" <jingwua@amazon.com>, "Gutfraind, Sasha" <sgfriend@amazon.com>,
+	"Kittle, Kelly" <kellykit@amazon.com>, "Rios Rojas, Katrina"
+	<kriosroj@amazon.com>, "Mendiola, Matthew" <mtmendio@amazon.com>, "Kamat,
+ Rohan" <rvkamat@amazon.com>, "Habibzai, Reshad" <reshadha@amazon.com>,
+	"George, Joshua" <neogeo@amazon.com>, "Stanikzai, Ilyas"
+	<ilyasns@amazon.com>, "Dave, Devang" <devangdv@amazon.com>, "Neville, Brent"
+	<brentnev@amazon.com>, "Haggerty, Mike" <mikehagg@amazon.com>, "Chowdhury,
+ Nahyan" <nahyan@amazon.com>, "Docherty, John" <john@amazon.com>, "Veselov,
+ Vladimir" <veselov@amazon.com>, "Kalka, Jennifer" <jenkalka@amazon.com>,
+	"Bohn, Rob" <rbohn@amazon.com>
+Subject: You're Invited - Dominic Delmolino's Retirement Celebration (invite
+ attached) 

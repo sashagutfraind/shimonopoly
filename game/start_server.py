@@ -6,7 +6,7 @@ This avoids CORS issues when loading cities.jsonl.
 Usage:
     python start_server.py
 
-Then open: http://localhost:8000/shimonopoly.html
+Then open: http://localhost:8000/index.html
 """
 
 import http.server
@@ -21,7 +21,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 Handler = http.server.SimpleHTTPRequestHandler
 
 print(f"Starting server at http://localhost:{PORT}")
-print(f"Open http://localhost:{PORT}/shimonopoly.html in your browser")
+print(f"Open http://localhost:{PORT}/index.html in your browser")
 print("Press Ctrl+C to stop the server")
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
