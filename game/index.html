@@ -357,19 +357,6 @@
                 font-size: 1em;
             }
 
-            /* Enable horizontal scrolling for map on mobile */
-            .canvas-wrapper {
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            }
-
-            #gameCanvas {
-                min-width: 600px; /* Maintain aspect ratio - map won't be squeezed */
-                width: auto;
-                height: 100%;
-            }
-
             /* Stack input and button vertically on mobile */
             .input-area {
                 flex-direction: column;
@@ -1308,12 +1295,22 @@
             }
 
             /**
-             * Resize canvas to match its display size
+             * Resize canvas to match its display size, accounting for device
+             * pixel ratio so text/lines stay crisp on high-DPI (e.g. mobile) screens.
+             * The backing store is sized in physical pixels while all drawing
+             * code below continues to work in CSS-pixel coordinates (this.width /
+             * this.height), via the context transform set here.
              */
             resizeCanvas() {
                 const rect = this.canvas.getBoundingClientRect();
-                this.canvas.width = rect.width;
-                this.canvas.height = rect.height;
+                const dpr = window.devicePixelRatio || 1;
+
+                this.width = rect.width;
+                this.height = rect.height;
+
+                this.canvas.width = Math.max(1, Math.round(rect.width * dpr));
+                this.canvas.height = Math.max(1, Math.round(rect.height * dpr));
+                this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
 
             /**
@@ -1334,8 +1331,8 @@
                 const boundsAspect = boundsWidth / boundsHeight;
                 
                 // Calculate available canvas space (minus padding)
-                const availableWidth = this.canvas.width - 2 * this.padding;
-                const availableHeight = this.canvas.height - 2 * this.padding;
+                const availableWidth = this.width - 2 * this.padding;
+                const availableHeight = this.height - 2 * this.padding;
                 const canvasAspect = availableWidth / availableHeight;
                 
                 // Determine scale to fit bounds in canvas while maintaining aspect ratio
@@ -1370,7 +1367,7 @@
                 const radiusDegrees = miles * degreesPerMile;
                 
                 // Convert to pixels using the latitude scale
-                const pixelsPerDegree = (this.canvas.height - 2 * this.padding) / (this.bounds.maxLat - this.bounds.minLat);
+                const pixelsPerDegree = (this.height - 2 * this.padding) / (this.bounds.maxLat - this.bounds.minLat);
                 return radiusDegrees * pixelsPerDegree;
             }
 
@@ -1378,7 +1375,7 @@
              * Clear the canvas
              */
             clear() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.clearRect(0, 0, this.width, this.height);
             }
 
             /**
@@ -1387,7 +1384,7 @@
              */
             renderCities(cities) {
                 console.log(`MapRenderer.renderCities called with ${cities.length} cities`);
-                console.log(`Canvas size: ${this.canvas.width}x${this.canvas.height}`);
+                console.log(`Canvas size: ${this.width}x${this.height}`);
                 
                 // Store cities for tooltip functionality
                 this.cities = cities;
@@ -1409,30 +1406,69 @@
                 
                 // Render city labels if less than 100 cities
                 if (cities.length < 100) {
-                    cities.forEach(city => {
-                        this.renderCityLabel(city);
-                    });
+                    this.renderCityLabels(cities);
                 }
-                
+
                 // Render tooltip for hovered city
                 if (this.hoveredCity) {
                     this.renderTooltip(this.hoveredCity);
                 }
-                
+
                 console.log('Map rendering complete');
             }
 
             /**
-             * Render city label
-             * @param {Object} city - City object
+             * Render city name labels, avoiding overlap between nearby cities.
+             * Bigger (higher population) cities are labeled first and get first
+             * pick of position; a label that would collide with an already-placed
+             * one is tried at alternate positions around its marker, and dropped
+             * entirely if none of those are free (rather than overlapping text).
+             * @param {Array} cities - Array of city objects
              */
-            renderCityLabel(city) {
-                const { x, y } = this.projectToCanvas(city.lat, city.lon);
-                
+            renderCityLabels(cities) {
                 this.ctx.font = '10px Arial';
                 this.ctx.fillStyle = '#333';
                 this.ctx.textAlign = 'center';
-                this.ctx.fillText(city.name, x, y - 8);
+
+                const sortedByPopulation = [...cities].sort((a, b) => (b.population || 0) - (a.population || 0));
+                const placedBoxes = [];
+                const boxMargin = 2;
+
+                sortedByPopulation.forEach(city => {
+                    const { x, y } = this.projectToCanvas(city.lat, city.lon);
+                    const textWidth = this.ctx.measureText(city.name).width;
+                    const halfWidth = textWidth / 2;
+
+                    // Candidate label positions around the marker: above, below, right, left
+                    const candidates = [
+                        { cx: x, baseline: y - 8 },
+                        { cx: x, baseline: y + 16 },
+                        { cx: x + halfWidth + 10, baseline: y + 3 },
+                        { cx: x - halfWidth - 10, baseline: y + 3 }
+                    ];
+
+                    for (const candidate of candidates) {
+                        const box = {
+                            left: candidate.cx - halfWidth - boxMargin,
+                            right: candidate.cx + halfWidth + boxMargin,
+                            top: candidate.baseline - 9 - boxMargin,
+                            bottom: candidate.baseline + 3 + boxMargin
+                        };
+
+                        const collides = placedBoxes.some(placed =>
+                            box.left < placed.right && box.right > placed.left &&
+                            box.top < placed.bottom && box.bottom > placed.top
+                        );
+
+                        if (!collides) {
+                            this.ctx.fillText(city.name, candidate.cx, candidate.baseline);
+                            placedBoxes.push(box);
+                            break;
+                        }
+                        // Otherwise try the next candidate position; if none are free,
+                        // this label is skipped so it doesn't overlap another one.
+                    }
+                });
             }
 
             /**
@@ -1462,12 +1498,12 @@
                 let tooltipY = y - tooltipHeight / 2;
                 
                 // Keep tooltip on screen
-                if (tooltipX + tooltipWidth > this.canvas.width) {
+                if (tooltipX + tooltipWidth > this.width) {
                     tooltipX = x - tooltipWidth - 15;
                 }
                 if (tooltipY < 0) tooltipY = 0;
-                if (tooltipY + tooltipHeight > this.canvas.height) {
-                    tooltipY = this.canvas.height - tooltipHeight;
+                if (tooltipY + tooltipHeight > this.height) {
+                    tooltipY = this.height - tooltipHeight;
                 }
                 
                 // Draw tooltip background
@@ -1777,6 +1813,23 @@
         let gameController = null;
         let mapRenderer = null;
         let dynamoDBClient = null;
+
+        // Keep the map canvas correctly sized and redrawn on window resize
+        // (desktop window resizing) and orientation change (mobile rotation).
+        let resizeRafId = null;
+        function handleViewportResize() {
+            if (!mapRenderer) return;
+            if (resizeRafId !== null) cancelAnimationFrame(resizeRafId);
+            resizeRafId = requestAnimationFrame(() => {
+                resizeRafId = null;
+                mapRenderer.resizeCanvas();
+                if (gameController) {
+                    mapRenderer.renderCities(gameController.getCities());
+                }
+            });
+        }
+        window.addEventListener('resize', handleViewportResize);
+        window.addEventListener('orientationchange', handleViewportResize);
 
         // ============================================
         // Setup Screen Event Handlers
