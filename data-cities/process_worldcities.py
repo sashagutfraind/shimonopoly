@@ -3,13 +3,27 @@
 Process kaggle_worldcities.csv to generate:
 1. kaggle_worldcities.jsonl - all cities in JSONL format
 2. kaggle_worldcities_top.jsonl - cities with population >= 2 million
-3. iran_cities.jsonl - all cities in Iran
-4. israel_cities.jsonl - all cities in Israel
+3. <country>_cities.jsonl - all cities for each per-country map in COUNTRY_CODES
 """
 
 import csv
 import json
 from collections import defaultdict
+
+# Per-country maps supported by the game, mapping their kaggle_worldcities.csv
+# iso2 code to the <country>_cities.jsonl filename prefix used by game/index.html
+COUNTRY_CODES = {
+    'AR': 'argentina',
+    'AU': 'australia',
+    'BR': 'brazil',
+    'CN': 'china',
+    'FR': 'france',
+    'IN': 'india',
+    'IR': 'iran',
+    'IL': 'israel',
+    'MX': 'mexico',
+    'GB': 'uk',
+}
 
 
 def process_worldcities():
@@ -72,27 +86,18 @@ def process_worldcities():
     print(f"Generated kaggle_worldcities_top.jsonl with {len(top_cities)} cities")
     print(f"  - All cities have population >= 2 million")
     
-    # Process Iran cities (country_code: IR)
-    iran_cities = [city for city in cities if city['country_code'] == 'IR']
-    iran_cities.sort(key=lambda x: x['population'], reverse=True)
-    
-    with open('iran_cities.jsonl', 'w', encoding='utf-8') as f:
-        for city in iran_cities:
-            output_city = {k: v for k, v in city.items() if k != 'country'}
-            f.write(json.dumps(output_city) + '\n')
-    
-    print(f"Generated iran_cities.jsonl with {len(iran_cities)} cities")
-    
-    # Process Israel cities (country_code: IL)
-    israel_cities = [city for city in cities if city['country_code'] == 'IL']
-    israel_cities.sort(key=lambda x: x['population'], reverse=True)
-    
-    with open('israel_cities.jsonl', 'w', encoding='utf-8') as f:
-        for city in israel_cities:
-            output_city = {k: v for k, v in city.items() if k != 'country'}
-            f.write(json.dumps(output_city) + '\n')
-    
-    print(f"Generated israel_cities.jsonl with {len(israel_cities)} cities")
+    # Process cities for each per-country map
+    for code, filename_prefix in COUNTRY_CODES.items():
+        country_cities = [city for city in cities if city['country_code'] == code]
+        country_cities.sort(key=lambda x: x['population'], reverse=True)
+
+        filename = f'{filename_prefix}_cities.jsonl'
+        with open(filename, 'w', encoding='utf-8') as f:
+            for city in country_cities:
+                output_city = {k: v for k, v in city.items() if k != 'country'}
+                f.write(json.dumps(output_city) + '\n')
+
+        print(f"Generated {filename} with {len(country_cities)} cities")
 
 
 if __name__ == '__main__':

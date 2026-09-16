@@ -1,0 +1,1365 @@
+{"name": "London", "population": 11262.0, "lat": 51.5072, "lon": -0.1275, "country_code": "GB"}
+{"name": "Birmingham", "population": 2590.363, "lat": 52.48, "lon": -1.9025, "country_code": "GB"}
+{"name": "Portsmouth", "population": 855.679, "lat": 50.8058, "lon": -1.0872, "country_code": "GB"}
+{"name": "Southampton", "population": 855.569, "lat": 50.9025, "lon": -1.4042, "country_code": "GB"}
+{"name": "Bristol", "population": 707.412, "lat": 51.4536, "lon": -2.5975, "country_code": "GB"}
+{"name": "Glasgow", "population": 626.41, "lat": 55.8611, "lon": -4.25, "country_code": "GB"}
+{"name": "Manchester", "population": 547.627, "lat": 53.479, "lon": -2.2452, "country_code": "GB"}
+{"name": "Leeds", "population": 536.28, "lat": 53.7975, "lon": -1.5436, "country_code": "GB"}
+{"name": "Sheffield", "population": 518.09, "lat": 53.3808, "lon": -1.4703, "country_code": "GB"}
+{"name": "Liverpool", "population": 513.441, "lat": 53.4072, "lon": -2.9917, "country_code": "GB"}
+{"name": "Edinburgh", "population": 488.05, "lat": 55.95, "lon": -3.1833, "country_code": "GB"}
+{"name": "Worthing", "population": 474.485, "lat": 50.8147, "lon": -0.3714, "country_code": "GB"}
+{"name": "Leicester", "population": 464.395, "lat": 52.6361, "lon": -1.1331, "country_code": "GB"}
+{"name": "Coventry", "population": 362.69, "lat": 52.4081, "lon": -1.5106, "country_code": "GB"}
+{"name": "Caerdydd", "population": 361.469, "lat": 51.4817, "lon": -3.1792, "country_code": "GB"}
+{"name": "Belfast", "population": 345.006, "lat": 54.5967, "lon": -5.93, "country_code": "GB"}
+{"name": "Reading", "population": 337.108, "lat": 51.4542, "lon": -0.9731, "country_code": "GB"}
+{"name": "Kingston upon Hull", "population": 314.018, "lat": 53.7444, "lon": -0.3325, "country_code": "GB"}
+{"name": "Newcastle", "population": 300.196, "lat": 54.978, "lon": -1.6102, "country_code": "GB"}
+{"name": "Stockport", "population": 294.773, "lat": 53.4083, "lon": -2.1494, "country_code": "GB"}
+{"name": "Bradford", "population": 293.277, "lat": 53.8, "lon": -1.75, "country_code": "GB"}
+{"name": "Nottingham", "population": 289.301, "lat": 52.9561, "lon": -1.1512, "country_code": "GB"}
+{"name": "Bolton", "population": 285.372, "lat": 53.5783, "lon": -2.43, "country_code": "GB"}
+{"name": "Sunderland", "population": 277.417, "lat": 54.906, "lon": -1.381, "country_code": "GB"}
+{"name": "Plymouth", "population": 267.918, "lat": 50.3714, "lon": -4.1422, "country_code": "GB"}
+{"name": "Milton Keynes", "population": 264.349, "lat": 52.04, "lon": -0.76, "country_code": "GB"}
+{"name": "Derby", "population": 255.394, "lat": 52.9247, "lon": -1.478, "country_code": "GB"}
+{"name": "Westminster", "population": 255.324, "lat": 51.4947, "lon": -0.1353, "country_code": "GB"}
+{"name": "Wolverhampton", "population": 250.97, "lat": 52.5833, "lon": -2.1333, "country_code": "GB"}
+{"name": "Abertawe", "population": 246.7, "lat": 51.6167, "lon": -3.95, "country_code": "GB"}
+{"name": "Barnsley", "population": 245.199, "lat": 53.5547, "lon": -1.4791, "country_code": "GB"}
+{"name": "Stoke-on-Trent", "population": 245.0, "lat": 53.0255, "lon": -2.1761, "country_code": "GB"}
+{"name": "Swindon", "population": 222.193, "lat": 51.56, "lon": -1.78, "country_code": "GB"}
+{"name": "Norwich", "population": 213.166, "lat": 52.6286, "lon": 1.2928, "country_code": "GB"}
+{"name": "Luton", "population": 213.052, "lat": 51.8783, "lon": -0.4147, "country_code": "GB"}
+{"name": "Solihull", "population": 206.674, "lat": 52.413, "lon": -1.778, "country_code": "GB"}
+{"name": "Islington", "population": 206.125, "lat": 51.544, "lon": -0.1027, "country_code": "GB"}
+{"name": "Aberdeen", "population": 200.68, "lat": 57.15, "lon": -2.11, "country_code": "GB"}
+{"name": "Peterborough", "population": 194.0, "lat": 52.5661, "lon": -0.2364, "country_code": "GB"}
+{"name": "Croydon", "population": 192.064, "lat": 51.3727, "lon": -0.1099, "country_code": "GB"}
+{"name": "Bournemouth", "population": 187.503, "lat": 50.72, "lon": -1.88, "country_code": "GB"}
+{"name": "Basildon", "population": 185.9, "lat": 51.58, "lon": 0.49, "country_code": "GB"}
+{"name": "Saint Helens", "population": 183.248, "lat": 53.4542, "lon": -2.7361, "country_code": "GB"}
+{"name": "Ilford", "population": 168.168, "lat": 51.5575, "lon": 0.0858, "country_code": "GB"}
+{"name": "Warrington", "population": 165.456, "lat": 53.39, "lon": -2.59, "country_code": "GB"}
+{"name": "Huddersfield", "population": 162.949, "lat": 53.645, "lon": -1.7798, "country_code": "GB"}
+{"name": "Southend", "population": 160.257, "lat": 51.55, "lon": 0.71, "country_code": "GB"}
+{"name": "Newport", "population": 159.6, "lat": 51.5886, "lon": -2.9978, "country_code": "GB"}
+{"name": "Enfield", "population": 156.858, "lat": 51.6522, "lon": -0.0808, "country_code": "GB"}
+{"name": "Ipswich", "population": 151.562, "lat": 52.0594, "lon": 1.1556, "country_code": "GB"}
+{"name": "Harrow", "population": 149.246, "lat": 51.5836, "lon": -0.3464, "country_code": "GB"}
+{"name": "Dundee", "population": 148.28, "lat": 56.4606, "lon": -2.97, "country_code": "GB"}
+{"name": "West Bromwich", "population": 146.386, "lat": 52.519, "lon": -1.995, "country_code": "GB"}
+{"name": "Gloucester", "population": 145.563, "lat": 51.8653, "lon": -2.2458, "country_code": "GB"}
+{"name": "Poole", "population": 144.8, "lat": 50.7167, "lon": -1.9833, "country_code": "GB"}
+{"name": "Telford", "population": 142.723, "lat": 52.6766, "lon": -2.4469, "country_code": "GB"}
+{"name": "Preston", "population": 141.801, "lat": 53.83, "lon": -2.735, "country_code": "GB"}
+{"name": "York", "population": 141.685, "lat": 53.96, "lon": -1.08, "country_code": "GB"}
+{"name": "Middlesbrough", "population": 140.545, "lat": 54.5767, "lon": -1.2355, "country_code": "GB"}
+{"name": "Blackpool", "population": 139.305, "lat": 53.8142, "lon": -3.0503, "country_code": "GB"}
+{"name": "Northampton", "population": 137.467, "lat": 52.2304, "lon": -0.8938, "country_code": "GB"}
+{"name": "Brighton", "population": 134.293, "lat": 50.8208, "lon": -0.1375, "country_code": "GB"}
+{"name": "Sale", "population": 134.022, "lat": 53.424, "lon": -2.322, "country_code": "GB"}
+{"name": "Lincoln", "population": 130.2, "lat": 53.2283, "lon": -0.5389, "country_code": "GB"}
+{"name": "Tottenham", "population": 129.237, "lat": 51.5975, "lon": -0.0681, "country_code": "GB"}
+{"name": "Exeter", "population": 124.18, "lat": 50.7256, "lon": -3.5269, "country_code": "GB"}
+{"name": "Cambridge", "population": 123.867, "lat": 52.205, "lon": 0.1225, "country_code": "GB"}
+{"name": "Romford", "population": 122.854, "lat": 51.5768, "lon": 0.1801, "country_code": "GB"}
+{"name": "Colchester", "population": 121.859, "lat": 51.8917, "lon": 0.903, "country_code": "GB"}
+{"name": "High Wycombe", "population": 120.256, "lat": 51.6287, "lon": -0.7482, "country_code": "GB"}
+{"name": "Gateshead", "population": 120.046, "lat": 54.9556, "lon": -1.6, "country_code": "GB"}
+{"name": "Slough", "population": 119.07, "lat": 51.5084, "lon": -0.5881, "country_code": "GB"}
+{"name": "Blackburn", "population": 117.963, "lat": 53.748, "lon": -2.482, "country_code": "GB"}
+{"name": "Cheltenham", "population": 116.447, "lat": 51.9, "lon": -2.0667, "country_code": "GB"}
+{"name": "Chelmsford", "population": 115.369, "lat": 51.73, "lon": 0.48, "country_code": "GB"}
+{"name": "Rochdale", "population": 110.194, "lat": 53.61, "lon": -2.16, "country_code": "GB"}
+{"name": "Wythenshawe", "population": 110.0, "lat": 53.392, "lon": -2.264, "country_code": "GB"}
+{"name": "Birkenhead", "population": 109.848, "lat": 53.393, "lon": -3.014, "country_code": "GB"}
+{"name": "Doncaster", "population": 109.805, "lat": 53.5228, "lon": -1.1325, "country_code": "GB"}
+{"name": "Rotherham", "population": 109.691, "lat": 53.43, "lon": -1.357, "country_code": "GB"}
+{"name": "Maidstone", "population": 109.49, "lat": 51.272, "lon": 0.529, "country_code": "GB"}
+{"name": "Walthamstow", "population": 109.424, "lat": 51.584, "lon": -0.021, "country_code": "GB"}
+{"name": "Oxford", "population": 108.6, "lat": 51.7519, "lon": -1.2578, "country_code": "GB"}
+{"name": "Basingstoke", "population": 107.355, "lat": 51.2667, "lon": -1.0876, "country_code": "GB"}
+{"name": "Crawley", "population": 106.597, "lat": 51.1092, "lon": -0.1872, "country_code": "GB"}
+{"name": "Dagenham", "population": 106.247, "lat": 51.5397, "lon": 0.1422, "country_code": "GB"}
+{"name": "Gillingham", "population": 104.157, "lat": 51.385, "lon": 0.55, "country_code": "GB"}
+{"name": "Halifax", "population": 104.1, "lat": 53.725, "lon": -1.863, "country_code": "GB"}
+{"name": "Salford", "population": 103.886, "lat": 53.483, "lon": -2.2931, "country_code": "GB"}
+{"name": "Wigan", "population": 103.608, "lat": 53.5448, "lon": -2.6318, "country_code": "GB"}
+{"name": "Hounslow", "population": 103.337, "lat": 51.4668, "lon": -0.375, "country_code": "GB"}
+{"name": "Wembley", "population": 102.856, "lat": 51.5528, "lon": -0.2979, "country_code": "GB"}
+{"name": "Worcester", "population": 101.891, "lat": 52.1911, "lon": -2.2206, "country_code": "GB"}
+{"name": "Eastbourne", "population": 101.547, "lat": 50.77, "lon": 0.28, "country_code": "GB"}
+{"name": "Wakefield", "population": 99.251, "lat": 53.6825, "lon": -1.4975, "country_code": "GB"}
+{"name": "Oldham", "population": 96.555, "lat": 53.5444, "lon": -2.1169, "country_code": "GB"}
+{"name": "Sutton Coldfield", "population": 96.475, "lat": 52.563, "lon": -1.822, "country_code": "GB"}
+{"name": "Hammersmith", "population": 95.996, "lat": 51.4928, "lon": -0.2229, "country_code": "GB"}
+{"name": "Hemel Hempstead", "population": 94.932, "lat": 51.7526, "lon": -0.4692, "country_code": "GB"}
+{"name": "Bath", "population": 94.092, "lat": 51.3814, "lon": -2.3597, "country_code": "GB"}
+{"name": "Hayes", "population": 93.928, "lat": 51.5127, "lon": -0.4211, "country_code": "GB"}
+{"name": "Darlington", "population": 93.015, "lat": 54.527, "lon": -1.5526, "country_code": "GB"}
+{"name": "Wimbledon", "population": 92.765, "lat": 51.422, "lon": -0.208, "country_code": "GB"}
+{"name": "Bedford", "population": 92.407, "lat": 52.135, "lon": -0.47, "country_code": "GB"}
+{"name": "Hove", "population": 91.9, "lat": 50.8352, "lon": -0.1758, "country_code": "GB"}
+{"name": "Southport", "population": 91.703, "lat": 53.6475, "lon": -3.0053, "country_code": "GB"}
+{"name": "Hastings", "population": 91.053, "lat": 50.85, "lon": 0.57, "country_code": "GB"}
+{"name": "Orpington", "population": 90.315, "lat": 51.3741, "lon": 0.0986, "country_code": "GB"}
+{"name": "Watford", "population": 90.301, "lat": 51.655, "lon": -0.3957, "country_code": "GB"}
+{"name": "Stevenage", "population": 89.663, "lat": 51.9017, "lon": -0.2019, "country_code": "GB"}
+{"name": "Grimsby", "population": 88.243, "lat": 53.5675, "lon": -0.08, "country_code": "GB"}
+{"name": "Hartlepool", "population": 87.995, "lat": 54.69, "lon": -1.21, "country_code": "GB"}
+{"name": "Bromley", "population": 87.889, "lat": 51.407, "lon": 0.021, "country_code": "GB"}
+{"name": "Chester", "population": 87.507, "lat": 53.1914, "lon": -2.8903, "country_code": "GB"}
+{"name": "Fulham", "population": 87.161, "lat": 51.4828, "lon": -0.195, "country_code": "GB"}
+{"name": "Nuneaton", "population": 86.552, "lat": 52.523, "lon": -1.468, "country_code": "GB"}
+{"name": "Derry", "population": 85.016, "lat": 54.9975, "lon": -7.32, "country_code": "GB"}
+{"name": "Ealing", "population": 85.014, "lat": 51.5175, "lon": -0.2988, "country_code": "GB"}
+{"name": "Woolwich", "population": 84.959, "lat": 51.488, "lon": 0.063, "country_code": "GB"}
+{"name": "Aylesbury", "population": 83.407, "lat": 51.8168, "lon": -0.8124, "country_code": "GB"}
+{"name": "Ashford", "population": 83.213, "lat": 51.1465, "lon": 0.8676, "country_code": "GB"}
+{"name": "Stockton-on-Tees", "population": 82.729, "lat": 54.57, "lon": -1.32, "country_code": "GB"}
+{"name": "Saint Albans", "population": 82.146, "lat": 51.755, "lon": -0.336, "country_code": "GB"}
+{"name": "Harlow", "population": 82.059, "lat": 51.779, "lon": 0.128, "country_code": "GB"}
+{"name": "Burnley", "population": 82.002, "lat": 53.789, "lon": -2.248, "country_code": "GB"}
+{"name": "Redditch", "population": 81.919, "lat": 52.3, "lon": -1.9333, "country_code": "GB"}
+{"name": "Edmonton", "population": 80.546, "lat": 51.6154, "lon": -0.0708, "country_code": "GB"}
+{"name": "Batley", "population": 80.485, "lat": 53.7167, "lon": -1.6356, "country_code": "GB"}
+{"name": "Scunthorpe", "population": 79.977, "lat": 53.5809, "lon": -0.6502, "country_code": "GB"}
+{"name": "Dudley", "population": 79.379, "lat": 52.508, "lon": -2.089, "country_code": "GB"}
+{"name": "Bury", "population": 78.729, "lat": 53.593, "lon": -2.298, "country_code": "GB"}
+{"name": "Eastleigh", "population": 78.716, "lat": 50.9667, "lon": -1.35, "country_code": "GB"}
+{"name": "Brixton", "population": 78.536, "lat": 51.4575, "lon": -0.1175, "country_code": "GB"}
+{"name": "Southall", "population": 78.253, "lat": 51.5111, "lon": -0.3756, "country_code": "GB"}
+{"name": "Paisley", "population": 77.22, "lat": 55.8456, "lon": -4.4239, "country_code": "GB"}
+{"name": "Guildford", "population": 77.057, "lat": 51.2365, "lon": -0.5703, "country_code": "GB"}
+{"name": "Chatham", "population": 76.792, "lat": 51.37, "lon": 0.52, "country_code": "GB"}
+{"name": "East Ham", "population": 76.186, "lat": 51.5323, "lon": 0.0554, "country_code": "GB"}
+{"name": "Weston-super-Mare", "population": 76.143, "lat": 51.346, "lon": -2.977, "country_code": "GB"}
+{"name": "Carlisle", "population": 75.399, "lat": 54.8947, "lon": -2.9364, "country_code": "GB"}
+{"name": "South Shields", "population": 75.337, "lat": 54.995, "lon": -1.43, "country_code": "GB"}
+{"name": "East Kilbride", "population": 75.12, "lat": 55.7644, "lon": -4.1769, "country_code": "GB"}
+{"name": "Newcastle under Lyme", "population": 75.082, "lat": 53.0109, "lon": -2.2278, "country_code": "GB"}
+{"name": "Burton upon Trent", "population": 75.074, "lat": 52.8019, "lon": -1.6367, "country_code": "GB"}
+{"name": "Gravesend", "population": 74.0, "lat": 51.4415, "lon": 0.3685, "country_code": "GB"}
+{"name": "Tamworth", "population": 73.924, "lat": 52.633, "lon": -1.695, "country_code": "GB"}
+{"name": "Harrogate", "population": 73.576, "lat": 53.9919, "lon": -1.5378, "country_code": "GB"}
+{"name": "Shrewsbury", "population": 71.715, "lat": 52.708, "lon": -2.754, "country_code": "GB"}
+{"name": "Gosport", "population": 71.529, "lat": 50.79, "lon": -1.12, "country_code": "GB"}
+{"name": "Lisburn", "population": 71.465, "lat": 54.512, "lon": -6.031, "country_code": "GB"}
+{"name": "Rugby", "population": 70.627, "lat": 52.37, "lon": -1.26, "country_code": "GB"}
+{"name": "Stafford", "population": 70.592, "lat": 52.807, "lon": -2.117, "country_code": "GB"}
+{"name": "Chingford", "population": 70.583, "lat": 51.623, "lon": 0.009, "country_code": "GB"}
+{"name": "Uxbridge", "population": 70.56, "lat": 51.5404, "lon": -0.4778, "country_code": "GB"}
+{"name": "Mansfield", "population": 69.987, "lat": 53.1444, "lon": -1.1964, "country_code": "GB"}
+{"name": "Rhondda", "population": 69.506, "lat": 51.6159, "lon": -3.4175, "country_code": "GB"}
+{"name": "Tynemouth", "population": 68.202, "lat": 55.017, "lon": -1.423, "country_code": "GB"}
+{"name": "Cannock", "population": 67.768, "lat": 52.691, "lon": -2.027, "country_code": "GB"}
+{"name": "Walsall", "population": 67.594, "lat": 52.58, "lon": -1.98, "country_code": "GB"}
+{"name": "Washington", "population": 67.158, "lat": 54.9, "lon": -1.52, "country_code": "GB"}
+{"name": "Grays", "population": 66.843, "lat": 51.475, "lon": 0.33, "country_code": "GB"}
+{"name": "Walton upon Thames", "population": 66.566, "lat": 51.3868, "lon": -0.4133, "country_code": "GB"}
+{"name": "Finchley", "population": 65.812, "lat": 51.599, "lon": -0.187, "country_code": "GB"}
+{"name": "Thornton Heath", "population": 65.812, "lat": 51.4002, "lon": -0.1086, "country_code": "GB"}
+{"name": "Farnborough", "population": 65.034, "lat": 51.29, "lon": -0.75, "country_code": "GB"}
+{"name": "Loughborough", "population": 64.88, "lat": 52.7725, "lon": -1.2078, "country_code": "GB"}
+{"name": "Kensington", "population": 64.681, "lat": 51.5, "lon": -0.19, "country_code": "GB"}
+{"name": "Boston", "population": 64.6, "lat": 52.974, "lon": -0.0214, "country_code": "GB"}
+{"name": "Paignton", "population": 64.41, "lat": 50.4353, "lon": -3.5625, "country_code": "GB"}
+{"name": "Waterlooville", "population": 64.35, "lat": 50.88, "lon": -1.03, "country_code": "GB"}
+{"name": "Guiseley", "population": 64.0, "lat": 53.875, "lon": -1.706, "country_code": "GB"}
+{"name": "Hornchurch", "population": 63.583, "lat": 51.5565, "lon": 0.2128, "country_code": "GB"}
+{"name": "Maidenhead", "population": 63.58, "lat": 51.523, "lon": -0.722, "country_code": "GB"}
+{"name": "Mitcham", "population": 63.393, "lat": 51.4009, "lon": -0.1517, "country_code": "GB"}
+{"name": "Feltham", "population": 63.368, "lat": 51.4496, "lon": -0.4089, "country_code": "GB"}
+{"name": "Stourbridge", "population": 63.298, "lat": 52.4575, "lon": -2.1479, "country_code": "GB"}
+{"name": "Rochester", "population": 62.982, "lat": 51.375, "lon": 0.5, "country_code": "GB"}
+{"name": "Dewsbury", "population": 62.945, "lat": 53.691, "lon": -1.633, "country_code": "GB"}
+{"name": "Woking", "population": 62.796, "lat": 51.305, "lon": -0.539, "country_code": "GB"}
+{"name": "Acton", "population": 62.48, "lat": 51.5135, "lon": -0.2707, "country_code": "GB"}
+{"name": "Twickenham", "population": 62.148, "lat": 51.449, "lon": -0.337, "country_code": "GB"}
+{"name": "Runcorn", "population": 61.789, "lat": 53.3417, "lon": -2.7313, "country_code": "GB"}
+{"name": "Wrecsam", "population": 61.603, "lat": 53.0467, "lon": -2.9936, "country_code": "GB"}
+{"name": "Widnes", "population": 61.464, "lat": 53.362, "lon": -2.734, "country_code": "GB"}
+{"name": "Margate", "population": 61.223, "lat": 51.385, "lon": 1.3838, "country_code": "GB"}
+{"name": "Ellesmere Port", "population": 61.09, "lat": 53.279, "lon": -2.897, "country_code": "GB"}
+{"name": "Bangor", "population": 61.011, "lat": 54.66, "lon": -5.67, "country_code": "GB"}
+{"name": "Taunton", "population": 60.479, "lat": 51.019, "lon": -3.1, "country_code": "GB"}
+{"name": "Wallasey", "population": 60.284, "lat": 53.4239, "lon": -3.0531, "country_code": "GB"}
+{"name": "Halesowen", "population": 60.097, "lat": 52.4502, "lon": -2.0509, "country_code": "GB"}
+{"name": "Bracknell", "population": 60.077, "lat": 51.416, "lon": -0.749, "country_code": "GB"}
+{"name": "Barking", "population": 59.068, "lat": 51.54, "lon": 0.08, "country_code": "GB"}
+{"name": "Sutton", "population": 58.88, "lat": 51.3656, "lon": -0.1963, "country_code": "GB"}
+{"name": "Merthyr Tudful", "population": 58.839, "lat": 51.743, "lon": -3.378, "country_code": "GB"}
+{"name": "Edgware", "population": 58.619, "lat": 51.6185, "lon": -0.2729, "country_code": "GB"}
+{"name": "Ruislip", "population": 58.217, "lat": 51.576, "lon": -0.433, "country_code": "GB"}
+{"name": "Streatham", "population": 58.055, "lat": 51.4279, "lon": -0.1235, "country_code": "GB"}
+{"name": "Royal Tunbridge Wells", "population": 57.772, "lat": 51.132, "lon": 0.263, "country_code": "GB"}
+{"name": "Bebington", "population": 57.336, "lat": 53.35, "lon": -3.003, "country_code": "GB"}
+{"name": "Aldershot", "population": 57.211, "lat": 51.2483, "lon": -0.7614, "country_code": "GB"}
+{"name": "Kettering", "population": 56.226, "lat": 52.3931, "lon": -0.7229, "country_code": "GB"}
+{"name": "Kidderminster", "population": 55.53, "lat": 52.3885, "lon": -2.249, "country_code": "GB"}
+{"name": "Barrow in Furness", "population": 55.489, "lat": 54.1108, "lon": -3.2261, "country_code": "GB"}
+{"name": "Crewe", "population": 55.315, "lat": 53.099, "lon": -2.44, "country_code": "GB"}
+{"name": "Corby", "population": 54.927, "lat": 52.4877, "lon": -0.7013, "country_code": "GB"}
+{"name": "Canterbury", "population": 54.88, "lat": 51.28, "lon": 1.08, "country_code": "GB"}
+{"name": "Wellingborough", "population": 54.733, "lat": 52.3028, "lon": -0.6944, "country_code": "GB"}
+{"name": "Sittingbourne", "population": 54.392, "lat": 51.34, "lon": 0.74, "country_code": "GB"}
+{"name": "Keighley", "population": 53.331, "lat": 53.867, "lon": -1.911, "country_code": "GB"}
+{"name": "Hamilton", "population": 53.188, "lat": 55.777, "lon": -4.039, "country_code": "GB"}
+{"name": "Hereford", "population": 53.112, "lat": 52.056, "lon": -2.716, "country_code": "GB"}
+{"name": "Dunfermline", "population": 53.1, "lat": 56.0719, "lon": -3.4393, "country_code": "GB"}
+{"name": "Lancaster", "population": 52.66, "lat": 54.0489, "lon": -2.8014, "country_code": "GB"}
+{"name": "Brentwood", "population": 52.586, "lat": 51.62, "lon": 0.305, "country_code": "GB"}
+{"name": "Macclesfield", "population": 52.508, "lat": 53.25, "lon": -2.13, "country_code": "GB"}
+{"name": "Altrincham", "population": 52.419, "lat": 53.3838, "lon": -2.3547, "country_code": "GB"}
+{"name": "Bloxwich", "population": 51.879, "lat": 52.614, "lon": -2.004, "country_code": "GB"}
+{"name": "Crosby", "population": 51.789, "lat": 53.487, "lon": -3.034, "country_code": "GB"}
+{"name": "Barri", "population": 51.502, "lat": 51.405, "lon": -3.27, "country_code": "GB"}
+{"name": "Willenhall", "population": 51.429, "lat": 52.5798, "lon": -2.0605, "country_code": "GB"}
+{"name": "Bootle", "population": 51.394, "lat": 53.4457, "lon": -2.9891, "country_code": "GB"}
+{"name": "Stratford", "population": 51.387, "lat": 51.5423, "lon": -0.0026, "country_code": "GB"}
+{"name": "Dartford", "population": 51.24, "lat": 51.4444, "lon": 0.2172, "country_code": "GB"}
+{"name": "Weymouth", "population": 51.012, "lat": 50.6097, "lon": -2.4547, "country_code": "GB"}
+{"name": "Andover", "population": 50.999, "lat": 51.208, "lon": -1.48, "country_code": "GB"}
+{"name": "Horsham", "population": 50.934, "lat": 51.062, "lon": -0.325, "country_code": "GB"}
+{"name": "Cumbernauld", "population": 50.92, "lat": 55.945, "lon": -3.994, "country_code": "GB"}
+{"name": "Esher", "population": 50.904, "lat": 51.3691, "lon": -0.365, "country_code": "GB"}
+{"name": "Livingston", "population": 50.826, "lat": 55.8834, "lon": -3.5157, "country_code": "GB"}
+{"name": "Hinckley", "population": 50.712, "lat": 52.5413, "lon": -1.3725, "country_code": "GB"}
+{"name": "Royal Leamington Spa", "population": 50.699, "lat": 52.2919, "lon": -1.5358, "country_code": "GB"}
+{"name": "Neath", "population": 50.658, "lat": 51.66, "lon": -3.81, "country_code": "GB"}
+{"name": "Clacton-on-Sea", "population": 50.548, "lat": 51.7918, "lon": 1.1457, "country_code": "GB"}
+{"name": "Rowley Regis", "population": 50.257, "lat": 52.488, "lon": -2.05, "country_code": "GB"}
+{"name": "Scarborough", "population": 50.135, "lat": 54.2825, "lon": -0.4, "country_code": "GB"}
+{"name": "Leith", "population": 50.03, "lat": 55.98, "lon": -3.17, "country_code": "GB"}
+{"name": "Pen-y-Bont ar Ogwr", "population": 49.404, "lat": 51.507, "lon": -3.578, "country_code": "GB"}
+{"name": "Eltham", "population": 48.964, "lat": 51.451, "lon": 0.052, "country_code": "GB"}
+{"name": "Hampstead", "population": 48.858, "lat": 51.5541, "lon": -0.1744, "country_code": "GB"}
+{"name": "Torquay", "population": 48.563, "lat": 50.47, "lon": -3.53, "country_code": "GB"}
+{"name": "Cwmbran", "population": 48.535, "lat": 51.653, "lon": -3.021, "country_code": "GB"}
+{"name": "Welwyn Garden City", "population": 48.38, "lat": 51.8062, "lon": -0.1932, "country_code": "GB"}
+{"name": "Morden", "population": 48.233, "lat": 51.4015, "lon": -0.1949, "country_code": "GB"}
+{"name": "Smethwick", "population": 48.18, "lat": 52.4931, "lon": -1.9686, "country_code": "GB"}
+{"name": "Kirkcaldy", "population": 48.108, "lat": 56.1107, "lon": -3.1674, "country_code": "GB"}
+{"name": "Durham", "population": 48.069, "lat": 54.7761, "lon": -1.5733, "country_code": "GB"}
+{"name": "Lowestoft", "population": 47.726, "lat": 52.48, "lon": 1.75, "country_code": "GB"}
+{"name": "Perth", "population": 47.43, "lat": 56.3958, "lon": -3.4333, "country_code": "GB"}
+{"name": "Inverness", "population": 47.38, "lat": 57.4778, "lon": -4.2247, "country_code": "GB"}
+{"name": "Barnet", "population": 47.359, "lat": 51.6444, "lon": -0.1997, "country_code": "GB"}
+{"name": "Folkestone", "population": 47.356, "lat": 51.0792, "lon": 1.1794, "country_code": "GB"}
+{"name": "Stretford", "population": 46.91, "lat": 53.4466, "lon": -2.3086, "country_code": "GB"}
+{"name": "Banbury", "population": 46.853, "lat": 52.061, "lon": -1.336, "country_code": "GB"}
+{"name": "Beckenham", "population": 46.844, "lat": 51.408, "lon": -0.022, "country_code": "GB"}
+{"name": "Greenford", "population": 46.787, "lat": 51.5299, "lon": -0.3488, "country_code": "GB"}
+{"name": "Ayr", "population": 46.78, "lat": 55.458, "lon": -4.629, "country_code": "GB"}
+{"name": "Kilmarnock", "population": 46.35, "lat": 55.6111, "lon": -4.4957, "country_code": "GB"}
+{"name": "Cheshunt", "population": 45.832, "lat": 51.702, "lon": -0.035, "country_code": "GB"}
+{"name": "Havant", "population": 45.826, "lat": 50.8517, "lon": -0.9842, "country_code": "GB"}
+{"name": "Kirkby", "population": 45.564, "lat": 53.48, "lon": -2.89, "country_code": "GB"}
+{"name": "Salisbury", "population": 45.477, "lat": 51.0697, "lon": -1.795, "country_code": "GB"}
+{"name": "Erith", "population": 45.345, "lat": 51.48, "lon": 0.1778, "country_code": "GB"}
+{"name": "Ashton", "population": 45.198, "lat": 53.4897, "lon": -2.0952, "country_code": "GB"}
+{"name": "Surbiton", "population": 45.132, "lat": 51.394, "lon": -0.307, "country_code": "GB"}
+{"name": "Castleford", "population": 45.106, "lat": 53.716, "lon": -1.356, "country_code": "GB"}
+{"name": "Catford", "population": 44.905, "lat": 51.4452, "lon": -0.0207, "country_code": "GB"}
+{"name": "Worksop", "population": 44.733, "lat": 53.3042, "lon": -1.1244, "country_code": "GB"}
+{"name": "Coatbridge", "population": 43.96, "lat": 55.8625, "lon": -4.0266, "country_code": "GB"}
+{"name": "Wallsend", "population": 43.826, "lat": 54.991, "lon": -1.534, "country_code": "GB"}
+{"name": "Braintree", "population": 43.215, "lat": 51.878, "lon": 0.55, "country_code": "GB"}
+{"name": "Hatfield", "population": 43.09, "lat": 51.7636, "lon": -0.2258, "country_code": "GB"}
+{"name": "Kingston upon Thames", "population": 43.013, "lat": 51.4103, "lon": -0.2995, "country_code": "GB"}
+{"name": "Middleton", "population": 42.972, "lat": 53.555, "lon": -2.187, "country_code": "GB"}
+{"name": "King's Lynn", "population": 42.8, "lat": 52.754, "lon": 0.398, "country_code": "GB"}
+{"name": "Fareham", "population": 42.64, "lat": 50.85, "lon": -1.18, "country_code": "GB"}
+{"name": "Hoddesdon", "population": 42.253, "lat": 51.759, "lon": -0.015, "country_code": "GB"}
+{"name": "Greenock", "population": 41.99, "lat": 55.95, "lon": -4.765, "country_code": "GB"}
+{"name": "Urmston", "population": 41.731, "lat": 53.4487, "lon": -2.3747, "country_code": "GB"}
+{"name": "Leigh", "population": 41.275, "lat": 53.4975, "lon": -2.515, "country_code": "GB"}
+{"name": "Welling", "population": 41.0, "lat": 51.4594, "lon": 0.1097, "country_code": "GB"}
+{"name": "Ilkeston", "population": 40.953, "lat": 52.9711, "lon": -1.3092, "country_code": "GB"}
+{"name": "Kingswood", "population": 40.734, "lat": 51.46, "lon": -2.505, "country_code": "GB"}
+{"name": "Dunstable", "population": 40.699, "lat": 51.886, "lon": -0.521, "country_code": "GB"}
+{"name": "Bury Saint Edmunds", "population": 40.664, "lat": 52.2474, "lon": 0.7183, "country_code": "GB"}
+{"name": "Ramsgate", "population": 40.408, "lat": 51.336, "lon": 1.416, "country_code": "GB"}
+{"name": "Strood", "population": 40.0, "lat": 51.393, "lon": 0.478, "country_code": "GB"}
+{"name": "Blyth", "population": 39.769, "lat": 55.126, "lon": -1.514, "country_code": "GB"}
+{"name": "Aldridge", "population": 39.475, "lat": 52.606, "lon": -1.9179, "country_code": "GB"}
+{"name": "Cleethorpes", "population": 38.996, "lat": 53.5533, "lon": -0.0215, "country_code": "GB"}
+{"name": "Skelmersdale", "population": 38.813, "lat": 53.55, "lon": -2.776, "country_code": "GB"}
+{"name": "Tipton", "population": 38.777, "lat": 52.5259, "lon": -2.0751, "country_code": "GB"}
+{"name": "Eccles", "population": 38.756, "lat": 53.4824, "lon": -2.339, "country_code": "GB"}
+{"name": "Pinner", "population": 38.698, "lat": 51.5932, "lon": -0.3894, "country_code": "GB"}
+{"name": "Tonbridge", "population": 38.657, "lat": 51.1987, "lon": 0.2764, "country_code": "GB"}
+{"name": "Leyland", "population": 38.578, "lat": 53.6903, "lon": -2.6992, "country_code": "GB"}
+{"name": "Glenrothes", "population": 38.51, "lat": 56.198, "lon": -3.178, "country_code": "GB"}
+{"name": "Chorley", "population": 38.42, "lat": 53.653, "lon": -2.632, "country_code": "GB"}
+{"name": "Herne Bay", "population": 38.385, "lat": 51.37, "lon": 1.13, "country_code": "GB"}
+{"name": "Bridgwater", "population": 38.31, "lat": 51.128, "lon": -2.993, "country_code": "GB"}
+{"name": "Wokingham", "population": 38.286, "lat": 51.4102, "lon": -0.8432, "country_code": "GB"}
+{"name": "Bishops Stortford", "population": 38.202, "lat": 51.872, "lon": 0.1725, "country_code": "GB"}
+{"name": "Arnold", "population": 37.768, "lat": 53.005, "lon": -1.127, "country_code": "GB"}
+{"name": "Long Eaton", "population": 37.76, "lat": 52.898, "lon": -1.271, "country_code": "GB"}
+{"name": "Stirling", "population": 37.61, "lat": 56.1166, "lon": -3.9369, "country_code": "GB"}
+{"name": "Bletchley", "population": 37.52, "lat": 51.994, "lon": -0.732, "country_code": "GB"}
+{"name": "Leighton Buzzard", "population": 37.469, "lat": 51.9165, "lon": -0.6617, "country_code": "GB"}
+{"name": "Airdrie", "population": 37.41, "lat": 55.86, "lon": -3.98, "country_code": "GB"}
+{"name": "Port Talbot", "population": 37.276, "lat": 51.5906, "lon": -3.7986, "country_code": "GB"}
+{"name": "Laindon", "population": 37.175, "lat": 51.574, "lon": 0.4181, "country_code": "GB"}
+{"name": "Redcar", "population": 37.073, "lat": 54.618, "lon": -1.069, "country_code": "GB"}
+{"name": "Beeston", "population": 37.0, "lat": 52.927, "lon": -1.215, "country_code": "GB"}
+{"name": "Small Heath", "population": 36.898, "lat": 52.4629, "lon": -1.8542, "country_code": "GB"}
+{"name": "Camberley", "population": 36.783, "lat": 51.335, "lon": -0.742, "country_code": "GB"}
+{"name": "Chippenham", "population": 36.762, "lat": 51.459, "lon": -2.116, "country_code": "GB"}
+{"name": "Houghton le Spring", "population": 36.746, "lat": 54.841, "lon": -1.468, "country_code": "GB"}
+{"name": "Whitley Bay", "population": 36.623, "lat": 55.0456, "lon": -1.4443, "country_code": "GB"}
+{"name": "Denton", "population": 36.591, "lat": 53.4554, "lon": -2.1122, "country_code": "GB"}
+{"name": "West Bridgford", "population": 36.487, "lat": 52.932, "lon": -1.127, "country_code": "GB"}
+{"name": "Sutton in Ashfield", "population": 36.404, "lat": 53.125, "lon": -1.261, "country_code": "GB"}
+{"name": "Borehamwood", "population": 36.322, "lat": 51.6578, "lon": -0.2722, "country_code": "GB"}
+{"name": "Hyde", "population": 35.895, "lat": 53.4474, "lon": -2.082, "country_code": "GB"}
+{"name": "Hendon", "population": 35.874, "lat": 51.5837, "lon": -0.2252, "country_code": "GB"}
+{"name": "Falkirk", "population": 35.85, "lat": 56.0011, "lon": -3.7835, "country_code": "GB"}
+{"name": "Morley", "population": 35.776, "lat": 53.7492, "lon": -1.6023, "country_code": "GB"}
+{"name": "Walkden", "population": 35.616, "lat": 53.5239, "lon": -2.3991, "country_code": "GB"}
+{"name": "Kenton", "population": 35.6, "lat": 51.5878, "lon": -0.3086, "country_code": "GB"}
+{"name": "Accrington", "population": 35.456, "lat": 53.7534, "lon": -2.3638, "country_code": "GB"}
+{"name": "Winchester", "population": 35.2, "lat": 51.0632, "lon": -1.308, "country_code": "GB"}
+{"name": "Bridlington", "population": 35.026, "lat": 54.0819, "lon": -0.1923, "country_code": "GB"}
+{"name": "Ewell", "population": 34.872, "lat": 51.35, "lon": -0.249, "country_code": "GB"}
+{"name": "Grantham", "population": 34.592, "lat": 52.918, "lon": -0.638, "country_code": "GB"}
+{"name": "Morecambe", "population": 34.586, "lat": 54.073, "lon": -2.87, "country_code": "GB"}
+{"name": "Swadlincote", "population": 34.576, "lat": 52.774, "lon": -1.557, "country_code": "GB"}
+{"name": "Exmouth", "population": 34.432, "lat": 50.62, "lon": -3.413, "country_code": "GB"}
+{"name": "North Shields", "population": 34.423, "lat": 55.0097, "lon": -1.4448, "country_code": "GB"}
+{"name": "Hitchin", "population": 34.266, "lat": 51.947, "lon": -0.283, "country_code": "GB"}
+{"name": "Rainham", "population": 34.088, "lat": 51.36, "lon": 0.61, "country_code": "GB"}
+{"name": "Letchworth", "population": 33.986, "lat": 51.978, "lon": -0.23, "country_code": "GB"}
+{"name": "Billingham", "population": 33.915, "lat": 54.61, "lon": -1.27, "country_code": "GB"}
+{"name": "Newbury", "population": 33.79, "lat": 51.401, "lon": -1.323, "country_code": "GB"}
+{"name": "Irvine", "population": 33.698, "lat": 55.6201, "lon": -4.6614, "country_code": "GB"}
+{"name": "Winsford", "population": 33.546, "lat": 53.194, "lon": -2.52, "country_code": "GB"}
+{"name": "Nelson", "population": 33.488, "lat": 53.8346, "lon": -2.218, "country_code": "GB"}
+{"name": "Loughton", "population": 33.346, "lat": 51.6494, "lon": 0.0735, "country_code": "GB"}
+{"name": "Huyton", "population": 33.193, "lat": 53.4111, "lon": -2.8403, "country_code": "GB"}
+{"name": "Abingdon", "population": 33.13, "lat": 51.6717, "lon": -1.2783, "country_code": "GB"}
+{"name": "Trowbridge", "population": 33.108, "lat": 51.32, "lon": -2.208, "country_code": "GB"}
+{"name": "Garston", "population": 33.0, "lat": 51.6889, "lon": -0.3845, "country_code": "GB"}
+{"name": "Warwick", "population": 32.719, "lat": 52.28, "lon": -1.59, "country_code": "GB"}
+{"name": "Earley", "population": 32.64, "lat": 51.433, "lon": -0.933, "country_code": "GB"}
+{"name": "Motherwell", "population": 32.59, "lat": 55.7839, "lon": -3.9852, "country_code": "GB"}
+{"name": "Lichfield", "population": 32.58, "lat": 52.682, "lon": -1.829, "country_code": "GB"}
+{"name": "Burgess Hill", "population": 32.491, "lat": 50.9535, "lon": -0.1262, "country_code": "GB"}
+{"name": "Dumfries", "population": 32.379, "lat": 55.07, "lon": -3.603, "country_code": "GB"}
+{"name": "Brighouse", "population": 32.36, "lat": 53.707, "lon": -1.794, "country_code": "GB"}
+{"name": "Wigston Magna", "population": 32.321, "lat": 52.5812, "lon": -1.093, "country_code": "GB"}
+{"name": "Littlehampton", "population": 32.291, "lat": 50.8094, "lon": -0.5409, "country_code": "GB"}
+{"name": "Rayleigh", "population": 32.248, "lat": 51.5864, "lon": 0.6049, "country_code": "GB"}
+{"name": "Didcot", "population": 32.186, "lat": 51.606, "lon": -1.241, "country_code": "GB"}
+{"name": "Windsor", "population": 32.184, "lat": 51.4791, "lon": -0.6095, "country_code": "GB"}
+{"name": "Rushden", "population": 31.687, "lat": 52.288, "lon": -0.601, "country_code": "GB"}
+{"name": "Yeovil", "population": 31.633, "lat": 50.9452, "lon": -2.637, "country_code": "GB"}
+{"name": "Great Sankey", "population": 31.579, "lat": 53.3918, "lon": -2.6383, "country_code": "GB"}
+{"name": "Prestwich", "population": 31.5, "lat": 53.5333, "lon": -2.2833, "country_code": "GB"}
+{"name": "Epsom", "population": 31.489, "lat": 51.3331, "lon": -0.2686, "country_code": "GB"}
+{"name": "Christchurch", "population": 31.378, "lat": 50.73, "lon": -1.78, "country_code": "GB"}
+{"name": "Pontypridd", "population": 31.206, "lat": 51.602, "lon": -3.342, "country_code": "GB"}
+{"name": "Rutherglen", "population": 31.19, "lat": 55.828, "lon": -4.214, "country_code": "GB"}
+{"name": "Saint Neots", "population": 31.165, "lat": 52.228, "lon": -0.27, "country_code": "GB"}
+{"name": "Ecclesfield", "population": 31.125, "lat": 53.4429, "lon": -1.4698, "country_code": "GB"}
+{"name": "Bedworth", "population": 31.09, "lat": 52.4791, "lon": -1.4712, "country_code": "GB"}
+{"name": "Dover", "population": 31.022, "lat": 51.1295, "lon": 1.3089, "country_code": "GB"}
+{"name": "Pontefract", "population": 30.881, "lat": 53.691, "lon": -1.312, "country_code": "GB"}
+{"name": "Bicester", "population": 30.854, "lat": 51.9, "lon": -1.15, "country_code": "GB"}
+{"name": "Haywards Heath", "population": 30.826, "lat": 51.0048, "lon": -0.0979, "country_code": "GB"}
+{"name": "Spalding", "population": 30.556, "lat": 52.7858, "lon": -0.1529, "country_code": "GB"}
+{"name": "Stratford-upon-Avon", "population": 30.495, "lat": 52.1928, "lon": -1.7064, "country_code": "GB"}
+{"name": "Newark upon Trent", "population": 30.345, "lat": 53.0772, "lon": -0.8089, "country_code": "GB"}
+{"name": "Northolt", "population": 30.304, "lat": 51.5467, "lon": -0.37, "country_code": "GB"}
+{"name": "Wishaw", "population": 30.29, "lat": 55.7742, "lon": -3.9183, "country_code": "GB"}
+{"name": "Harpenden", "population": 30.24, "lat": 51.8175, "lon": -0.3524, "country_code": "GB"}
+{"name": "Whitstable", "population": 30.195, "lat": 51.361, "lon": 1.026, "country_code": "GB"}
+{"name": "Cramlington", "population": 30.077, "lat": 55.082, "lon": -1.585, "country_code": "GB"}
+{"name": "Radcliffe", "population": 29.95, "lat": 53.5615, "lon": -2.3268, "country_code": "GB"}
+{"name": "Carshalton", "population": 29.917, "lat": 51.3652, "lon": -0.1676, "country_code": "GB"}
+{"name": "Northfleet", "population": 29.9, "lat": 51.44, "lon": 0.34, "country_code": "GB"}
+{"name": "Plympton", "population": 29.899, "lat": 50.386, "lon": -4.051, "country_code": "GB"}
+{"name": "Bulwell", "population": 29.771, "lat": 53.001, "lon": -1.197, "country_code": "GB"}
+{"name": "Newtownards", "population": 29.677, "lat": 54.591, "lon": -5.68, "country_code": "GB"}
+{"name": "Kendal", "population": 29.594, "lat": 54.326, "lon": -2.745, "country_code": "GB"}
+{"name": "Chichester", "population": 29.407, "lat": 50.8365, "lon": -0.7792, "country_code": "GB"}
+{"name": "Bromsgrove", "population": 29.237, "lat": 52.3353, "lon": -2.0592, "country_code": "GB"}
+{"name": "Cambuslang", "population": 29.1, "lat": 55.819, "lon": -4.1671, "country_code": "GB"}
+{"name": "Heswall", "population": 29.075, "lat": 53.328, "lon": -3.099, "country_code": "GB"}
+{"name": "Pont-y-pwl", "population": 29.062, "lat": 51.703, "lon": -3.041, "country_code": "GB"}
+{"name": "Great Yarmouth", "population": 28.979, "lat": 52.6078, "lon": 1.7331, "country_code": "GB"}
+{"name": "Woodley", "population": 28.848, "lat": 51.453, "lon": -0.902, "country_code": "GB"}
+{"name": "Hanwell", "population": 28.768, "lat": 51.509, "lon": -0.338, "country_code": "GB"}
+{"name": "Stanford le Hope", "population": 28.765, "lat": 51.514, "lon": 0.4244, "country_code": "GB"}
+{"name": "Ballymena", "population": 28.704, "lat": 54.86, "lon": -6.28, "country_code": "GB"}
+{"name": "Frome", "population": 28.567, "lat": 51.2279, "lon": -2.3215, "country_code": "GB"}
+{"name": "Congleton", "population": 28.488, "lat": 53.162, "lon": -2.217, "country_code": "GB"}
+{"name": "Wood Green", "population": 28.453, "lat": 51.5981, "lon": -0.1149, "country_code": "GB"}
+{"name": "Bushey", "population": 28.416, "lat": 51.6429, "lon": -0.3604, "country_code": "GB"}
+{"name": "Ashington", "population": 28.28, "lat": 55.181, "lon": -1.568, "country_code": "GB"}
+{"name": "Heywood", "population": 28.205, "lat": 53.59, "lon": -2.219, "country_code": "GB"}
+{"name": "Carrickfergus", "population": 28.141, "lat": 54.7136, "lon": -5.8075, "country_code": "GB"}
+{"name": "Darwen", "population": 28.124, "lat": 53.698, "lon": -2.461, "country_code": "GB"}
+{"name": "Bearsden", "population": 28.12, "lat": 55.9195, "lon": -4.3337, "country_code": "GB"}
+{"name": "Reddish", "population": 28.052, "lat": 53.4383, "lon": -2.1613, "country_code": "GB"}
+{"name": "Billericay", "population": 27.998, "lat": 51.628, "lon": 0.4184, "country_code": "GB"}
+{"name": "Newry", "population": 27.913, "lat": 54.176, "lon": -6.349, "country_code": "GB"}
+{"name": "Witham", "population": 27.797, "lat": 51.7978, "lon": 0.6373, "country_code": "GB"}
+{"name": "Melton Mowbray", "population": 27.737, "lat": 52.7661, "lon": -0.8884, "country_code": "GB"}
+{"name": "Saint Annes on the Sea", "population": 27.63, "lat": 53.7513, "lon": -3.032, "country_code": "GB"}
+{"name": "Wickford", "population": 27.601, "lat": 51.6114, "lon": 0.5207, "country_code": "GB"}
+{"name": "Jarrow", "population": 27.526, "lat": 54.9814, "lon": -1.49, "country_code": "GB"}
+{"name": "Witney", "population": 27.522, "lat": 51.78, "lon": -1.49, "country_code": "GB"}
+{"name": "Horley", "population": 27.426, "lat": 51.174, "lon": -0.172, "country_code": "GB"}
+{"name": "Shotley Bridge", "population": 27.394, "lat": 54.87, "lon": -1.86, "country_code": "GB"}
+{"name": "Ashford", "population": 27.382, "lat": 51.434, "lon": -0.464, "country_code": "GB"}
+{"name": "Longton", "population": 27.214, "lat": 52.9877, "lon": -2.1327, "country_code": "GB"}
+{"name": "Farnworth", "population": 26.939, "lat": 53.5452, "lon": -2.3999, "country_code": "GB"}
+{"name": "Haverhill", "population": 26.86, "lat": 52.08, "lon": 0.44, "country_code": "GB"}
+{"name": "Stalybridge", "population": 26.83, "lat": 53.4834, "lon": -2.04, "country_code": "GB"}
+{"name": "Burntwood", "population": 26.713, "lat": 52.6831, "lon": -1.92, "country_code": "GB"}
+{"name": "Highbury", "population": 26.664, "lat": 51.552, "lon": -0.097, "country_code": "GB"}
+{"name": "Newton Mearns", "population": 26.6, "lat": 55.7716, "lon": -4.3347, "country_code": "GB"}
+{"name": "Cheadle Hulme", "population": 26.479, "lat": 53.3761, "lon": -2.1897, "country_code": "GB"}
+{"name": "Newton Aycliffe", "population": 26.415, "lat": 54.62, "lon": -1.58, "country_code": "GB"}
+{"name": "Droitwich", "population": 26.41, "lat": 52.267, "lon": -2.153, "country_code": "GB"}
+{"name": "East Grinstead", "population": 26.383, "lat": 51.1286, "lon": -0.0144, "country_code": "GB"}
+{"name": "Ashton in Makerfield", "population": 26.38, "lat": 53.487, "lon": -2.641, "country_code": "GB"}
+{"name": "Clydebank", "population": 26.32, "lat": 55.8997, "lon": -4.4006, "country_code": "GB"}
+{"name": "Portishead", "population": 26.305, "lat": 51.484, "lon": -2.7626, "country_code": "GB"}
+{"name": "Wilmslow", "population": 26.265, "lat": 53.325, "lon": -2.239, "country_code": "GB"}
+{"name": "Fleetwood", "population": 26.226, "lat": 53.922, "lon": -3.012, "country_code": "GB"}
+{"name": "Bournville", "population": 25.938, "lat": 52.4299, "lon": -1.9355, "country_code": "GB"}
+{"name": "Shenley Brook End", "population": 25.828, "lat": 52.009, "lon": -0.789, "country_code": "GB"}
+{"name": "Consett", "population": 25.812, "lat": 54.85, "lon": -1.83, "country_code": "GB"}
+{"name": "Kirkburton", "population": 25.728, "lat": 53.61, "lon": -1.703, "country_code": "GB"}
+{"name": "Coulsdon", "population": 25.695, "lat": 51.3211, "lon": -0.1386, "country_code": "GB"}
+{"name": "Farnham", "population": 25.604, "lat": 51.215, "lon": -0.799, "country_code": "GB"}
+{"name": "Bilston", "population": 25.576, "lat": 52.566, "lon": -2.073, "country_code": "GB"}
+{"name": "New Milton", "population": 25.546, "lat": 50.76, "lon": -1.65, "country_code": "GB"}
+{"name": "Oldbury", "population": 25.488, "lat": 52.505, "lon": -2.0159, "country_code": "GB"}
+{"name": "Thatcham", "population": 25.466, "lat": 51.405, "lon": -1.264, "country_code": "GB"}
+{"name": "Longbridge", "population": 25.41, "lat": 52.395, "lon": -1.979, "country_code": "GB"}
+{"name": "Pudsey", "population": 25.393, "lat": 53.797, "lon": -1.663, "country_code": "GB"}
+{"name": "Upminster", "population": 25.361, "lat": 51.5557, "lon": 0.2512, "country_code": "GB"}
+{"name": "Llanelli", "population": 25.359, "lat": 51.684, "lon": -4.163, "country_code": "GB"}
+{"name": "Westhoughton", "population": 25.329, "lat": 53.549, "lon": -2.529, "country_code": "GB"}
+{"name": "Kirkby in Ashfield", "population": 25.265, "lat": 53.099, "lon": -1.245, "country_code": "GB"}
+{"name": "Thetford", "population": 25.257, "lat": 52.41, "lon": 0.74, "country_code": "GB"}
+{"name": "Workington", "population": 25.207, "lat": 54.6365, "lon": -3.5549, "country_code": "GB"}
+{"name": "Kingswinford", "population": 25.191, "lat": 52.498, "lon": -2.166, "country_code": "GB"}
+{"name": "Pitsea", "population": 25.161, "lat": 51.569, "lon": 0.504, "country_code": "GB"}
+{"name": "Rhyl", "population": 25.149, "lat": 53.321, "lon": -3.48, "country_code": "GB"}
+{"name": "Daventry", "population": 25.026, "lat": 52.2578, "lon": -1.1628, "country_code": "GB"}
+{"name": "Bognor Regis", "population": 25.02, "lat": 50.7824, "lon": -0.6764, "country_code": "GB"}
+{"name": "Hindley", "population": 25.001, "lat": 53.5355, "lon": -2.5658, "country_code": "GB"}
+{"name": "Broadstairs", "population": 24.903, "lat": 51.3589, "lon": 1.4394, "country_code": "GB"}
+{"name": "Thundersley", "population": 24.8, "lat": 51.57, "lon": 0.59, "country_code": "GB"}
+{"name": "Wisbech", "population": 24.797, "lat": 52.664, "lon": 0.16, "country_code": "GB"}
+{"name": "Gorleston-on-Sea", "population": 24.785, "lat": 52.5757, "lon": 1.7235, "country_code": "GB"}
+{"name": "Thornaby on Tees", "population": 24.741, "lat": 54.5585, "lon": -1.3025, "country_code": "GB"}
+{"name": "Hertford", "population": 24.72, "lat": 51.7966, "lon": -0.0774, "country_code": "GB"}
+{"name": "Newton in Makerfield", "population": 24.642, "lat": 53.45, "lon": -2.633, "country_code": "GB"}
+{"name": "Felixstowe", "population": 24.441, "lat": 51.9639, "lon": 1.3514, "country_code": "GB"}
+{"name": "Kings Norton", "population": 24.38, "lat": 52.4072, "lon": -1.9272, "country_code": "GB"}
+{"name": "Chester-le-Street", "population": 24.227, "lat": 54.8594, "lon": -1.5699, "country_code": "GB"}
+{"name": "Farnley", "population": 24.213, "lat": 53.7876, "lon": -1.6159, "country_code": "GB"}
+{"name": "Golborne", "population": 24.169, "lat": 53.4758, "lon": -2.5943, "country_code": "GB"}
+{"name": "Plymstock", "population": 24.103, "lat": 50.3569, "lon": -4.09, "country_code": "GB"}
+{"name": "Ryde", "population": 24.1, "lat": 50.7271, "lon": -1.1618, "country_code": "GB"}
+{"name": "Barnstaple", "population": 24.094, "lat": 51.08, "lon": -4.06, "country_code": "GB"}
+{"name": "Ormskirk", "population": 24.073, "lat": 53.5665, "lon": -2.8869, "country_code": "GB"}
+{"name": "Whitehaven", "population": 24.04, "lat": 54.548, "lon": -3.5855, "country_code": "GB"}
+{"name": "East Retford", "population": 24.0, "lat": 53.3228, "lon": -0.9431, "country_code": "GB"}
+{"name": "Rickmansworth", "population": 23.973, "lat": 51.6383, "lon": -0.4659, "country_code": "GB"}
+{"name": "Littleover", "population": 23.958, "lat": 52.906, "lon": -1.505, "country_code": "GB"}
+{"name": "Newport", "population": 23.957, "lat": 50.701, "lon": -1.2883, "country_code": "GB"}
+{"name": "Arbroath", "population": 23.94, "lat": 56.561, "lon": -2.586, "country_code": "GB"}
+{"name": "Chandlers Ford", "population": 23.918, "lat": 50.984, "lon": -1.3792, "country_code": "GB"}
+{"name": "Sudbury", "population": 23.912, "lat": 52.0417, "lon": 0.7282, "country_code": "GB"}
+{"name": "Caversham", "population": 23.885, "lat": 51.467, "lon": -0.973, "country_code": "GB"}
+{"name": "Seaford", "population": 23.864, "lat": 50.77, "lon": 0.1, "country_code": "GB"}
+{"name": "Oadby", "population": 23.849, "lat": 52.5987, "lon": -1.0763, "country_code": "GB"}
+{"name": "Huntingdon", "population": 23.732, "lat": 52.3364, "lon": -0.1717, "country_code": "GB"}
+{"name": "Stanmore", "population": 23.7, "lat": 51.618, "lon": -0.314, "country_code": "GB"}
+{"name": "Droylsden", "population": 23.689, "lat": 53.4828, "lon": -2.1582, "country_code": "GB"}
+{"name": "Perry Barr", "population": 23.652, "lat": 52.5249, "lon": -1.9042, "country_code": "GB"}
+{"name": "Gosforth", "population": 23.62, "lat": 55.007, "lon": -1.623, "country_code": "GB"}
+{"name": "Newton Abbot", "population": 23.58, "lat": 50.529, "lon": -3.61, "country_code": "GB"}
+{"name": "Bishopbriggs", "population": 23.54, "lat": 55.9046, "lon": -4.225, "country_code": "GB"}
+{"name": "Fleet", "population": 23.485, "lat": 51.2834, "lon": -0.8456, "country_code": "GB"}
+{"name": "Kidsgrove", "population": 23.467, "lat": 53.0874, "lon": -2.2478, "country_code": "GB"}
+{"name": "Godalming", "population": 23.324, "lat": 51.1855, "lon": -0.6155, "country_code": "GB"}
+{"name": "Whitefield", "population": 23.283, "lat": 53.5521, "lon": -2.2992, "country_code": "GB"}
+{"name": "Bingley", "population": 23.274, "lat": 53.846, "lon": -1.836, "country_code": "GB"}
+{"name": "Elgin", "population": 23.128, "lat": 57.6486, "lon": -3.3153, "country_code": "GB"}
+{"name": "Harborne", "population": 23.001, "lat": 52.46, "lon": -1.95, "country_code": "GB"}
+{"name": "Rawtenstall", "population": 23.0, "lat": 53.699, "lon": -2.291, "country_code": "GB"}
+{"name": "Hailsham", "population": 23.0, "lat": 50.8647, "lon": 0.2577, "country_code": "GB"}
+{"name": "March", "population": 22.963, "lat": 52.551, "lon": 0.088, "country_code": "GB"}
+{"name": "Clifton", "population": 22.936, "lat": 52.904, "lon": -1.177, "country_code": "GB"}
+{"name": "Swinton", "population": 22.931, "lat": 53.5122, "lon": -2.3412, "country_code": "GB"}
+{"name": "Bathgate", "population": 22.92, "lat": 55.9024, "lon": -3.6431, "country_code": "GB"}
+{"name": "Market Harborough", "population": 22.911, "lat": 52.4775, "lon": -0.9206, "country_code": "GB"}
+{"name": "Wellington", "population": 22.897, "lat": 52.7001, "lon": -2.5157, "country_code": "GB"}
+{"name": "Northwich", "population": 22.871, "lat": 53.259, "lon": -2.518, "country_code": "GB"}
+{"name": "Waltham Abbey", "population": 22.859, "lat": 51.6846, "lon": 0.0004, "country_code": "GB"}
+{"name": "Erdington", "population": 22.828, "lat": 52.5236, "lon": -1.8378, "country_code": "GB"}
+{"name": "Kenilworth", "population": 22.694, "lat": 52.341, "lon": -1.566, "country_code": "GB"}
+{"name": "Wednesfield", "population": 22.646, "lat": 52.5998, "lon": -2.0827, "country_code": "GB"}
+{"name": "Penarth", "population": 22.595, "lat": 51.43, "lon": -3.17, "country_code": "GB"}
+{"name": "Farsley", "population": 22.594, "lat": 53.8116, "lon": -1.6718, "country_code": "GB"}
+{"name": "Penwortham", "population": 22.561, "lat": 53.74, "lon": -2.72, "country_code": "GB"}
+{"name": "Biggleswade", "population": 22.541, "lat": 52.0855, "lon": -0.2557, "country_code": "GB"}
+{"name": "Potters Bar", "population": 22.536, "lat": 51.698, "lon": -0.183, "country_code": "GB"}
+{"name": "Foleshill", "population": 22.478, "lat": 52.4255, "lon": -1.502, "country_code": "GB"}
+{"name": "Spennymoor", "population": 22.428, "lat": 54.7, "lon": -1.59, "country_code": "GB"}
+{"name": "Evesham", "population": 22.304, "lat": 52.092, "lon": -1.947, "country_code": "GB"}
+{"name": "Tiverton", "population": 22.291, "lat": 50.903, "lon": -3.488, "country_code": "GB"}
+{"name": "Shoeburyness", "population": 22.275, "lat": 51.5316, "lon": 0.7978, "country_code": "GB"}
+{"name": "Litherland", "population": 22.242, "lat": 53.4727, "lon": -2.999, "country_code": "GB"}
+{"name": "Yeadon", "population": 22.233, "lat": 53.869, "lon": -1.688, "country_code": "GB"}
+{"name": "Acomb", "population": 22.215, "lat": 53.96, "lon": -1.1308, "country_code": "GB"}
+{"name": "Quedgeley", "population": 22.145, "lat": 51.825, "lon": -2.28, "country_code": "GB"}
+{"name": "Reigate", "population": 22.123, "lat": 51.237, "lon": -0.206, "country_code": "GB"}
+{"name": "Formby", "population": 22.119, "lat": 53.5586, "lon": -3.0666, "country_code": "GB"}
+{"name": "Newquay", "population": 22.074, "lat": 50.412, "lon": -5.0757, "country_code": "GB"}
+{"name": "Camborne", "population": 22.074, "lat": 50.213, "lon": -5.3, "country_code": "GB"}
+{"name": "Northwood", "population": 22.047, "lat": 51.601, "lon": -0.4176, "country_code": "GB"}
+{"name": "Atherton", "population": 22.0, "lat": 53.523, "lon": -2.495, "country_code": "GB"}
+{"name": "Coalville", "population": 21.988, "lat": 52.724, "lon": -1.369, "country_code": "GB"}
+{"name": "Sandbach", "population": 21.923, "lat": 53.146, "lon": -2.367, "country_code": "GB"}
+{"name": "Ossett", "population": 21.861, "lat": 53.68, "lon": -1.58, "country_code": "GB"}
+{"name": "Renfrew", "population": 21.854, "lat": 55.878, "lon": -4.389, "country_code": "GB"}
+{"name": "Sheldon", "population": 21.817, "lat": 52.45, "lon": -1.7666, "country_code": "GB"}
+{"name": "Falmouth", "population": 21.797, "lat": 50.15, "lon": -5.07, "country_code": "GB"}
+{"name": "Yate", "population": 21.789, "lat": 51.5402, "lon": -2.411, "country_code": "GB"}
+{"name": "Crowborough", "population": 21.69, "lat": 51.06, "lon": 0.16, "country_code": "GB"}
+{"name": "Bailleston", "population": 21.663, "lat": 55.8474, "lon": -4.1147, "country_code": "GB"}
+{"name": "Horsforth", "population": 21.555, "lat": 53.837, "lon": -1.643, "country_code": "GB"}
+{"name": "Truro", "population": 21.555, "lat": 50.26, "lon": -5.051, "country_code": "GB"}
+{"name": "Darlaston", "population": 21.545, "lat": 52.5708, "lon": -2.0457, "country_code": "GB"}
+{"name": "Chesham", "population": 21.483, "lat": 51.712, "lon": -0.612, "country_code": "GB"}
+{"name": "Richmond", "population": 21.469, "lat": 51.456, "lon": -0.301, "country_code": "GB"}
+{"name": "Belper", "population": 21.44, "lat": 53.029, "lon": -1.475, "country_code": "GB"}
+{"name": "Stowmarket", "population": 21.406, "lat": 52.19, "lon": 1.0, "country_code": "GB"}
+{"name": "Clevedon", "population": 21.404, "lat": 51.438, "lon": -2.854, "country_code": "GB"}
+{"name": "Kirkintilloch", "population": 21.38, "lat": 55.938, "lon": -4.155, "country_code": "GB"}
+{"name": "Darton", "population": 21.345, "lat": 53.585, "lon": -1.5325, "country_code": "GB"}
+{"name": "Royton", "population": 21.284, "lat": 53.566, "lon": -2.121, "country_code": "GB"}
+{"name": "Brownhills", "population": 21.232, "lat": 52.647, "lon": -1.933, "country_code": "GB"}
+{"name": "Sevenoaks", "population": 21.167, "lat": 51.2781, "lon": 0.1874, "country_code": "GB"}
+{"name": "Dronfield", "population": 21.161, "lat": 53.3024, "lon": -1.4664, "country_code": "GB"}
+{"name": "Dukinfield", "population": 21.155, "lat": 53.4739, "lon": -2.0828, "country_code": "GB"}
+{"name": "Skegness", "population": 21.127, "lat": 53.1436, "lon": 0.3428, "country_code": "GB"}
+{"name": "Caterham", "population": 21.03, "lat": 51.2803, "lon": -0.0816, "country_code": "GB"}
+{"name": "Woodlesford", "population": 21.01, "lat": 53.7567, "lon": -1.453, "country_code": "GB"}
+{"name": "Stratton Saint Margaret", "population": 21.005, "lat": 51.586, "lon": -1.762, "country_code": "GB"}
+{"name": "Saint Austell", "population": 20.985, "lat": 50.34, "lon": -4.79, "country_code": "GB"}
+{"name": "Normanton", "population": 20.872, "lat": 53.697, "lon": -1.416, "country_code": "GB"}
+{"name": "Wallington", "population": 20.85, "lat": 51.3647, "lon": -0.1403, "country_code": "GB"}
+{"name": "Musselburgh", "population": 20.84, "lat": 55.942, "lon": -3.054, "country_code": "GB"}
+{"name": "Norton", "population": 20.829, "lat": 54.589, "lon": -1.3157, "country_code": "GB"}
+{"name": "Maghull", "population": 20.785, "lat": 53.5174, "lon": -2.9449, "country_code": "GB"}
+{"name": "Leek", "population": 20.768, "lat": 53.108, "lon": -2.0234, "country_code": "GB"}
+{"name": "Stamford", "population": 20.742, "lat": 52.656, "lon": -0.484, "country_code": "GB"}
+{"name": "Leigh-on-Sea", "population": 20.737, "lat": 51.5425, "lon": 0.6535, "country_code": "GB"}
+{"name": "Kempston", "population": 20.736, "lat": 52.114, "lon": -0.497, "country_code": "GB"}
+{"name": "Penzance", "population": 20.734, "lat": 50.119, "lon": -5.537, "country_code": "GB"}
+{"name": "Boscombe", "population": 20.719, "lat": 50.725, "lon": -1.84, "country_code": "GB"}
+{"name": "Great Linford", "population": 20.719, "lat": 52.068, "lon": -0.7637, "country_code": "GB"}
+{"name": "Horwich", "population": 20.69, "lat": 53.592, "lon": -2.54, "country_code": "GB"}
+{"name": "Failsworth", "population": 20.68, "lat": 53.5102, "lon": -2.1575, "country_code": "GB"}
+{"name": "Kirkstall", "population": 20.673, "lat": 53.816, "lon": -1.602, "country_code": "GB"}
+{"name": "Ripley", "population": 20.633, "lat": 53.05, "lon": -1.407, "country_code": "GB"}
+{"name": "Dumbarton", "population": 20.56, "lat": 55.95, "lon": -4.5667, "country_code": "GB"}
+{"name": "Shoreham-by-Sea", "population": 20.547, "lat": 50.834, "lon": -0.273, "country_code": "GB"}
+{"name": "Gainsborough", "population": 20.536, "lat": 53.4016, "lon": -0.7732, "country_code": "GB"}
+{"name": "Hythe", "population": 20.526, "lat": 50.869, "lon": -1.399, "country_code": "GB"}
+{"name": "Omagh", "population": 20.458, "lat": 54.598, "lon": -7.309, "country_code": "GB"}
+{"name": "Faversham", "population": 20.434, "lat": 51.3177, "lon": 0.8928, "country_code": "GB"}
+{"name": "Sandhurst", "population": 20.373, "lat": 51.349, "lon": -0.8, "country_code": "GB"}
+{"name": "Rothwell", "population": 20.354, "lat": 53.7485, "lon": -1.478, "country_code": "GB"}
+{"name": "Deal", "population": 20.342, "lat": 51.2226, "lon": 1.4006, "country_code": "GB"}
+{"name": "Peterlee", "population": 20.329, "lat": 54.76, "lon": -1.33, "country_code": "GB"}
+{"name": "Wednesbury", "population": 20.313, "lat": 52.552, "lon": -2.019, "country_code": "GB"}
+{"name": "Bellshill", "population": 20.29, "lat": 55.816, "lon": -4.026, "country_code": "GB"}
+{"name": "Ely", "population": 20.256, "lat": 52.3981, "lon": 0.2622, "country_code": "GB"}
+{"name": "Hazel Grove", "population": 20.17, "lat": 53.375, "lon": -2.111, "country_code": "GB"}
+{"name": "Dorchester", "population": 20.135, "lat": 50.7154, "lon": -2.4367, "country_code": "GB"}
+{"name": "Halewood", "population": 20.116, "lat": 53.3599, "lon": -2.84, "country_code": "GB"}
+{"name": "Killingworth", "population": 20.079, "lat": 55.0318, "lon": -1.5557, "country_code": "GB"}
+{"name": "Buxton", "population": 20.048, "lat": 53.259, "lon": -1.911, "country_code": "GB"}
+{"name": "Bispham", "population": 20.001, "lat": 53.852, "lon": -3.041, "country_code": "GB"}
+{"name": "Hampton", "population": 20.0, "lat": 51.422, "lon": -0.367, "country_code": "GB"}
+{"name": "Antrim", "population": 19.986, "lat": 54.7176, "lon": -6.1997, "country_code": "GB"}
+{"name": "Seaham", "population": 19.971, "lat": 54.84, "lon": -1.34, "country_code": "GB"}
+{"name": "Irlam", "population": 19.933, "lat": 53.445, "lon": -2.422, "country_code": "GB"}
+{"name": "Sleaford", "population": 19.815, "lat": 52.996, "lon": -0.413, "country_code": "GB"}
+{"name": "Garforth", "population": 19.811, "lat": 53.792, "lon": -1.388, "country_code": "GB"}
+{"name": "Stoke Gifford", "population": 19.781, "lat": 51.517, "lon": -2.548, "country_code": "GB"}
+{"name": "Mirfield", "population": 19.759, "lat": 53.6807, "lon": -1.6888, "country_code": "GB"}
+{"name": "Llandudno", "population": 19.7, "lat": 53.3225, "lon": -3.825, "country_code": "GB"}
+{"name": "Houghton Regis", "population": 19.692, "lat": 51.9039, "lon": -0.5247, "country_code": "GB"}
+{"name": "Davyhulme", "population": 19.634, "lat": 53.4559, "lon": -2.3683, "country_code": "GB"}
+{"name": "Biddulph", "population": 19.633, "lat": 53.12, "lon": -2.17, "country_code": "GB"}
+{"name": "Burnham-on-Sea", "population": 19.576, "lat": 51.2378, "lon": -2.9989, "country_code": "GB"}
+{"name": "Abbots Langley", "population": 19.574, "lat": 51.701, "lon": -0.416, "country_code": "GB"}
+{"name": "Goole", "population": 19.518, "lat": 53.6992, "lon": -0.8692, "country_code": "GB"}
+{"name": "Adel", "population": 19.43, "lat": 53.8489, "lon": -1.5849, "country_code": "GB"}
+{"name": "Alton", "population": 19.429, "lat": 51.1498, "lon": -0.9769, "country_code": "GB"}
+{"name": "Liversedge", "population": 19.42, "lat": 53.7067, "lon": -1.69, "country_code": "GB"}
+{"name": "Lancing", "population": 19.357, "lat": 50.832, "lon": -0.319, "country_code": "GB"}
+{"name": "Peterhead", "population": 19.27, "lat": 57.5091, "lon": -1.7832, "country_code": "GB"}
+{"name": "East Dereham", "population": 19.259, "lat": 52.681, "lon": 0.94, "country_code": "GB"}
+{"name": "Ecclesall", "population": 19.211, "lat": 53.362, "lon": -1.498, "country_code": "GB"}
+{"name": "Ystrad Mynach", "population": 19.204, "lat": 51.6419, "lon": -3.2405, "country_code": "GB"}
+{"name": "Calne", "population": 19.133, "lat": 51.438, "lon": -2.005, "country_code": "GB"}
+{"name": "Frimley", "population": 19.094, "lat": 51.3143, "lon": -0.7387, "country_code": "GB"}
+{"name": "Molesey", "population": 19.088, "lat": 51.401, "lon": -0.363, "country_code": "GB"}
+{"name": "Cirencester", "population": 19.076, "lat": 51.7167, "lon": -1.9667, "country_code": "GB"}
+{"name": "Monkseaton", "population": 19.044, "lat": 55.043, "lon": -1.459, "country_code": "GB"}
+{"name": "Southbourne", "population": 18.96, "lat": 50.722, "lon": -1.798, "country_code": "GB"}
+{"name": "Prestatyn", "population": 18.89, "lat": 53.331, "lon": -3.405, "country_code": "GB"}
+{"name": "Eastwood", "population": 18.887, "lat": 53.018, "lon": -1.304, "country_code": "GB"}
+{"name": "Guisborough", "population": 18.874, "lat": 54.535, "lon": -1.0563, "country_code": "GB"}
+{"name": "Larne", "population": 18.853, "lat": 54.8517, "lon": -5.8133, "country_code": "GB"}
+{"name": "Ware", "population": 18.799, "lat": 51.8108, "lon": -0.0314, "country_code": "GB"}
+{"name": "Madeley", "population": 18.772, "lat": 52.637, "lon": -2.448, "country_code": "GB"}
+{"name": "Hednesford", "population": 18.702, "lat": 52.7115, "lon": -2.0006, "country_code": "GB"}
+{"name": "Broughty Ferry", "population": 18.659, "lat": 56.4672, "lon": -2.8699, "country_code": "GB"}
+{"name": "Stannington", "population": 18.607, "lat": 53.396, "lon": -1.536, "country_code": "GB"}
+{"name": "Ebbw Vale", "population": 18.558, "lat": 51.78, "lon": -3.21, "country_code": "GB"}
+{"name": "Appley Bridge", "population": 18.5, "lat": 53.579, "lon": -2.721, "country_code": "GB"}
+{"name": "Rawmarsh", "population": 18.498, "lat": 53.4636, "lon": -1.3439, "country_code": "GB"}
+{"name": "Gelligaer", "population": 18.484, "lat": 51.6667, "lon": -3.25, "country_code": "GB"}
+{"name": "Staines-upon-Thames", "population": 18.484, "lat": 51.434, "lon": -0.511, "country_code": "GB"}
+{"name": "Bedlington", "population": 18.47, "lat": 55.133, "lon": -1.583, "country_code": "GB"}
+{"name": "Mill Hill", "population": 18.451, "lat": 51.62, "lon": -0.23, "country_code": "GB"}
+{"name": "Staveley", "population": 18.428, "lat": 53.2694, "lon": -1.3484, "country_code": "GB"}
+{"name": "Almondbury", "population": 18.346, "lat": 53.6344, "lon": -1.7489, "country_code": "GB"}
+{"name": "Hadleigh", "population": 18.3, "lat": 51.5535, "lon": 0.6095, "country_code": "GB"}
+{"name": "Shaw", "population": 18.245, "lat": 53.5783, "lon": -2.0951, "country_code": "GB"}
+{"name": "Fulwood", "population": 18.233, "lat": 53.365, "lon": -1.544, "country_code": "GB"}
+{"name": "Bideford", "population": 18.196, "lat": 51.016, "lon": -4.209, "country_code": "GB"}
+{"name": "Warminster", "population": 18.172, "lat": 51.205, "lon": -2.181, "country_code": "GB"}
+{"name": "Redhill", "population": 18.163, "lat": 51.2393, "lon": -0.1726, "country_code": "GB"}
+{"name": "Heckmondwike", "population": 18.149, "lat": 53.708, "lon": -1.67, "country_code": "GB"}
+{"name": "Poulton le Fylde", "population": 18.115, "lat": 53.847, "lon": -2.995, "country_code": "GB"}
+{"name": "Berkhampstead", "population": 18.1, "lat": 51.76, "lon": -0.56, "country_code": "GB"}
+{"name": "Thorne", "population": 18.096, "lat": 53.6083, "lon": -0.9583, "country_code": "GB"}
+{"name": "Featherstone", "population": 18.09, "lat": 53.7, "lon": -1.37, "country_code": "GB"}
+{"name": "Wandsworth", "population": 18.072, "lat": 51.455, "lon": -0.192, "country_code": "GB"}
+{"name": "Sunbury", "population": 18.041, "lat": 51.423, "lon": -0.424, "country_code": "GB"}
+{"name": "Beverley", "population": 18.014, "lat": 53.845, "lon": -0.427, "country_code": "GB"}
+{"name": "Mickleover", "population": 18.0, "lat": 52.901, "lon": -1.552, "country_code": "GB"}
+{"name": "Colne", "population": 17.939, "lat": 53.8554, "lon": -2.1756, "country_code": "GB"}
+{"name": "Ramsbottom", "population": 17.872, "lat": 53.6483, "lon": -2.3167, "country_code": "GB"}
+{"name": "Glossop", "population": 17.825, "lat": 53.443, "lon": -1.949, "country_code": "GB"}
+{"name": "Portchester", "population": 17.789, "lat": 50.842, "lon": -1.12, "country_code": "GB"}
+{"name": "Harwich", "population": 17.684, "lat": 51.934, "lon": 1.266, "country_code": "GB"}
+{"name": "South Ockendon", "population": 17.67, "lat": 51.5207, "lon": 0.2956, "country_code": "GB"}
+{"name": "Moreton", "population": 17.67, "lat": 53.401, "lon": -3.111, "country_code": "GB"}
+{"name": "Whittlesey", "population": 17.659, "lat": 52.558, "lon": -0.13, "country_code": "GB"}
+{"name": "Fern Down", "population": 17.65, "lat": 50.81, "lon": -1.9, "country_code": "GB"}
+{"name": "Rugeley", "population": 17.626, "lat": 52.7599, "lon": -1.9388, "country_code": "GB"}
+{"name": "Barrhead", "population": 17.61, "lat": 55.801, "lon": -4.389, "country_code": "GB"}
+{"name": "Saint Andrews", "population": 17.58, "lat": 56.3404, "lon": -2.7955, "country_code": "GB"}
+{"name": "Shinfield", "population": 17.56, "lat": 51.408, "lon": -0.947, "country_code": "GB"}
+{"name": "Bonnyrigg", "population": 17.53, "lat": 55.8747, "lon": -3.1031, "country_code": "GB"}
+{"name": "Wymondham", "population": 17.498, "lat": 52.57, "lon": 1.116, "country_code": "GB"}
+{"name": "Bourne", "population": 17.49, "lat": 52.7684, "lon": -0.3775, "country_code": "GB"}
+{"name": "Woodhouse", "population": 17.45, "lat": 53.358, "lon": -1.373, "country_code": "GB"}
+{"name": "Royston", "population": 17.444, "lat": 52.0471, "lon": -0.0202, "country_code": "GB"}
+{"name": "Minster", "population": 17.389, "lat": 51.421, "lon": 0.809, "country_code": "GB"}
+{"name": "Louth", "population": 17.376, "lat": 53.3669, "lon": -0.0061, "country_code": "GB"}
+{"name": "Thornton", "population": 17.276, "lat": 53.7898, "lon": -1.8504, "country_code": "GB"}
+{"name": "Stone", "population": 17.275, "lat": 52.9, "lon": -2.15, "country_code": "GB"}
+{"name": "Selby", "population": 17.274, "lat": 53.7836, "lon": -1.0678, "country_code": "GB"}
+{"name": "Heanor", "population": 17.251, "lat": 53.014, "lon": -1.354, "country_code": "GB"}
+{"name": "Friern Barnet", "population": 17.25, "lat": 51.6126, "lon": -0.1584, "country_code": "GB"}
+{"name": "Milton", "population": 17.25, "lat": 53.05, "lon": -2.142, "country_code": "GB"}
+{"name": "Bramhall", "population": 17.195, "lat": 53.357, "lon": -2.164, "country_code": "GB"}
+{"name": "Hatfield", "population": 17.149, "lat": 53.58, "lon": -1.0, "country_code": "GB"}
+{"name": "Clitheroe", "population": 17.138, "lat": 53.8711, "lon": -2.3916, "country_code": "GB"}
+{"name": "Mosbrough", "population": 17.097, "lat": 53.325, "lon": -1.362, "country_code": "GB"}
+{"name": "Baildon", "population": 17.053, "lat": 53.851, "lon": -1.763, "country_code": "GB"}
+{"name": "Maesteg", "population": 17.048, "lat": 51.61, "lon": -3.65, "country_code": "GB"}
+{"name": "Bredbury", "population": 17.04, "lat": 53.42, "lon": -2.113, "country_code": "GB"}
+{"name": "Heysham", "population": 17.016, "lat": 54.046, "lon": -2.894, "country_code": "GB"}
+{"name": "Wath upon Dearne", "population": 16.964, "lat": 53.5022, "lon": -1.3402, "country_code": "GB"}
+{"name": "Cottingham", "population": 16.947, "lat": 53.7822, "lon": -0.4136, "country_code": "GB"}
+{"name": "Saint Ives", "population": 16.934, "lat": 52.3344, "lon": -0.0761, "country_code": "GB"}
+{"name": "High Blantyre", "population": 16.9, "lat": 55.7936, "lon": -4.0919, "country_code": "GB"}
+{"name": "Windlesham", "population": 16.884, "lat": 51.36, "lon": -0.66, "country_code": "GB"}
+{"name": "Braunstone", "population": 16.85, "lat": 52.616, "lon": -1.175, "country_code": "GB"}
+{"name": "Haslingden", "population": 16.849, "lat": 53.705, "lon": -2.328, "country_code": "GB"}
+{"name": "North Hykeham", "population": 16.844, "lat": 53.1833, "lon": -0.5875, "country_code": "GB"}
+{"name": "Brixham", "population": 16.831, "lat": 50.394, "lon": -3.516, "country_code": "GB"}
+{"name": "Haslemere", "population": 16.826, "lat": 51.09, "lon": -0.712, "country_code": "GB"}
+{"name": "Fazakerley", "population": 16.786, "lat": 53.4676, "lon": -2.9408, "country_code": "GB"}
+{"name": "Connahs Quay", "population": 16.771, "lat": 53.218, "lon": -3.057, "country_code": "GB"}
+{"name": "Newmarket", "population": 16.755, "lat": 52.2459, "lon": 0.4105, "country_code": "GB"}
+{"name": "Plumstead", "population": 16.736, "lat": 51.49, "lon": 0.09, "country_code": "GB"}
+{"name": "Devizes", "population": 16.7, "lat": 51.3528, "lon": -1.9958, "country_code": "GB"}
+{"name": "Costessey", "population": 16.694, "lat": 52.6602, "lon": 1.2161, "country_code": "GB"}
+{"name": "Wellington", "population": 16.678, "lat": 50.9755, "lon": -3.2243, "country_code": "GB"}
+{"name": "Banstead", "population": 16.666, "lat": 51.322, "lon": -0.204, "country_code": "GB"}
+{"name": "Whickham", "population": 16.652, "lat": 54.946, "lon": -1.6761, "country_code": "GB"}
+{"name": "Grangemouth", "population": 16.65, "lat": 56.012, "lon": -3.717, "country_code": "GB"}
+{"name": "Keynsham", "population": 16.641, "lat": 51.4135, "lon": -2.4968, "country_code": "GB"}
+{"name": "Denby Dale", "population": 16.632, "lat": 53.572, "lon": -1.655, "country_code": "GB"}
+{"name": "Cleckheaton", "population": 16.622, "lat": 53.725, "lon": -1.719, "country_code": "GB"}
+{"name": "The Mumbles", "population": 16.6, "lat": 51.573, "lon": -3.9992, "country_code": "GB"}
+{"name": "Brentford", "population": 16.571, "lat": 51.486, "lon": -0.31, "country_code": "GB"}
+{"name": "Burbage", "population": 16.508, "lat": 52.5272, "lon": -1.3483, "country_code": "GB"}
+{"name": "Cowley", "population": 16.5, "lat": 51.733, "lon": -1.215, "country_code": "GB"}
+{"name": "Hebburn", "population": 16.492, "lat": 54.972, "lon": -1.513, "country_code": "GB"}
+{"name": "Maltby", "population": 16.47, "lat": 53.426, "lon": -1.21, "country_code": "GB"}
+{"name": "Enfield Lock", "population": 16.469, "lat": 51.6686, "lon": -0.026, "country_code": "GB"}
+{"name": "Kilwinning", "population": 16.46, "lat": 55.655, "lon": -4.703, "country_code": "GB"}
+{"name": "Westbury", "population": 16.406, "lat": 51.26, "lon": -2.191, "country_code": "GB"}
+{"name": "Birstall", "population": 16.298, "lat": 53.732, "lon": -1.66, "country_code": "GB"}
+{"name": "Saltash", "population": 16.288, "lat": 50.408, "lon": -4.212, "country_code": "GB"}
+{"name": "Dungannon", "population": 16.282, "lat": 54.5, "lon": -6.77, "country_code": "GB"}
+{"name": "Ripon", "population": 16.274, "lat": 54.1361, "lon": -1.5236, "country_code": "GB"}
+{"name": "Queensbury", "population": 16.273, "lat": 53.7683, "lon": -1.8453, "country_code": "GB"}
+{"name": "Stepney", "population": 16.238, "lat": 51.5152, "lon": -0.0462, "country_code": "GB"}
+{"name": "Basford", "population": 16.207, "lat": 52.978, "lon": -1.169, "country_code": "GB"}
+{"name": "Llantwit Fardre", "population": 16.196, "lat": 51.5578, "lon": -3.3341, "country_code": "GB"}
+{"name": "Tyldesley", "population": 16.142, "lat": 53.5166, "lon": -2.4667, "country_code": "GB"}
+{"name": "East Barnet", "population": 16.137, "lat": 51.643, "lon": -0.163, "country_code": "GB"}
+{"name": "Bishop Auckland", "population": 16.131, "lat": 54.663, "lon": -1.676, "country_code": "GB"}
+{"name": "Upton", "population": 16.13, "lat": 53.385, "lon": -3.099, "country_code": "GB"}
+{"name": "Johnstone", "population": 16.09, "lat": 55.8346, "lon": -4.5027, "country_code": "GB"}
+{"name": "Worcester Park", "population": 16.031, "lat": 51.3752, "lon": -0.239, "country_code": "GB"}
+{"name": "East Finchley", "population": 15.989, "lat": 51.5902, "lon": -0.1753, "country_code": "GB"}
+{"name": "Caerphilly", "population": 15.989, "lat": 51.578, "lon": -3.218, "country_code": "GB"}
+{"name": "Lewes", "population": 15.988, "lat": 50.8747, "lon": 0.0117, "country_code": "GB"}
+{"name": "Chertsey", "population": 15.967, "lat": 51.3902, "lon": -0.5074, "country_code": "GB"}
+{"name": "South Hayling", "population": 15.948, "lat": 50.78, "lon": -0.97, "country_code": "GB"}
+{"name": "Penicuik", "population": 15.926, "lat": 55.826, "lon": -3.22, "country_code": "GB"}
+{"name": "Adwick le Street", "population": 15.911, "lat": 53.5677, "lon": -1.1931, "country_code": "GB"}
+{"name": "Hayes", "population": 15.906, "lat": 51.378, "lon": 0.0192, "country_code": "GB"}
+{"name": "Addlestone", "population": 15.883, "lat": 51.3695, "lon": -0.4901, "country_code": "GB"}
+{"name": "Morriston", "population": 15.831, "lat": 51.6647, "lon": -3.9389, "country_code": "GB"}
+{"name": "Lymington", "population": 15.726, "lat": 50.75, "lon": -1.55, "country_code": "GB"}
+{"name": "Knaresborough", "population": 15.718, "lat": 54.0084, "lon": -1.467, "country_code": "GB"}
+{"name": "Conwy", "population": 15.7, "lat": 53.28, "lon": -3.83, "country_code": "GB"}
+{"name": "Carterton", "population": 15.682, "lat": 51.76, "lon": -1.59, "country_code": "GB"}
+{"name": "Buckley", "population": 15.665, "lat": 53.172, "lon": -3.086, "country_code": "GB"}
+{"name": "Ponders End", "population": 15.664, "lat": 51.646, "lon": -0.046, "country_code": "GB"}
+{"name": "Ince-in-Makerfield", "population": 15.664, "lat": 53.5402, "lon": -2.599, "country_code": "GB"}
+{"name": "Porthcawl", "population": 15.64, "lat": 51.48, "lon": -3.69, "country_code": "GB"}
+{"name": "Oswestry", "population": 15.613, "lat": 52.8598, "lon": -3.0538, "country_code": "GB"}
+{"name": "Bexleyheath", "population": 15.6, "lat": 51.459, "lon": 0.138, "country_code": "GB"}
+{"name": "Chislehurst", "population": 15.6, "lat": 51.412, "lon": 0.075, "country_code": "GB"}
+{"name": "Newport Pagnell", "population": 15.586, "lat": 52.087, "lon": -0.722, "country_code": "GB"}
+{"name": "Swinton", "population": 15.559, "lat": 53.4877, "lon": -1.3149, "country_code": "GB"}
+{"name": "West Ham", "population": 15.551, "lat": 51.534, "lon": 0.008, "country_code": "GB"}
+{"name": "Nailsea", "population": 15.539, "lat": 51.43, "lon": -2.76, "country_code": "GB"}
+{"name": "Matlock", "population": 15.519, "lat": 53.14, "lon": -1.55, "country_code": "GB"}
+{"name": "Saffron Walden", "population": 15.504, "lat": 52.022, "lon": 0.243, "country_code": "GB"}
+{"name": "Hessle", "population": 15.486, "lat": 53.7239, "lon": -0.4319, "country_code": "GB"}
+{"name": "Todmorden", "population": 15.481, "lat": 53.713, "lon": -2.096, "country_code": "GB"}
+{"name": "Stapleford", "population": 15.453, "lat": 52.929, "lon": -1.274, "country_code": "GB"}
+{"name": "Weybridge", "population": 15.449, "lat": 51.362, "lon": -0.453, "country_code": "GB"}
+{"name": "Broxburn", "population": 15.44, "lat": 55.934, "lon": -3.471, "country_code": "GB"}
+{"name": "Neston", "population": 15.416, "lat": 53.289, "lon": -3.074, "country_code": "GB"}
+{"name": "Sidcup", "population": 15.4, "lat": 51.4263, "lon": 0.1024, "country_code": "GB"}
+{"name": "Seacombe", "population": 15.387, "lat": 53.409, "lon": -3.029, "country_code": "GB"}
+{"name": "Skipton", "population": 15.369, "lat": 53.9625, "lon": -2.0163, "country_code": "GB"}
+{"name": "Perivale", "population": 15.339, "lat": 51.5383, "lon": -0.3192, "country_code": "GB"}
+{"name": "Wombwell", "population": 15.316, "lat": 53.516, "lon": -1.4, "country_code": "GB"}
+{"name": "Stanley", "population": 15.314, "lat": 53.7145, "lon": -1.476, "country_code": "GB"}
+{"name": "Broxbourne", "population": 15.303, "lat": 51.7495, "lon": -0.0216, "country_code": "GB"}
+{"name": "Dawlish", "population": 15.264, "lat": 50.581, "lon": -3.466, "country_code": "GB"}
+{"name": "Mexborough", "population": 15.244, "lat": 53.4992, "lon": -1.283, "country_code": "GB"}
+{"name": "Bidston", "population": 15.216, "lat": 53.402, "lon": -3.078, "country_code": "GB"}
+{"name": "Chellaston", "population": 15.198, "lat": 52.8671, "lon": -1.4384, "country_code": "GB"}
+{"name": "Amersham", "population": 15.189, "lat": 51.677, "lon": -0.603, "country_code": "GB"}
+{"name": "Verwood", "population": 15.172, "lat": 50.8815, "lon": -1.8785, "country_code": "GB"}
+{"name": "Redruth", "population": 15.169, "lat": 50.2328, "lon": -5.2264, "country_code": "GB"}
+{"name": "Palmers Green", "population": 15.162, "lat": 51.6178, "lon": -0.1092, "country_code": "GB"}
+{"name": "Totteridge", "population": 15.159, "lat": 51.6354, "lon": -0.2, "country_code": "GB"}
+{"name": "Blaydon", "population": 15.155, "lat": 54.963, "lon": -1.719, "country_code": "GB"}
+{"name": "Winkfield", "population": 15.152, "lat": 51.4318, "lon": -0.7096, "country_code": "GB"}
+{"name": "New Brighton", "population": 15.149, "lat": 53.432, "lon": -3.049, "country_code": "GB"}
+{"name": "Ashby de la Zouch", "population": 15.12, "lat": 52.746, "lon": -1.476, "country_code": "GB"}
+{"name": "Northenden", "population": 15.064, "lat": 53.4075, "lon": -2.2583, "country_code": "GB"}
+{"name": "Bangor", "population": 15.06, "lat": 53.228, "lon": -4.128, "country_code": "GB"}
+{"name": "Uckfield", "population": 15.041, "lat": 50.97, "lon": 0.1, "country_code": "GB"}
+{"name": "Swallownest", "population": 15.022, "lat": 53.3623, "lon": -1.3251, "country_code": "GB"}
+{"name": "Netherton", "population": 15.017, "lat": 52.4908, "lon": -2.0835, "country_code": "GB"}
+{"name": "Kenley", "population": 14.966, "lat": 51.3242, "lon": -0.0969, "country_code": "GB"}
+{"name": "Great Baddow", "population": 14.951, "lat": 51.719, "lon": 0.507, "country_code": "GB"}
+{"name": "Sudbury", "population": 14.95, "lat": 51.5537, "lon": -0.3199, "country_code": "GB"}
+{"name": "Wyke", "population": 14.95, "lat": 53.7333, "lon": -1.7667, "country_code": "GB"}
+{"name": "Kew Green", "population": 14.915, "lat": 51.5308, "lon": -0.2248, "country_code": "GB"}
+{"name": "West Wickham", "population": 14.884, "lat": 51.3765, "lon": -0.0193, "country_code": "GB"}
+{"name": "Shepshed", "population": 14.867, "lat": 52.7711, "lon": -1.2951, "country_code": "GB"}
+{"name": "Bromborough", "population": 14.85, "lat": 53.336, "lon": -2.978, "country_code": "GB"}
+{"name": "Petersfield", "population": 14.82, "lat": 51.0038, "lon": -0.9374, "country_code": "GB"}
+{"name": "Ilkley", "population": 14.809, "lat": 53.925, "lon": -1.822, "country_code": "GB"}
+{"name": "Baguley", "population": 14.794, "lat": 53.399, "lon": -2.276, "country_code": "GB"}
+{"name": "Armagh", "population": 14.777, "lat": 54.3499, "lon": -6.6546, "country_code": "GB"}
+{"name": "Marlow", "population": 14.77, "lat": 51.57, "lon": -0.78, "country_code": "GB"}
+{"name": "Bo'ness", "population": 14.76, "lat": 56.0168, "lon": -3.6089, "country_code": "GB"}
+{"name": "Penrith", "population": 14.756, "lat": 54.6648, "lon": -2.7548, "country_code": "GB"}
+{"name": "Balham", "population": 14.751, "lat": 51.4434, "lon": -0.1525, "country_code": "GB"}
+{"name": "Teignmouth", "population": 14.749, "lat": 50.5515, "lon": -3.4886, "country_code": "GB"}
+{"name": "Banbridge", "population": 14.744, "lat": 54.349, "lon": -6.27, "country_code": "GB"}
+{"name": "Tredegar", "population": 14.74, "lat": 51.7776, "lon": -3.2407, "country_code": "GB"}
+{"name": "Larkhall", "population": 14.74, "lat": 55.737, "lon": -3.972, "country_code": "GB"}
+{"name": "Bodmin", "population": 14.736, "lat": 50.466, "lon": -4.718, "country_code": "GB"}
+{"name": "Prestwick", "population": 14.72, "lat": 55.4956, "lon": -4.6142, "country_code": "GB"}
+{"name": "Troon", "population": 14.71, "lat": 55.54, "lon": -4.66, "country_code": "GB"}
+{"name": "Melksham", "population": 14.677, "lat": 51.371, "lon": -2.138, "country_code": "GB"}
+{"name": "Wibsey", "population": 14.671, "lat": 53.7672, "lon": -1.7728, "country_code": "GB"}
+{"name": "Farnborough", "population": 14.632, "lat": 51.3591, "lon": 0.0741, "country_code": "GB"}
+{"name": "Port Glasgow", "population": 14.62, "lat": 55.934, "lon": -4.6906, "country_code": "GB"}
+{"name": "Ringwood", "population": 14.618, "lat": 50.8829, "lon": -1.7314, "country_code": "GB"}
+{"name": "Lowton", "population": 14.605, "lat": 53.471, "lon": -2.569, "country_code": "GB"}
+{"name": "Chigwell", "population": 14.599, "lat": 51.6225, "lon": 0.0723, "country_code": "GB"}
+{"name": "Thorpe Saint Andrew", "population": 14.526, "lat": 52.6354, "lon": 1.3431, "country_code": "GB"}
+{"name": "Moston", "population": 14.518, "lat": 53.5156, "lon": -2.1848, "country_code": "GB"}
+{"name": "Chelsfield", "population": 14.507, "lat": 51.3582, "lon": 0.1278, "country_code": "GB"}
+{"name": "Aberdare", "population": 14.506, "lat": 51.713, "lon": -3.445, "country_code": "GB"}
+{"name": "Morton", "population": 14.496, "lat": 51.6094, "lon": -2.5249, "country_code": "GB"}
+{"name": "Deysbrook", "population": 14.49, "lat": 53.429, "lon": -2.934, "country_code": "GB"}
+{"name": "Thornbury", "population": 14.485, "lat": 51.6094, "lon": -2.5249, "country_code": "GB"}
+{"name": "Southgate", "population": 14.454, "lat": 51.6316, "lon": -0.1265, "country_code": "GB"}
+{"name": "Romsey", "population": 14.442, "lat": 50.989, "lon": -1.4966, "country_code": "GB"}
+{"name": "Alloa", "population": 14.44, "lat": 56.116, "lon": -3.793, "country_code": "GB"}
+{"name": "Dollis Hill", "population": 14.425, "lat": 51.5641, "lon": -0.2341, "country_code": "GB"}
+{"name": "Middlewich", "population": 14.416, "lat": 53.192, "lon": -2.443, "country_code": "GB"}
+{"name": "Hetton le Hole", "population": 14.402, "lat": 54.821, "lon": -1.449, "country_code": "GB"}
+{"name": "West Derby", "population": 14.382, "lat": 53.4338, "lon": -2.907, "country_code": "GB"}
+{"name": "Morpeth", "population": 14.376, "lat": 55.1675, "lon": -1.6908, "country_code": "GB"}
+{"name": "West Drayton", "population": 14.37, "lat": 51.5043, "lon": -0.4646, "country_code": "GB"}
+{"name": "Otley", "population": 14.357, "lat": 53.905, "lon": -1.687, "country_code": "GB"}
+{"name": "Conisbrough", "population": 14.333, "lat": 53.479, "lon": -1.227, "country_code": "GB"}
+{"name": "Kidbrooke", "population": 14.3, "lat": 51.4621, "lon": 0.0273, "country_code": "GB"}
+{"name": "Rock Ferry", "population": 14.298, "lat": 53.373, "lon": -3.008, "country_code": "GB"}
+{"name": "Shirley", "population": 14.296, "lat": 51.3813, "lon": -0.0543, "country_code": "GB"}
+{"name": "Pollokshaws", "population": 14.295, "lat": 55.8252, "lon": -4.2947, "country_code": "GB"}
+{"name": "Buckingham", "population": 14.294, "lat": 51.995, "lon": -0.986, "country_code": "GB"}
+{"name": "Chard", "population": 14.287, "lat": 50.8728, "lon": -2.9587, "country_code": "GB"}
+{"name": "Patcham", "population": 14.277, "lat": 50.864, "lon": -0.15, "country_code": "GB"}
+{"name": "Weston", "population": 14.263, "lat": 53.413, "lon": -2.798, "country_code": "GB"}
+{"name": "Poynton", "population": 14.26, "lat": 53.35, "lon": -2.1167, "country_code": "GB"}
+{"name": "Shipley", "population": 14.259, "lat": 53.833, "lon": -1.777, "country_code": "GB"}
+{"name": "Rustington", "population": 14.255, "lat": 50.8102, "lon": -0.5052, "country_code": "GB"}
+{"name": "Seacroft", "population": 14.246, "lat": 53.8222, "lon": -1.4599, "country_code": "GB"}
+{"name": "Forfar", "population": 14.23, "lat": 56.6442, "lon": -2.8884, "country_code": "GB"}
+{"name": "Maldon", "population": 14.22, "lat": 51.7318, "lon": 0.6758, "country_code": "GB"}
+{"name": "Kearsley", "population": 14.212, "lat": 53.53, "lon": -2.37, "country_code": "GB"}
+{"name": "Bishops Cleeve", "population": 14.198, "lat": 51.947, "lon": -2.061, "country_code": "GB"}
+{"name": "Caerfyrddin", "population": 14.185, "lat": 51.856, "lon": -4.316, "country_code": "GB"}
+{"name": "Leyton", "population": 14.184, "lat": 51.57, "lon": -0.015, "country_code": "GB"}
+{"name": "Hythe", "population": 14.17, "lat": 51.0716, "lon": 1.084, "country_code": "GB"}
+{"name": "Ashtead", "population": 14.169, "lat": 51.31, "lon": -0.299, "country_code": "GB"}
+{"name": "Hemsworth", "population": 14.165, "lat": 53.61, "lon": -1.35, "country_code": "GB"}
+{"name": "Armthorpe", "population": 14.162, "lat": 53.5352, "lon": -1.0522, "country_code": "GB"}
+{"name": "Birstall", "population": 14.143, "lat": 52.6736, "lon": -1.12, "country_code": "GB"}
+{"name": "Llantrisant", "population": 14.111, "lat": 51.542, "lon": -3.375, "country_code": "GB"}
+{"name": "Nantwich", "population": 14.051, "lat": 53.067, "lon": -2.522, "country_code": "GB"}
+{"name": "Uttoxeter", "population": 14.021, "lat": 52.898, "lon": -1.86, "country_code": "GB"}
+{"name": "Fawley", "population": 14.013, "lat": 50.828, "lon": -1.352, "country_code": "GB"}
+{"name": "Pemberton", "population": 13.982, "lat": 53.536, "lon": -2.6738, "country_code": "GB"}
+{"name": "Brierley Hill", "population": 13.935, "lat": 52.4795, "lon": -2.1245, "country_code": "GB"}
+{"name": "Streetly", "population": 13.934, "lat": 52.577, "lon": -1.884, "country_code": "GB"}
+{"name": "Rossington", "population": 13.91, "lat": 53.4759, "lon": -1.0613, "country_code": "GB"}
+{"name": "Bickley", "population": 13.904, "lat": 51.4003, "lon": 0.0466, "country_code": "GB"}
+{"name": "Hawarden", "population": 13.884, "lat": 53.182, "lon": -3.02, "country_code": "GB"}
+{"name": "Eastham", "population": 13.882, "lat": 53.313, "lon": -2.962, "country_code": "GB"}
+{"name": "Cosham", "population": 13.83, "lat": 50.8424, "lon": -1.066, "country_code": "GB"}
+{"name": "Enniskillen", "population": 13.823, "lat": 54.3447, "lon": -7.6389, "country_code": "GB"}
+{"name": "Littleborough", "population": 13.807, "lat": 53.644, "lon": -2.098, "country_code": "GB"}
+{"name": "Wombourn", "population": 13.799, "lat": 52.5302, "lon": -2.1857, "country_code": "GB"}
+{"name": "Rosyth", "population": 13.78, "lat": 56.0339, "lon": -3.4323, "country_code": "GB"}
+{"name": "Hawick", "population": 13.74, "lat": 55.422, "lon": -2.787, "country_code": "GB"}
+{"name": "Sidmouth", "population": 13.737, "lat": 50.68, "lon": -3.239, "country_code": "GB"}
+{"name": "Milford Haven", "population": 13.725, "lat": 51.7142, "lon": -5.0427, "country_code": "GB"}
+{"name": "Knottingley", "population": 13.71, "lat": 53.705, "lon": -1.249, "country_code": "GB"}
+{"name": "Worsborough", "population": 13.7, "lat": 53.52, "lon": -1.47, "country_code": "GB"}
+{"name": "Flitwick", "population": 13.661, "lat": 52.0038, "lon": -0.4966, "country_code": "GB"}
+{"name": "Helensburgh", "population": 13.64, "lat": 56.0166, "lon": -4.7333, "country_code": "GB"}
+{"name": "Childwall", "population": 13.64, "lat": 53.395, "lon": -2.881, "country_code": "GB"}
+{"name": "Allestree", "population": 13.622, "lat": 52.9519, "lon": -1.4856, "country_code": "GB"}
+{"name": "Syston", "population": 13.619, "lat": 52.7, "lon": -1.08, "country_code": "GB"}
+{"name": "Kidlington", "population": 13.596, "lat": 51.8231, "lon": -1.2903, "country_code": "GB"}
+{"name": "Royal Wootton Bassett", "population": 13.571, "lat": 51.541, "lon": -1.905, "country_code": "GB"}
+{"name": "Hilsea", "population": 13.552, "lat": 50.83, "lon": -1.07, "country_code": "GB"}
+{"name": "Croxley Green", "population": 13.533, "lat": 51.647, "lon": -0.445, "country_code": "GB"}
+{"name": "Strabane", "population": 13.507, "lat": 54.83, "lon": -7.47, "country_code": "GB"}
+{"name": "Horndean", "population": 13.488, "lat": 50.9136, "lon": -0.9961, "country_code": "GB"}
+{"name": "Little Hulton", "population": 13.469, "lat": 53.53, "lon": -2.418, "country_code": "GB"}
+{"name": "Stroud", "population": 13.468, "lat": 51.744, "lon": -2.215, "country_code": "GB"}
+{"name": "Great Driffield", "population": 13.452, "lat": 54.005, "lon": -0.438, "country_code": "GB"}
+{"name": "Chaddesden", "population": 13.413, "lat": 52.9301, "lon": -1.4383, "country_code": "GB"}
+{"name": "Corsham", "population": 13.412, "lat": 51.434, "lon": -2.185, "country_code": "GB"}
+{"name": "Cramond", "population": 13.409, "lat": 55.9797, "lon": -3.3007, "country_code": "GB"}
+{"name": "Dalkeith", "population": 13.4, "lat": 55.8958, "lon": -3.0583, "country_code": "GB"}
+{"name": "Amblecote", "population": 13.393, "lat": 52.46, "lon": -2.16, "country_code": "GB"}
+{"name": "Alsager", "population": 13.39, "lat": 53.096, "lon": -2.305, "country_code": "GB"}
+{"name": "Chalfont Saint Peter", "population": 13.379, "lat": 51.607, "lon": -0.556, "country_code": "GB"}
+{"name": "Saint Budeaux", "population": 13.369, "lat": 50.4033, "lon": -4.1856, "country_code": "GB"}
+{"name": "Egg Buckland", "population": 13.351, "lat": 50.4006, "lon": -4.1136, "country_code": "GB"}
+{"name": "Bacup", "population": 13.323, "lat": 53.704, "lon": -2.199, "country_code": "GB"}
+{"name": "Carluke", "population": 13.32, "lat": 55.734, "lon": -3.834, "country_code": "GB"}
+{"name": "Stocksbridge", "population": 13.301, "lat": 53.478, "lon": -1.588, "country_code": "GB"}
+{"name": "Shiremoor", "population": 13.3, "lat": 55.0366, "lon": -1.5048, "country_code": "GB"}
+{"name": "Standish", "population": 13.278, "lat": 53.586, "lon": -2.664, "country_code": "GB"}
+{"name": "West Boldon", "population": 13.271, "lat": 54.945, "lon": -1.441, "country_code": "GB"}
+{"name": "Thame", "population": 13.269, "lat": 51.75, "lon": -0.97, "country_code": "GB"}
+{"name": "Linlithgow", "population": 13.26, "lat": 55.9791, "lon": -3.6105, "country_code": "GB"}
+{"name": "Knutsford", "population": 13.256, "lat": 53.3025, "lon": -2.3708, "country_code": "GB"}
+{"name": "Sheerness", "population": 13.252, "lat": 51.441, "lon": 0.76, "country_code": "GB"}
+{"name": "Dingle", "population": 13.246, "lat": 53.3774, "lon": -2.9613, "country_code": "GB"}
+{"name": "Walsall Wood", "population": 13.207, "lat": 52.6277, "lon": -1.9301, "country_code": "GB"}
+{"name": "Southwick", "population": 13.195, "lat": 50.836, "lon": -0.239, "country_code": "GB"}
+{"name": "Fraserburgh", "population": 13.18, "lat": 57.693, "lon": -2.005, "country_code": "GB"}
+{"name": "Hamworthy", "population": 13.141, "lat": 50.7207, "lon": -2.0109, "country_code": "GB"}
+{"name": "Whitby", "population": 13.13, "lat": 54.4858, "lon": -0.6206, "country_code": "GB"}
+{"name": "Wantage", "population": 13.103, "lat": 51.589, "lon": -1.427, "country_code": "GB"}
+{"name": "Wollaston", "population": 13.092, "lat": 52.4619, "lon": -2.1663, "country_code": "GB"}
+{"name": "Pendlebury", "population": 13.069, "lat": 53.5075, "lon": -2.3154, "country_code": "GB"}
+{"name": "Goodmayes", "population": 13.069, "lat": 51.5631, "lon": 0.1133, "country_code": "GB"}
+{"name": "Holborn", "population": 13.023, "lat": 51.5204, "lon": -0.1136, "country_code": "GB"}
+{"name": "Brackley", "population": 13.018, "lat": 52.032, "lon": -1.147, "country_code": "GB"}
+{"name": "Galashiels", "population": 13.0, "lat": 55.6194, "lon": -2.8033, "country_code": "GB"}
+{"name": "Gornalwood", "population": 12.992, "lat": 52.523, "lon": -2.124, "country_code": "GB"}
+{"name": "Yiewsley", "population": 12.979, "lat": 51.513, "lon": -0.471, "country_code": "GB"}
+{"name": "Marple", "population": 12.97, "lat": 53.397, "lon": -2.061, "country_code": "GB"}
+{"name": "Shenley Church End", "population": 12.961, "lat": 52.022, "lon": -0.788, "country_code": "GB"}
+{"name": "Flint", "population": 12.953, "lat": 53.2482, "lon": -3.1358, "country_code": "GB"}
+{"name": "Woolton", "population": 12.921, "lat": 53.374, "lon": -2.865, "country_code": "GB"}
+{"name": "Leagrave", "population": 12.91, "lat": 51.903, "lon": -0.466, "country_code": "GB"}
+{"name": "Cliftonville", "population": 12.9, "lat": 51.3881, "lon": 1.4046, "country_code": "GB"}
+{"name": "Tonyrefail", "population": 12.888, "lat": 51.584, "lon": -3.4306, "country_code": "GB"}
+{"name": "Chilwell", "population": 12.864, "lat": 52.916, "lon": -1.235, "country_code": "GB"}
+{"name": "Little Lever", "population": 12.803, "lat": 53.563, "lon": -2.369, "country_code": "GB"}
+{"name": "Prescot", "population": 12.8, "lat": 53.4286, "lon": -2.8064, "country_code": "GB"}
+{"name": "Milngavie", "population": 12.795, "lat": 55.9421, "lon": -4.3137, "country_code": "GB"}
+{"name": "Fremington", "population": 12.784, "lat": 51.07, "lon": -4.12, "country_code": "GB"}
+{"name": "Sanderstead", "population": 12.777, "lat": 51.3358, "lon": -0.0818, "country_code": "GB"}
+{"name": "Finchampstead", "population": 12.75, "lat": 51.361, "lon": -0.86, "country_code": "GB"}
+{"name": "Ainsdale", "population": 12.723, "lat": 53.6021, "lon": -3.0405, "country_code": "GB"}
+{"name": "Street", "population": 12.712, "lat": 51.127, "lon": -2.74, "country_code": "GB"}
+{"name": "Cranleigh", "population": 12.702, "lat": 51.1363, "lon": -0.4784, "country_code": "GB"}
+{"name": "Newhaven", "population": 12.691, "lat": 50.8, "lon": 0.06, "country_code": "GB"}
+{"name": "Penistone", "population": 12.674, "lat": 53.525, "lon": -1.629, "country_code": "GB"}
+{"name": "Mablethorpe", "population": 12.668, "lat": 53.3409, "lon": 0.261, "country_code": "GB"}
+{"name": "Lymm", "population": 12.661, "lat": 53.3834, "lon": -2.475, "country_code": "GB"}
+{"name": "Hornsey", "population": 12.659, "lat": 51.587, "lon": -0.118, "country_code": "GB"}
+{"name": "Sutton on Hull", "population": 12.649, "lat": 53.7806, "lon": -0.3047, "country_code": "GB"}
+{"name": "Market Warsop", "population": 12.644, "lat": 53.2, "lon": -1.15, "country_code": "GB"}
+{"name": "Warsop", "population": 12.644, "lat": 53.2, "lon": -1.15, "country_code": "GB"}
+{"name": "Saltcoats", "population": 12.64, "lat": 55.6352, "lon": -4.7896, "country_code": "GB"}
+{"name": "North Walsham", "population": 12.634, "lat": 52.8214, "lon": 1.3861, "country_code": "GB"}
+{"name": "Market Drayton", "population": 12.588, "lat": 52.9044, "lon": -2.4848, "country_code": "GB"}
+{"name": "Wordsley", "population": 12.582, "lat": 52.483, "lon": -2.15, "country_code": "GB"}
+{"name": "Armadale", "population": 12.55, "lat": 55.8978, "lon": -3.7047, "country_code": "GB"}
+{"name": "Epping", "population": 12.547, "lat": 51.7004, "lon": 0.1087, "country_code": "GB"}
+{"name": "Burnham", "population": 12.519, "lat": 51.54, "lon": -0.66, "country_code": "GB"}
+{"name": "Wolverton", "population": 12.492, "lat": 52.0625, "lon": -0.8167, "country_code": "GB"}
+{"name": "Barton upon Irwell", "population": 12.462, "lat": 53.476, "lon": -2.36, "country_code": "GB"}
+{"name": "Bickenhill", "population": 12.456, "lat": 52.439, "lon": -1.725, "country_code": "GB"}
+{"name": "Tilbury", "population": 12.45, "lat": 51.4606, "lon": 0.3582, "country_code": "GB"}
+{"name": "Hersham", "population": 12.414, "lat": 51.3681, "lon": -0.4008, "country_code": "GB"}
+{"name": "Rushall", "population": 12.406, "lat": 52.6089, "lon": -1.9592, "country_code": "GB"}
+{"name": "Spondon", "population": 12.377, "lat": 52.92, "lon": -1.401, "country_code": "GB"}
+{"name": "Coseley", "population": 12.357, "lat": 52.55, "lon": -2.083, "country_code": "GB"}
+{"name": "Ovenden", "population": 12.351, "lat": 53.7432, "lon": -1.8779, "country_code": "GB"}
+{"name": "Lye", "population": 12.346, "lat": 52.459, "lon": -2.116, "country_code": "GB"}
+{"name": "Giffnock", "population": 12.3, "lat": 55.8051, "lon": -4.2946, "country_code": "GB"}
+{"name": "Thatto Heath", "population": 12.28, "lat": 53.4352, "lon": -2.7481, "country_code": "GB"}
+{"name": "Harrow on the Hill", "population": 12.27, "lat": 51.5655, "lon": -0.3327, "country_code": "GB"}
+{"name": "Selston", "population": 12.24, "lat": 53.07, "lon": -1.3, "country_code": "GB"}
+{"name": "Midsomer Norton", "population": 12.197, "lat": 51.2842, "lon": -2.4817, "country_code": "GB"}
+{"name": "Sandy", "population": 12.172, "lat": 52.131, "lon": -0.297, "country_code": "GB"}
+{"name": "Felpham", "population": 12.168, "lat": 50.7905, "lon": -0.6539, "country_code": "GB"}
+{"name": "Olton", "population": 12.167, "lat": 52.4377, "lon": -1.8058, "country_code": "GB"}
+{"name": "Attleborough", "population": 12.163, "lat": 52.5183, "lon": 1.0192, "country_code": "GB"}
+{"name": "Tranent", "population": 12.14, "lat": 55.945, "lon": -2.954, "country_code": "GB"}
+{"name": "Bamber Bridge", "population": 12.126, "lat": 53.7281, "lon": -2.6606, "country_code": "GB"}
+{"name": "Hwlffordd", "population": 12.107, "lat": 51.8, "lon": -4.97, "country_code": "GB"}
+{"name": "Montrose", "population": 12.1, "lat": 56.708, "lon": -2.467, "country_code": "GB"}
+{"name": "Tring", "population": 12.099, "lat": 51.7962, "lon": -0.6592, "country_code": "GB"}
+{"name": "North Tidworth", "population": 12.089, "lat": 51.237, "lon": -1.664, "country_code": "GB"}
+{"name": "Sedgley", "population": 12.087, "lat": 52.54, "lon": -2.123, "country_code": "GB"}
+{"name": "Holyhead", "population": 12.084, "lat": 53.309, "lon": -4.633, "country_code": "GB"}
+{"name": "Beaconsfield", "population": 12.081, "lat": 51.6009, "lon": -0.6347, "country_code": "GB"}
+{"name": "Fenton", "population": 12.07, "lat": 52.9977, "lon": -2.1578, "country_code": "GB"}
+{"name": "Hawkwell", "population": 12.061, "lat": 51.5921, "lon": 0.6737, "country_code": "GB"}
+{"name": "Walton-on-the-Naze", "population": 12.054, "lat": 51.848, "lon": 1.268, "country_code": "GB"}
+{"name": "Kingsteignton", "population": 12.048, "lat": 50.5458, "lon": -3.5962, "country_code": "GB"}
+{"name": "Bentley", "population": 12.048, "lat": 53.551, "lon": -1.144, "country_code": "GB"}
+{"name": "Cheadle", "population": 12.027, "lat": 52.9849, "lon": -1.9865, "country_code": "GB"}
+{"name": "Kingsnorth", "population": 12.024, "lat": 51.1178, "lon": 0.8615, "country_code": "GB"}
+{"name": "Charlton Kings", "population": 12.021, "lat": 51.8877, "lon": -2.0413, "country_code": "GB"}
+{"name": "Wells", "population": 12.0, "lat": 51.2094, "lon": -2.645, "country_code": "GB"}
+{"name": "West End", "population": 11.971, "lat": 50.8861, "lon": -1.3699, "country_code": "GB"}
+{"name": "Chepstow", "population": 11.969, "lat": 51.642, "lon": -2.675, "country_code": "GB"}
+{"name": "Southborough", "population": 11.967, "lat": 51.1598, "lon": 0.2652, "country_code": "GB"}
+{"name": "Leominster", "population": 11.954, "lat": 52.2282, "lon": -2.7385, "country_code": "GB"}
+{"name": "Southwater", "population": 11.948, "lat": 51.0238, "lon": -0.3526, "country_code": "GB"}
+{"name": "Halstead", "population": 11.906, "lat": 51.9451, "lon": 0.6411, "country_code": "GB"}
+{"name": "Ivybridge", "population": 11.904, "lat": 50.389, "lon": -3.921, "country_code": "GB"}
+{"name": "Desborough", "population": 11.9, "lat": 52.4398, "lon": -0.8172, "country_code": "GB"}
+{"name": "Sandridge", "population": 11.877, "lat": 51.7808, "lon": -0.3038, "country_code": "GB"}
+{"name": "Snaresbrook", "population": 11.868, "lat": 51.587, "lon": 0.0146, "country_code": "GB"}
+{"name": "Bargoed", "population": 11.864, "lat": 51.69, "lon": -3.24, "country_code": "GB"}
+{"name": "Oxted", "population": 11.853, "lat": 51.257, "lon": -0.006, "country_code": "GB"}
+{"name": "Bridgnorth", "population": 11.853, "lat": 52.535, "lon": -2.4195, "country_code": "GB"}
+{"name": "Hoyland Nether", "population": 11.852, "lat": 53.4985, "lon": -1.4406, "country_code": "GB"}
+{"name": "Eckington", "population": 11.845, "lat": 53.308, "lon": -1.3643, "country_code": "GB"}
+{"name": "Torton", "population": 11.841, "lat": 52.4522, "lon": -2.1606, "country_code": "GB"}
+{"name": "Trentham", "population": 11.836, "lat": 52.9663, "lon": -2.1899, "country_code": "GB"}
+{"name": "Snodland", "population": 11.83, "lat": 51.328, "lon": 0.4467, "country_code": "GB"}
+{"name": "Englefield Green", "population": 11.826, "lat": 51.4301, "lon": -0.5699, "country_code": "GB"}
+{"name": "Ulverston", "population": 11.822, "lat": 54.193, "lon": -3.09, "country_code": "GB"}
+{"name": "Oswaldtwistle", "population": 11.803, "lat": 53.743, "lon": -2.393, "country_code": "GB"}
+{"name": "Knowsley", "population": 11.773, "lat": 53.4498, "lon": -2.8501, "country_code": "GB"}
+{"name": "Minehead", "population": 11.752, "lat": 51.204, "lon": -3.481, "country_code": "GB"}
+{"name": "Hackney", "population": 11.734, "lat": 51.541, "lon": -0.027, "country_code": "GB"}
+{"name": "Tadley", "population": 11.718, "lat": 51.3506, "lon": -1.1376, "country_code": "GB"}
+{"name": "Wetherby", "population": 11.71, "lat": 53.9276, "lon": -1.3839, "country_code": "GB"}
+{"name": "Sowerby Bridge", "population": 11.703, "lat": 53.71, "lon": -1.91, "country_code": "GB"}
+{"name": "Chorleywood", "population": 11.695, "lat": 51.65, "lon": -0.51, "country_code": "GB"}
+{"name": "Risca", "population": 11.693, "lat": 51.608, "lon": -3.091, "country_code": "GB"}
+{"name": "Iver", "population": 11.688, "lat": 51.521, "lon": -0.507, "country_code": "GB"}
+{"name": "Elland", "population": 11.676, "lat": 53.683, "lon": -1.84, "country_code": "GB"}
+{"name": "Bolsover", "population": 11.673, "lat": 53.2304, "lon": -1.2875, "country_code": "GB"}
+{"name": "Aylesford", "population": 11.671, "lat": 51.3033, "lon": 0.4796, "country_code": "GB"}
+{"name": "Ponteland", "population": 11.671, "lat": 55.048, "lon": -1.747, "country_code": "GB"}
+{"name": "Bryn", "population": 11.662, "lat": 53.499, "lon": -2.657, "country_code": "GB"}
+{"name": "Prudhoe", "population": 11.646, "lat": 54.961, "lon": -1.849, "country_code": "GB"}
+{"name": "Cowdenbeath", "population": 11.64, "lat": 56.11, "lon": -3.35, "country_code": "GB"}
+{"name": "Berwick-Upon-Tweed", "population": 11.63, "lat": 55.7692, "lon": -2.0025, "country_code": "GB"}
+{"name": "Henley on Thames", "population": 11.619, "lat": 51.5357, "lon": -0.903, "country_code": "GB"}
+{"name": "Ascot", "population": 11.603, "lat": 51.4084, "lon": -0.6707, "country_code": "GB"}
+{"name": "Sunninghill", "population": 11.603, "lat": 51.4025, "lon": -0.655, "country_code": "GB"}
+{"name": "Mossley", "population": 11.561, "lat": 53.5147, "lon": -2.0387, "country_code": "GB"}
+{"name": "Belgrave", "population": 11.558, "lat": 52.6566, "lon": -1.1262, "country_code": "GB"}
+{"name": "Downpatrick", "population": 11.545, "lat": 54.322, "lon": -5.703, "country_code": "GB"}
+{"name": "Wanstead", "population": 11.543, "lat": 51.5778, "lon": 0.0286, "country_code": "GB"}
+{"name": "Blundellsands", "population": 11.514, "lat": 53.48, "lon": -3.05, "country_code": "GB"}
+{"name": "Brislington", "population": 11.511, "lat": 51.4316, "lon": -2.5439, "country_code": "GB"}
+{"name": "Gillingham", "population": 11.505, "lat": 51.0375, "lon": -2.2748, "country_code": "GB"}
+{"name": "Culcheth", "population": 11.454, "lat": 53.4517, "lon": -2.5218, "country_code": "GB"}
+{"name": "Haydock", "population": 11.416, "lat": 53.4678, "lon": -2.6609, "country_code": "GB"}
+{"name": "Dawley", "population": 11.399, "lat": 52.663, "lon": -2.467, "country_code": "GB"}
+{"name": "Wealdstone", "population": 11.394, "lat": 51.5957, "lon": -0.3352, "country_code": "GB"}
+{"name": "Greetland", "population": 11.389, "lat": 53.6869, "lon": -1.8714, "country_code": "GB"}
+{"name": "Newport", "population": 11.387, "lat": 52.7691, "lon": -2.3787, "country_code": "GB"}
+{"name": "Buckhurst Hill", "population": 11.38, "lat": 51.632, "lon": 0.036, "country_code": "GB"}
+{"name": "Harrow Weald", "population": 11.376, "lat": 51.604, "lon": -0.339, "country_code": "GB"}
+{"name": "Great Bookham", "population": 11.375, "lat": 51.278, "lon": -0.373, "country_code": "GB"}
+{"name": "Little Bookham", "population": 11.375, "lat": 51.2804, "lon": -0.3897, "country_code": "GB"}
+{"name": "Pelsall", "population": 11.371, "lat": 52.631, "lon": -1.972, "country_code": "GB"}
+{"name": "Carnoustie", "population": 11.36, "lat": 56.501, "lon": -2.71, "country_code": "GB"}
+{"name": "Newtown", "population": 11.357, "lat": 52.5132, "lon": -3.3141, "country_code": "GB"}
+{"name": "Downham Market", "population": 11.349, "lat": 52.6, "lon": 0.39, "country_code": "GB"}
+{"name": "Timperley", "population": 11.323, "lat": 53.387, "lon": -2.328, "country_code": "GB"}
+{"name": "Leatherhead", "population": 11.316, "lat": 51.295, "lon": -0.329, "country_code": "GB"}
+{"name": "Burslem", "population": 11.314, "lat": 53.0426, "lon": -2.1879, "country_code": "GB"}
+{"name": "Hipperholme", "population": 11.308, "lat": 53.7258, "lon": -1.812, "country_code": "GB"}
+{"name": "Limavady", "population": 11.279, "lat": 55.053, "lon": -6.946, "country_code": "GB"}
+{"name": "Stanwell", "population": 11.279, "lat": 51.457, "lon": -0.4715, "country_code": "GB"}
+{"name": "Astley", "population": 11.27, "lat": 53.5008, "lon": -2.4454, "country_code": "GB"}
+{"name": "Burtonwood", "population": 11.265, "lat": 53.4302, "lon": -2.6614, "country_code": "GB"}
+{"name": "Largs", "population": 11.26, "lat": 55.795, "lon": -4.87, "country_code": "GB"}
+{"name": "Warfield", "population": 11.258, "lat": 51.442, "lon": -0.737, "country_code": "GB"}
+{"name": "Boultham", "population": 11.258, "lat": 53.2239, "lon": -0.5539, "country_code": "GB"}
+{"name": "Greasley", "population": 11.241, "lat": 53.02, "lon": -1.27, "country_code": "GB"}
+{"name": "Mountain Ash", "population": 11.23, "lat": 51.6814, "lon": -3.3792, "country_code": "GB"}
+{"name": "Crayford", "population": 11.226, "lat": 51.4491, "lon": 0.1812, "country_code": "GB"}
+{"name": "Castle Bromwich", "population": 11.217, "lat": 52.505, "lon": -1.7856, "country_code": "GB"}
+{"name": "Linslade", "population": 11.185, "lat": 51.9243, "lon": -0.6774, "country_code": "GB"}
+{"name": "Stonehaven", "population": 11.17, "lat": 56.964, "lon": -2.211, "country_code": "GB"}
+{"name": "Dorking", "population": 11.158, "lat": 51.2325, "lon": -0.3306, "country_code": "GB"}
+{"name": "Honiton", "population": 11.156, "lat": 50.8, "lon": -3.19, "country_code": "GB"}
+{"name": "Aylestone", "population": 11.151, "lat": 52.604, "lon": -1.154, "country_code": "GB"}
+{"name": "Dorridge", "population": 11.14, "lat": 52.372, "lon": -1.7554, "country_code": "GB"}
+{"name": "Hexham", "population": 11.139, "lat": 54.971, "lon": -2.101, "country_code": "GB"}
+{"name": "Evington", "population": 11.133, "lat": 52.628, "lon": -1.074, "country_code": "GB"}
+{"name": "Hellesdon", "population": 11.124, "lat": 52.6485, "lon": 1.2509, "country_code": "GB"}
+{"name": "Ollerton", "population": 11.103, "lat": 53.2, "lon": -1.02, "country_code": "GB"}
+{"name": "Barton upon Humber", "population": 11.066, "lat": 53.6833, "lon": -0.45, "country_code": "GB"}
+{"name": "Larbert", "population": 11.05, "lat": 56.0229, "lon": -3.826, "country_code": "GB"}
+{"name": "Ballymoney", "population": 11.048, "lat": 55.071, "lon": -6.508, "country_code": "GB"}
+{"name": "Ilfracombe", "population": 11.035, "lat": 51.208, "lon": -4.12, "country_code": "GB"}
+{"name": "Chatteris", "population": 11.029, "lat": 52.456, "lon": 0.055, "country_code": "GB"}
+{"name": "Tavistock", "population": 11.018, "lat": 50.545, "lon": -4.15, "country_code": "GB"}
+{"name": "Llandybie", "population": 10.994, "lat": 51.82, "lon": -4.001, "country_code": "GB"}
+{"name": "Ross on Wye", "population": 10.99, "lat": 51.914, "lon": -2.587, "country_code": "GB"}
+{"name": "Northallerton", "population": 10.978, "lat": 54.3378, "lon": -1.4285, "country_code": "GB"}
+{"name": "Cudworth", "population": 10.977, "lat": 53.5784, "lon": -1.4149, "country_code": "GB"}
+{"name": "Oakham", "population": 10.975, "lat": 52.6705, "lon": -0.7333, "country_code": "GB"}
+{"name": "Highgate", "population": 10.955, "lat": 51.5716, "lon": -0.1448, "country_code": "GB"}
+{"name": "Great Wyrley", "population": 10.954, "lat": 52.6593, "lon": -2.0102, "country_code": "GB"}
+{"name": "Abertillery", "population": 10.925, "lat": 51.73, "lon": -3.13, "country_code": "GB"}
+{"name": "Selsey", "population": 10.923, "lat": 50.735, "lon": -0.7898, "country_code": "GB"}
+{"name": "Hollinwood", "population": 10.92, "lat": 53.5183, "lon": -2.144, "country_code": "GB"}
+{"name": "Barnoldswick", "population": 10.915, "lat": 53.9147, "lon": -2.1895, "country_code": "GB"}
+{"name": "Romiley", "population": 10.9, "lat": 53.4113, "lon": -2.0842, "country_code": "GB"}
+{"name": "Great Harwood", "population": 10.89, "lat": 53.786, "lon": -2.408, "country_code": "GB"}
+{"name": "Inverurie", "population": 10.885, "lat": 57.2842, "lon": -2.3747, "country_code": "GB"}
+{"name": "Winnersh", "population": 10.872, "lat": 51.4281, "lon": -0.8794, "country_code": "GB"}
+{"name": "Churchdown", "population": 10.87, "lat": 51.88, "lon": -2.17, "country_code": "GB"}
+{"name": "Maryport", "population": 10.865, "lat": 54.7128, "lon": -3.4926, "country_code": "GB"}
+{"name": "Soham", "population": 10.86, "lat": 52.334, "lon": 0.336, "country_code": "GB"}
+{"name": "Whitburn", "population": 10.86, "lat": 55.8621, "lon": -3.6872, "country_code": "GB"}
+{"name": "Rainhill", "population": 10.853, "lat": 53.4157, "lon": -2.7625, "country_code": "GB"}
+{"name": "Earlestown", "population": 10.83, "lat": 53.45, "lon": -2.65, "country_code": "GB"}
+{"name": "Biggin Hill", "population": 10.817, "lat": 51.3127, "lon": 0.0336, "country_code": "GB"}
+{"name": "Methil", "population": 10.8, "lat": 56.1844, "lon": -3.0223, "country_code": "GB"}
+{"name": "Wooburn", "population": 10.792, "lat": 51.581, "lon": -0.691, "country_code": "GB"}
+{"name": "Flixton", "population": 10.786, "lat": 53.447, "lon": -2.391, "country_code": "GB"}
+{"name": "Parkstone", "population": 10.779, "lat": 50.71, "lon": -1.95, "country_code": "GB"}
+{"name": "Abergavenny", "population": 10.766, "lat": 51.824, "lon": -3.0167, "country_code": "GB"}
+{"name": "Saint Ives", "population": 10.748, "lat": 50.211, "lon": -5.48, "country_code": "GB"}
+{"name": "Shirebrook", "population": 10.744, "lat": 53.2048, "lon": -1.2197, "country_code": "GB"}
+{"name": "Whitnash", "population": 10.743, "lat": 52.268, "lon": -1.524, "country_code": "GB"}
+{"name": "Royston", "population": 10.728, "lat": 53.61, "lon": -1.45, "country_code": "GB"}
+{"name": "Amesbury", "population": 10.724, "lat": 51.173, "lon": -1.78, "country_code": "GB"}
+{"name": "Ormesby", "population": 10.714, "lat": 54.5492, "lon": -1.1817, "country_code": "GB"}
+{"name": "Aberystwyth", "population": 10.707, "lat": 52.414, "lon": -4.081, "country_code": "GB"}
+{"name": "Hatch End", "population": 10.693, "lat": 51.601, "lon": -0.3743, "country_code": "GB"}
+{"name": "Chesterfield", "population": 10.688, "lat": 53.2363, "lon": -1.4292, "country_code": "GB"}
+{"name": "Darfield", "population": 10.685, "lat": 53.538, "lon": -1.3812, "country_code": "GB"}
+{"name": "Bottesford", "population": 10.684, "lat": 53.5521, "lon": -0.6714, "country_code": "GB"}
+{"name": "Knowle", "population": 10.678, "lat": 52.3881, "lon": -1.7318, "country_code": "GB"}
+{"name": "Ardrossan", "population": 10.67, "lat": 55.6432, "lon": -4.8097, "country_code": "GB"}
+{"name": "Tewkesbury", "population": 10.663, "lat": 51.99, "lon": -2.16, "country_code": "GB"}
+{"name": "Cookstown", "population": 10.646, "lat": 54.647, "lon": -6.745, "country_code": "GB"}
+{"name": "Great Dunmow", "population": 10.63, "lat": 51.871, "lon": 0.364, "country_code": "GB"}
+{"name": "Longbenton", "population": 10.617, "lat": 55.0, "lon": -1.57, "country_code": "GB"}
+{"name": "Blandford Forum", "population": 10.607, "lat": 50.856, "lon": -2.165, "country_code": "GB"}
+{"name": "Felton", "population": 10.607, "lat": 51.51, "lon": -2.574, "country_code": "GB"}
+{"name": "Shepton Mallet", "population": 10.592, "lat": 51.193, "lon": -2.546, "country_code": "GB"}
+{"name": "Abergele", "population": 10.577, "lat": 53.28, "lon": -3.58, "country_code": "GB"}
+{"name": "Teddington", "population": 10.562, "lat": 51.424, "lon": -0.332, "country_code": "GB"}
+{"name": "Southwick", "population": 10.535, "lat": 54.9193, "lon": -1.4062, "country_code": "GB"}
+{"name": "Monmouth", "population": 10.508, "lat": 51.81, "lon": -2.72, "country_code": "GB"}
+{"name": "Cullompton", "population": 10.492, "lat": 50.855, "lon": -3.393, "country_code": "GB"}
+{"name": "Ryhope", "population": 10.484, "lat": 54.8679, "lon": -1.3698, "country_code": "GB"}
+{"name": "Padiham", "population": 10.474, "lat": 53.797, "lon": -2.311, "country_code": "GB"}
+{"name": "Holbeach", "population": 10.458, "lat": 52.8037, "lon": 0.0154, "country_code": "GB"}
+{"name": "Broughton", "population": 10.449, "lat": 52.05, "lon": -0.694, "country_code": "GB"}
+{"name": "Cowes", "population": 10.445, "lat": 50.7595, "lon": -1.3002, "country_code": "GB"}
+{"name": "Burton Latimer", "population": 10.44, "lat": 52.365, "lon": -0.678, "country_code": "GB"}
+{"name": "Eccleston", "population": 10.433, "lat": 53.4539, "lon": -2.7748, "country_code": "GB"}
+{"name": "Prestonpans", "population": 10.41, "lat": 55.9597, "lon": -2.961, "country_code": "GB"}
+{"name": "Scartho", "population": 10.408, "lat": 53.5399, "lon": -0.0926, "country_code": "GB"}
+{"name": "Bradford-on-Avon", "population": 10.406, "lat": 51.347, "lon": -2.251, "country_code": "GB"}
+{"name": "Northfield", "population": 10.404, "lat": 52.408, "lon": -1.963, "country_code": "GB"}
+{"name": "Raunds", "population": 10.391, "lat": 52.345, "lon": -0.537, "country_code": "GB"}
+{"name": "Ickenham", "population": 10.387, "lat": 51.558, "lon": -0.4484, "country_code": "GB"}
+{"name": "Corfe Mullen", "population": 10.374, "lat": 50.7701, "lon": -2.0175, "country_code": "GB"}
+{"name": "Colwyn Bay", "population": 10.369, "lat": 53.29, "lon": -3.7, "country_code": "GB"}
+{"name": "Gourock", "population": 10.35, "lat": 55.9538, "lon": -4.8173, "country_code": "GB"}
+{"name": "Stranraer", "population": 10.32, "lat": 54.902, "lon": -5.027, "country_code": "GB"}
+{"name": "Mildenhall", "population": 10.315, "lat": 52.3446, "lon": 0.5089, "country_code": "GB"}
+{"name": "Broadstone", "population": 10.289, "lat": 50.7605, "lon": -1.995, "country_code": "GB"}
+{"name": "Spitalfields", "population": 10.286, "lat": 51.5166, "lon": -0.075, "country_code": "GB"}
+{"name": "Cheam", "population": 10.285, "lat": 51.36, "lon": -0.21, "country_code": "GB"}
+{"name": "Bishopstoke", "population": 10.284, "lat": 50.9679, "lon": -1.3278, "country_code": "GB"}
+{"name": "Emsworth", "population": 10.269, "lat": 50.849, "lon": -0.938, "country_code": "GB"}
+{"name": "Appleton", "population": 10.265, "lat": 53.3508, "lon": -2.5441, "country_code": "GB"}
+{"name": "Launceston", "population": 10.247, "lat": 50.637, "lon": -4.36, "country_code": "GB"}
+{"name": "Lemington", "population": 10.207, "lat": 54.972, "lon": -1.723, "country_code": "GB"}
+{"name": "Ellon", "population": 10.2, "lat": 57.366, "lon": -2.086, "country_code": "GB"}
+{"name": "New Silksworth", "population": 10.194, "lat": 54.871, "lon": -1.3957, "country_code": "GB"}
+{"name": "Fort William", "population": 10.175, "lat": 56.8198, "lon": -5.1052, "country_code": "GB"}
+{"name": "Castleton", "population": 10.159, "lat": 53.5907, "lon": -2.1737, "country_code": "GB"}
+{"name": "Rogerstone", "population": 10.158, "lat": 51.5906, "lon": -3.0537, "country_code": "GB"}
+{"name": "Mold", "population": 10.155, "lat": 53.166, "lon": -3.133, "country_code": "GB"}
+{"name": "Whitchurch", "population": 10.141, "lat": 52.969, "lon": -2.682, "country_code": "GB"}
+{"name": "South Normanton", "population": 10.14, "lat": 53.107, "lon": -1.343, "country_code": "GB"}
+{"name": "Pocklington", "population": 10.121, "lat": 53.9309, "lon": -0.7781, "country_code": "GB"}
+{"name": "Forres", "population": 10.1, "lat": 57.608, "lon": -3.62, "country_code": "GB"}
+{"name": "Chapel en le Frith", "population": 10.096, "lat": 53.322, "lon": -1.917, "country_code": "GB"}
+{"name": "Worsley", "population": 10.09, "lat": 53.5093, "lon": -2.3845, "country_code": "GB"}
+{"name": "Bingham", "population": 10.08, "lat": 52.952, "lon": -0.953, "country_code": "GB"}
+{"name": "Kilsyth", "population": 10.08, "lat": 55.98, "lon": -4.06, "country_code": "GB"}
+{"name": "Beccles", "population": 10.069, "lat": 52.458, "lon": 1.563, "country_code": "GB"}
+{"name": "Radlett", "population": 10.06, "lat": 51.685, "lon": -0.318, "country_code": "GB"}
+{"name": "Clay Cross", "population": 10.059, "lat": 53.1637, "lon": -1.4128, "country_code": "GB"}
+{"name": "North Petherton", "population": 10.05, "lat": 51.091, "lon": -3.013, "country_code": "GB"}
+{"name": "Shildon", "population": 10.049, "lat": 54.63, "lon": -1.65, "country_code": "GB"}
+{"name": "Vange", "population": 10.048, "lat": 51.5601, "lon": 0.4872, "country_code": "GB"}
+{"name": "Chapeltown", "population": 10.043, "lat": 53.462, "lon": -1.466, "country_code": "GB"}
+{"name": "Ludlow", "population": 10.041, "lat": 52.368, "lon": -2.718, "country_code": "GB"}
+{"name": "Lydney", "population": 10.038, "lat": 51.7286, "lon": -2.5285, "country_code": "GB"}
+{"name": "Horbury", "population": 10.002, "lat": 53.6595, "lon": -1.5324, "country_code": "GB"}
+{"name": "Kippax", "population": 9.994, "lat": 53.7669, "lon": -1.3705, "country_code": "GB"}
+{"name": "Euxton", "population": 9.993, "lat": 53.662, "lon": -2.674, "country_code": "GB"}
+{"name": "Marton", "population": 9.99, "lat": 54.5372, "lon": -1.2047, "country_code": "GB"}
+{"name": "Great Missenden", "population": 9.966, "lat": 51.7042, "lon": -0.7078, "country_code": "GB"}
+{"name": "Aberaman", "population": 9.964, "lat": 51.7008, "lon": -3.4267, "country_code": "GB"}
+{"name": "Birchington", "population": 9.961, "lat": 51.377, "lon": 1.305, "country_code": "GB"}
+{"name": "Nairn", "population": 9.96, "lat": 57.586, "lon": -3.869, "country_code": "GB"}
+{"name": "Handsworth", "population": 9.957, "lat": 53.37, "lon": -1.4, "country_code": "GB"}
+{"name": "Great Cornard", "population": 9.95, "lat": 52.0245, "lon": 0.7497, "country_code": "GB"}
+{"name": "Binfield", "population": 9.938, "lat": 51.432, "lon": -0.792, "country_code": "GB"}
+{"name": "Burscough", "population": 9.935, "lat": 53.596, "lon": -2.843, "country_code": "GB"}
+{"name": "Balderton", "population": 9.917, "lat": 53.0549, "lon": -0.7727, "country_code": "GB"}
+{"name": "Crigglestone", "population": 9.913, "lat": 53.644, "lon": -1.5225, "country_code": "GB"}
+{"name": "Liskeard", "population": 9.912, "lat": 50.4536, "lon": -4.4651, "country_code": "GB"}
+{"name": "Littleport", "population": 9.91, "lat": 52.4568, "lon": 0.3046, "country_code": "GB"}
+{"name": "Baldock", "population": 9.9, "lat": 51.99, "lon": -0.19, "country_code": "GB"}
+{"name": "Rochford", "population": 9.889, "lat": 51.5821, "lon": 0.7065, "country_code": "GB"}
+{"name": "Worth", "population": 9.888, "lat": 51.113, "lon": -0.147, "country_code": "GB"}
+{"name": "Edenbridge", "population": 9.881, "lat": 51.197, "lon": 0.065, "country_code": "GB"}
+{"name": "Abram", "population": 9.855, "lat": 53.508, "lon": -2.588, "country_code": "GB"}
+{"name": "Caldicot", "population": 9.815, "lat": 51.591, "lon": -2.7492, "country_code": "GB"}
+{"name": "London Colney", "population": 9.804, "lat": 51.726, "lon": -0.3, "country_code": "GB"}
+{"name": "Choppington", "population": 9.787, "lat": 55.145, "lon": -1.601, "country_code": "GB"}
+{"name": "Tottington", "population": 9.783, "lat": 53.613, "lon": -2.339, "country_code": "GB"}
+{"name": "Helston", "population": 9.78, "lat": 50.1, "lon": -5.27, "country_code": "GB"}
+{"name": "Dodworth", "population": 9.777, "lat": 53.5417, "lon": -1.5214, "country_code": "GB"}
+{"name": "Immingham", "population": 9.769, "lat": 53.6139, "lon": -0.2183, "country_code": "GB"}
+{"name": "Great Billing", "population": 9.757, "lat": 52.2577, "lon": -0.8222, "country_code": "GB"}
+{"name": "Shepperton", "population": 9.753, "lat": 51.39, "lon": -0.46, "country_code": "GB"}
+{"name": "Cobham", "population": 9.739, "lat": 51.329, "lon": -0.409, "country_code": "GB"}
+{"name": "Raynes Park", "population": 9.738, "lat": 51.4033, "lon": -0.2321, "country_code": "GB"}
+{"name": "Shifnal", "population": 9.725, "lat": 52.665, "lon": -2.373, "country_code": "GB"}
+{"name": "Lambeth", "population": 9.675, "lat": 51.49, "lon": -0.119, "country_code": "GB"}
+{"name": "Bradwell", "population": 9.662, "lat": 52.05, "lon": -0.787, "country_code": "GB"}
+{"name": "Pembroke Dock", "population": 9.657, "lat": 51.693, "lon": -4.946, "country_code": "GB"}
+{"name": "Glenfield", "population": 9.643, "lat": 52.6491, "lon": -1.2062, "country_code": "GB"}
+{"name": "Hockley", "population": 9.639, "lat": 51.6014, "lon": 0.6363, "country_code": "GB"}
+{"name": "Aldenham", "population": 9.631, "lat": 51.6723, "lon": -0.3546, "country_code": "GB"}
+{"name": "Huntington", "population": 9.63, "lat": 53.9926, "lon": -1.043, "country_code": "GB"}
+{"name": "Tiptree", "population": 9.628, "lat": 51.81, "lon": 0.75, "country_code": "GB"}
+{"name": "Caernarfon", "population": 9.615, "lat": 53.14, "lon": -4.27, "country_code": "GB"}
+{"name": "Boxley", "population": 9.584, "lat": 51.3024, "lon": 0.5429, "country_code": "GB"}
+{"name": "Newburn", "population": 9.536, "lat": 54.983, "lon": -1.743, "country_code": "GB"}
+{"name": "Tadworth", "population": 9.522, "lat": 51.294, "lon": -0.242, "country_code": "GB"}
+{"name": "Llantwit Major", "population": 9.519, "lat": 51.4062, "lon": -3.475, "country_code": "GB"}
+{"name": "Shevington", "population": 9.517, "lat": 53.572, "lon": -2.69, "country_code": "GB"}
+{"name": "Brierfield", "population": 9.472, "lat": 53.824, "lon": -2.235, "country_code": "GB"}
+{"name": "New Mills", "population": 9.47, "lat": 53.367, "lon": -2.007, "country_code": "GB"}
+{"name": "Bitton", "population": 9.459, "lat": 51.4248, "lon": -2.46, "country_code": "GB"}
+{"name": "Swanage", "population": 9.426, "lat": 50.608, "lon": -1.96, "country_code": "GB"}
+{"name": "Bray", "population": 9.421, "lat": 51.507, "lon": -0.7, "country_code": "GB"}
+{"name": "Dunblane", "population": 9.41, "lat": 56.1883, "lon": -3.9642, "country_code": "GB"}
+{"name": "Yaxley", "population": 9.409, "lat": 52.52, "lon": -0.26, "country_code": "GB"}
+{"name": "Thames Ditton", "population": 9.4, "lat": 51.389, "lon": -0.331, "country_code": "GB"}
+{"name": "Hayle", "population": 9.4, "lat": 50.186, "lon": -5.419, "country_code": "GB"}
+{"name": "North Mimms", "population": 9.387, "lat": 51.7259, "lon": -0.2336, "country_code": "GB"}
+{"name": "Horsell", "population": 9.384, "lat": 51.3286, "lon": -0.5617, "country_code": "GB"}
+{"name": "Rhosllanerchrugog", "population": 9.38, "lat": 53.011, "lon": -3.052, "country_code": "GB"}
+{"name": "Broadwater", "population": 9.373, "lat": 50.8282, "lon": -0.3742, "country_code": "GB"}
+{"name": "Wilnecote", "population": 9.358, "lat": 52.6081, "lon": -1.6677, "country_code": "GB"}
+{"name": "Lutterworth", "population": 9.353, "lat": 52.456, "lon": -1.2, "country_code": "GB"}
+{"name": "Queensferry", "population": 9.35, "lat": 55.99, "lon": -3.398, "country_code": "GB"}
+{"name": "Sherborne", "population": 9.35, "lat": 50.9469, "lon": -2.5171, "country_code": "GB"}
+{"name": "Polegate", "population": 9.341, "lat": 50.8216, "lon": 0.2442, "country_code": "GB"}
+{"name": "Frodsham", "population": 9.339, "lat": 53.2947, "lon": -2.7289, "country_code": "GB"}
+{"name": "Irthlingborough", "population": 9.311, "lat": 52.324, "lon": -0.614, "country_code": "GB"}
+{"name": "Welwyn", "population": 9.307, "lat": 51.831, "lon": -0.215, "country_code": "GB"}
+{"name": "Coleford", "population": 9.275, "lat": 51.791, "lon": -2.6162, "country_code": "GB"}
+{"name": "Bewdley", "population": 9.262, "lat": 52.3758, "lon": -2.315, "country_code": "GB"}
+{"name": "Killamarsh", "population": 9.259, "lat": 53.3205, "lon": -1.3116, "country_code": "GB"}
+{"name": "Towcester", "population": 9.252, "lat": 52.13, "lon": -0.99, "country_code": "GB"}
+{"name": "Stevenston", "population": 9.23, "lat": 55.645, "lon": -4.758, "country_code": "GB"}
+{"name": "Bowdon", "population": 9.228, "lat": 53.376, "lon": -2.366, "country_code": "GB"}
+{"name": "Milnrow", "population": 9.227, "lat": 53.6101, "lon": -2.1111, "country_code": "GB"}
+{"name": "Bude", "population": 9.222, "lat": 50.824, "lon": -4.542, "country_code": "GB"}
+{"name": "Brandon", "population": 9.208, "lat": 52.4474, "lon": 0.6242, "country_code": "GB"}
+{"name": "Brockworth", "population": 9.205, "lat": 51.85, "lon": -2.15, "country_code": "GB"}
+{"name": "Cullercoats", "population": 9.202, "lat": 55.033, "lon": -1.433, "country_code": "GB"}
+{"name": "Tilehurst", "population": 9.185, "lat": 51.4579, "lon": -1.0406, "country_code": "GB"}
+{"name": "Aberbargoed", "population": 9.184, "lat": 51.6968, "lon": -3.224, "country_code": "GB"}
+{"name": "Clayton", "population": 9.18, "lat": 53.782, "lon": -1.8135, "country_code": "GB"}
+{"name": "Gorseinon", "population": 9.172, "lat": 51.66, "lon": -4.03, "country_code": "GB"}
+{"name": "Barwell", "population": 9.152, "lat": 52.5682, "lon": -1.3462, "country_code": "GB"}
+{"name": "Penkridge", "population": 9.14, "lat": 52.7252, "lon": -2.1164, "country_code": "GB"}
+{"name": "Stotfold", "population": 9.136, "lat": 52.018, "lon": -0.228, "country_code": "GB"}
+{"name": "Haddington", "population": 9.13, "lat": 55.9556, "lon": -2.7808, "country_code": "GB"}
+{"name": "Sandiacre", "population": 9.123, "lat": 52.923, "lon": -1.289, "country_code": "GB"}
+{"name": "Shanklin", "population": 9.12, "lat": 50.6333, "lon": -1.175, "country_code": "GB"}
+{"name": "Pencoed", "population": 9.117, "lat": 51.5228, "lon": -3.5047, "country_code": "GB"}
+{"name": "Ledbury", "population": 9.111, "lat": 52.0339, "lon": -2.4235, "country_code": "GB"}
+{"name": "Usworth", "population": 9.1, "lat": 54.94, "lon": -1.55, "country_code": "GB"}
+{"name": "Portlethen", "population": 9.09, "lat": 57.061, "lon": -2.13, "country_code": "GB"}
+{"name": "Dinnington", "population": 9.077, "lat": 53.3667, "lon": -1.2, "country_code": "GB"}
+{"name": "Pontardulais", "population": 9.073, "lat": 51.71, "lon": -4.04, "country_code": "GB"}
+{"name": "Hook", "population": 9.069, "lat": 51.2773, "lon": -0.9633, "country_code": "GB"}
+{"name": "Bonhill", "population": 9.05, "lat": 55.983, "lon": -4.567, "country_code": "GB"}
+{"name": "Lanark", "population": 9.05, "lat": 55.6749, "lon": -3.777, "country_code": "GB"}
+{"name": "Leven", "population": 9.04, "lat": 56.195, "lon": -2.9942, "country_code": "GB"}
+{"name": "Dunbar", "population": 9.03, "lat": 56.0027, "lon": -2.5169, "country_code": "GB"}
+{"name": "Blairgowrie", "population": 9.02, "lat": 56.5916, "lon": -3.3405, "country_code": "GB"}
+{"name": "Cupar", "population": 9.02, "lat": 56.32, "lon": -3.01, "country_code": "GB"}
+{"name": "Oakengates", "population": 9.015, "lat": 52.695, "lon": -2.451, "country_code": "GB"}
+{"name": "Meltham", "population": 9.012, "lat": 53.592, "lon": -1.85, "country_code": "GB"}
+{"name": "Ashbourne", "population": 8.967, "lat": 53.016, "lon": -1.731, "country_code": "GB"}
+{"name": "Llanharan", "population": 8.966, "lat": 51.53, "lon": -3.43, "country_code": "GB"}
+{"name": "Sileby", "population": 8.956, "lat": 52.731, "lon": -1.106, "country_code": "GB"}
+{"name": "Ferryhill", "population": 8.942, "lat": 54.69, "lon": -1.55, "country_code": "GB"}
+{"name": "Peebles", "population": 8.94, "lat": 55.6519, "lon": -3.1889, "country_code": "GB"}
+{"name": "Broughton Astley", "population": 8.94, "lat": 52.5278, "lon": -1.2275, "country_code": "GB"}
+{"name": "Brimington", "population": 8.939, "lat": 53.258, "lon": -1.3905, "country_code": "GB"}
+{"name": "Glastonbury", "population": 8.932, "lat": 51.1475, "lon": -2.7175, "country_code": "GB"}
+{"name": "Ampthill", "population": 8.911, "lat": 52.0263, "lon": -0.4906, "country_code": "GB"}
+{"name": "Felling", "population": 8.908, "lat": 54.95, "lon": -1.564, "country_code": "GB"}
+{"name": "Holywell", "population": 8.886, "lat": 53.274, "lon": -3.223, "country_code": "GB"}
+{"name": "Partick", "population": 8.884, "lat": 55.8714, "lon": -4.3086, "country_code": "GB"}
+{"name": "Ifield", "population": 8.882, "lat": 51.1234, "lon": -0.2073, "country_code": "GB"}
+{"name": "Angmering", "population": 8.866, "lat": 50.8288, "lon": -0.4846, "country_code": "GB"}
+{"name": "Burnham on Crouch", "population": 8.852, "lat": 51.6284, "lon": 0.8145, "country_code": "GB"}
+{"name": "Cockermouth", "population": 8.847, "lat": 54.6613, "lon": -3.362, "country_code": "GB"}
+{"name": "Cumnock", "population": 8.83, "lat": 55.4529, "lon": -4.2638, "country_code": "GB"}
+{"name": "Hucclecote", "population": 8.826, "lat": 51.85, "lon": -2.18, "country_code": "GB"}
+{"name": "Higham Ferrers", "population": 8.825, "lat": 52.3057, "lon": -0.5844, "country_code": "GB"}
+{"name": "Alfreton", "population": 8.794, "lat": 53.097, "lon": -1.38, "country_code": "GB"}
+{"name": "Branston", "population": 8.792, "lat": 52.787, "lon": -1.659, "country_code": "GB"}
+{"name": "Hornsea", "population": 8.791, "lat": 53.9108, "lon": -0.1676, "country_code": "GB"}
+{"name": "Cherry Hinton", "population": 8.78, "lat": 52.1849, "lon": 0.176, "country_code": "GB"}
+{"name": "Annan", "population": 8.78, "lat": 54.983, "lon": -3.266, "country_code": "GB"}
+{"name": "Cowley", "population": 8.776, "lat": 51.528, "lon": -0.481, "country_code": "GB"}
+{"name": "Cinderford", "population": 8.773, "lat": 51.8225, "lon": -2.4989, "country_code": "GB"}
+{"name": "Hadleigh", "population": 8.745, "lat": 52.0453, "lon": 0.9583, "country_code": "GB"}
+{"name": "Sawbridgeworth", "population": 8.742, "lat": 51.814, "lon": 0.15, "country_code": "GB"}
+{"name": "Silsden", "population": 8.708, "lat": 53.914, "lon": -1.937, "country_code": "GB"}
+{"name": "Mountsorrel", "population": 8.697, "lat": 52.7167, "lon": -1.15, "country_code": "GB"}
+{"name": "Stansted Mountfitchet", "population": 8.691, "lat": 51.898, "lon": 0.198, "country_code": "GB"}
+{"name": "Brightlingsea", "population": 8.68, "lat": 51.81, "lon": 1.03, "country_code": "GB"}
+{"name": "Narborough", "population": 8.68, "lat": 52.5727, "lon": -1.2023, "country_code": "GB"}
+{"name": "Denbigh", "population": 8.67, "lat": 53.1854, "lon": -3.4178, "country_code": "GB"}
+{"name": "Atherstone", "population": 8.667, "lat": 52.5787, "lon": -1.5462, "country_code": "GB"}
+{"name": "Ramsey", "population": 8.658, "lat": 52.45, "lon": -0.12, "country_code": "GB"}
+{"name": "Buckie", "population": 8.64, "lat": 57.6764, "lon": -2.965, "country_code": "GB"}
+{"name": "Yarm", "population": 8.632, "lat": 54.5, "lon": -1.35, "country_code": "GB"}
+{"name": "Rothwell", "population": 8.621, "lat": 52.4254, "lon": -0.8029, "country_code": "GB"}
+{"name": "Canford Cliffs", "population": 8.62, "lat": 50.7, "lon": -1.93, "country_code": "GB"}
+{"name": "Caister-on-Sea", "population": 8.617, "lat": 52.651, "lon": 1.733, "country_code": "GB"}
+{"name": "Ammanford", "population": 8.61, "lat": 51.8, "lon": -3.993, "country_code": "GB"}
+{"name": "Saint Agnes", "population": 8.591, "lat": 50.312, "lon": -5.204, "country_code": "GB"}
+{"name": "Wootton", "population": 8.587, "lat": 52.2007, "lon": -0.8857, "country_code": "GB"}
+{"name": "Alnwick", "population": 8.583, "lat": 55.4134, "lon": -1.7069, "country_code": "GB"}
+{"name": "Waltham Cross", "population": 8.577, "lat": 51.686, "lon": -0.0331, "country_code": "GB"}
+{"name": "Bucksburn", "population": 8.572, "lat": 57.177, "lon": -2.175, "country_code": "GB"}
+{"name": "Kirk of Shotts", "population": 8.57, "lat": 55.823, "lon": -3.804, "country_code": "GB"}
+{"name": "Swaffham", "population": 8.565, "lat": 52.6529, "lon": 0.6843, "country_code": "GB"}
+{"name": "Sompting", "population": 8.561, "lat": 50.8303, "lon": -0.3395, "country_code": "GB"}
+{"name": "East Leake", "population": 8.553, "lat": 52.832, "lon": -1.177, "country_code": "GB"}
+{"name": "Rhymney", "population": 8.545, "lat": 51.759, "lon": -3.283, "country_code": "GB"}
+{"name": "Clayton le Moors", "population": 8.522, "lat": 53.775, "lon": -2.384, "country_code": "GB"}
+{"name": "Bedwas", "population": 8.512, "lat": 51.5926, "lon": -3.2061, "country_code": "GB"}
+{"name": "Diss", "population": 8.509, "lat": 52.3812, "lon": 1.1079, "country_code": "GB"}
+{"name": "Carlton Colville", "population": 8.505, "lat": 52.454, "lon": 1.691, "country_code": "GB"}
+{"name": "Kirkwall", "population": 7.42, "lat": 58.981, "lon": -2.96, "country_code": "GB"}
+{"name": "Wick", "population": 7.03, "lat": 58.454, "lon": -3.089, "country_code": "GB"}
+{"name": "Lerwick", "population": 6.88, "lat": 60.155, "lon": -1.145, "country_code": "GB"}
