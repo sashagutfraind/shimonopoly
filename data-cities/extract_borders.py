@@ -106,54 +106,60 @@ def extract_polygon_coords(geometry):
             # Convert from [lon, lat] to [lat, lon]
             coords = [[lat, lon] for lon, lat in coords]
             simplified = simplify_coordinates(coords, tolerance=0.1)
-            # Only include if it has enough points
-            if len(simplified) > 10:
+            # Only include if it has enough points to form a recognizable shape
+            # (drops degenerate slivers while still keeping small but real
+            # territories, e.g. Gaza simplifies to ~9 points)
+            if len(simplified) > 5:
                 all_coords.append(simplified)
     
     return all_coords
+
+# Per-country maps supported by the game, mapping the borders.json key to the
+# country name(s) as they appear in countries_features.geojson's "name"
+# property. Most keys map to a single name; a key can list more than one
+# name to merge several geojson features into one map (e.g. Israel + the
+# Palestinian territories, drawn together as a single outline for now).
+COUNTRIES = [
+    ("argentina", ["Argentina"]),
+    ("australia", ["Australia"]),
+    ("brazil", ["Brazil"]),
+    ("china", ["China"]),
+    ("france", ["France"]),
+    ("india", ["India"]),
+    ("iran", ["Iran"]),
+    ("israel", ["Israel", "Palestine"]),
+    ("mexico", ["Mexico"]),
+    ("uk", ["United Kingdom"]),
+    ("usa", ["United States of America"]),
+]
 
 def main():
     # Read the geojson file
     with open('../game/countries_features.geojson', 'r') as f:
         data = json.load(f)
-    
-    # Extract borders for different countries
-    usa_regions = []
-    iran_regions = []
-    israel_regions = []
+
+    geojson_name_to_key = {
+        geojson_name: key for key, geojson_names in COUNTRIES for geojson_name in geojson_names
+    }
+    regions_by_key = {key: [] for key, _ in COUNTRIES}
     world_regions = []
-    
+
     for feature in data['features']:
         name = feature['properties']['name']
         geometry = feature['geometry']
-        
+
         # Extract coordinates
         coords_list = extract_polygon_coords(geometry)
-        
-        if name == "United States of America":
-            print(f"Found USA with {len(coords_list)} regions")
+
+        key = geojson_name_to_key.get(name)
+        if key:
+            print(f"Found {name} with {len(coords_list)} regions")
             for i, coords in enumerate(coords_list):
-                usa_regions.append({
-                    "name": f"USA Region {i+1}",
+                regions_by_key[key].append({
+                    "name": f"{name} Region {i+1}",
                     "points": coords
                 })
-        
-        if name == "Iran":
-            print(f"Found Iran with {len(coords_list)} regions")
-            for i, coords in enumerate(coords_list):
-                iran_regions.append({
-                    "name": f"Iran Region {i+1}",
-                    "points": coords
-                })
-        
-        if name == "Israel":
-            print(f"Found Israel with {len(coords_list)} regions")
-            for i, coords in enumerate(coords_list):
-                israel_regions.append({
-                    "name": f"Israel Region {i+1}",
-                    "points": coords
-                })
-        
+
         # Add all countries to world (islands and overseas territories are kept
         # here since the world map already spans the whole globe)
         for i, coords in enumerate(coords_list):
@@ -163,29 +169,8 @@ def main():
                 "points": coords
             })
 
-    # Drop far-flung islands/territories (e.g. Alaska, Hawaii) so a country's
-    # own map isn't dominated by empty ocean, then derive bounds from what's left
-    print("Filtering isolated regions for USA:")
-    usa_regions = filter_isolated_regions(usa_regions)
-    print("Filtering isolated regions for Iran:")
-    iran_regions = filter_isolated_regions(iran_regions)
-    print("Filtering isolated regions for Israel:")
-    israel_regions = filter_isolated_regions(israel_regions)
-
     # Create borders.json structure
     borders = {
-        "usa": {
-            "bounds": bounds_from_regions(usa_regions),
-            "regions": usa_regions
-        },
-        "iran": {
-            "bounds": bounds_from_regions(iran_regions),
-            "regions": iran_regions
-        },
-        "israel": {
-            "bounds": bounds_from_regions(israel_regions),
-            "regions": israel_regions
-        },
         "world": {
             "bounds": {
                 "minLat": -60,
@@ -196,14 +181,24 @@ def main():
             "regions": world_regions
         }
     }
-    
+
+    # Drop far-flung islands/territories (e.g. Alaska/Hawaii for the USA,
+    # overseas territories for France/UK) so each country's own map isn't
+    # dominated by empty ocean, then derive bounds from what's left
+    for key, names in COUNTRIES:
+        label = " + ".join(names)
+        print(f"Filtering isolated regions for {label}:")
+        regions = filter_isolated_regions(regions_by_key[key])
+        borders[key] = {
+            "bounds": bounds_from_regions(regions),
+            "regions": regions
+        }
+        print(f"Extracted {len(regions)} {label} regions")
+
     # Write to borders.json
     with open('../game/borders.json', 'w') as f:
         json.dump(borders, f, separators=(',', ':'))
-    
-    print(f"Extracted {len(usa_regions)} USA regions")
-    print(f"Extracted {len(iran_regions)} Iran regions")
-    print(f"Extracted {len(israel_regions)} Israel regions")
+
     print(f"Extracted {len(world_regions)} world regions")
     print("Borders written to ../game/borders.json")
 

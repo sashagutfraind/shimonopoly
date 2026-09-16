@@ -406,9 +406,17 @@
         <div class="form-group">
             <label for="country">Country</label>
             <select id="country" required>
-                <option value="usa">USA</option>
+                <option value="argentina">Argentina</option>
+                <option value="australia">Australia</option>
+                <option value="brazil">Brazil</option>
+                <option value="china">China</option>
+                <option value="france">France</option>
+                <option value="india">India</option>
                 <option value="iran">Iran</option>
                 <option value="israel">Israel</option>
+                <option value="mexico">Mexico</option>
+                <option value="uk">UK</option>
+                <option value="usa">USA</option>
                 <option value="world">World</option>
             </select>
         </div>
@@ -605,6 +613,52 @@
                     );
                     return distance <= radiusMiles;
                 });
+            }
+
+            /**
+             * Calculate a "typical" radius (in miles) calibrated to a set of cities,
+             * so that a circle of this radius typically encloses targetNeighbors
+             * other cities. This lets the restoration radius adapt to how spread
+             * out or densely packed a country's cities are (e.g. Israel vs. the
+             * whole world) instead of using one fixed distance for every map.
+             * @param {Array} cities - Cities to calibrate against
+             * @param {number} targetNeighbors - Desired number of neighboring cities within the radius
+             * @returns {number} Radius in miles
+             */
+            static calculateTypicalRadius(cities, targetNeighbors = 4) {
+                if (cities.length <= 1) {
+                    return 100; // No data to calibrate against; arbitrary fallback
+                }
+
+                const k = Math.min(targetNeighbors, cities.length - 1);
+
+                // For each city, find the distance to its k-th nearest neighbor
+                const kthNeighborDistances = cities.map(city => {
+                    const distances = cities
+                        .filter(other => other !== city)
+                        .map(other => DistanceCalculator.calculateDistance(city.lat, city.lon, other.lat, other.lon))
+                        .sort((a, b) => a - b);
+                    return distances[k - 1];
+                });
+
+                kthNeighborDistances.sort((a, b) => a - b);
+                const mid = Math.floor(kthNeighborDistances.length / 2);
+                const median = kthNeighborDistances.length % 2 === 0
+                    ? (kthNeighborDistances[mid - 1] + kthNeighborDistances[mid]) / 2
+                    : kthNeighborDistances[mid];
+
+                // Clamp relative to the cities' own spread: never so small the
+                // circle is invisible, never so large it swallows the whole map.
+                const lats = cities.map(c => c.lat);
+                const lons = cities.map(c => c.lon);
+                const diagonal = DistanceCalculator.calculateDistance(
+                    Math.min(...lats), Math.min(...lons),
+                    Math.max(...lats), Math.max(...lons)
+                );
+                const minRadius = 10;
+                const maxRadius = Math.max(minRadius, diagonal / 4);
+
+                return Math.min(Math.max(median, minRadius), maxRadius);
             }
         }
 
@@ -840,17 +894,18 @@
              * Calculate restoration cost for a city
              * @param {Object} city - City being restored
              * @param {Array} restoredCities - Array of already restored cities
+             * @param {number} radiusMiles - Radius (in miles) used to find nearby restored cities
              * @returns {number} Transformer cost
              */
-            calculateRestorationCost(city, restoredCities) {
+            calculateRestorationCost(city, restoredCities, radiusMiles = 300) {
                 if (this.advancedMode) {
-                    // Advanced mode: 1 / (1 + count of restored cities within 300 miles)
-                    const citiesWithin300Miles = DistanceCalculator.findCitiesWithinRadius(
+                    // Advanced mode: 1 / (1 + count of restored cities within radiusMiles)
+                    const nearbyCities = DistanceCalculator.findCitiesWithinRadius(
                         city,
                         restoredCities,
-                        300
+                        radiusMiles
                     );
-                    const count = citiesWithin300Miles.length;
+                    const count = nearbyCities.length;
                     return 1 / (1 + count);
                 } else {
                     // Basic mode: 1 transformer per city
@@ -900,10 +955,18 @@
                     
                     // Select cities
                     this.cityManager.selectCities(this.config.numCities);
-                    
+
                     // Damage cities
                     this.cityManager.damageCities(this.config.damagedFraction);
-                    
+
+                    // Calibrate the restoration radius to this country's own city
+                    // spacing (dense/small countries get a small radius, sparse/huge
+                    // ones get a large one) instead of a single fixed distance
+                    this.restorationRadiusMiles = DistanceCalculator.calculateTypicalRadius(
+                        this.cityManager.getCities()
+                    );
+                    console.log(`Calibrated restoration radius: ${this.restorationRadiusMiles.toFixed(1)} miles`);
+
                     // Initialize scoring engine
                     this.scoringEngine = new ScoringEngine(this.config.advancedMode);
                     
@@ -977,7 +1040,7 @@
                 
                 // Calculate restoration cost
                 const restoredCities = this.cityManager.getRestoredCities();
-                const cost = this.scoringEngine.calculateRestorationCost(city, restoredCities);
+                const cost = this.scoringEngine.calculateRestorationCost(city, restoredCities, this.restorationRadiusMiles);
                 
                 // Check if we have enough transformers
                 if (this.state.transformers < cost) {
@@ -1121,6 +1184,14 @@
             }
 
             /**
+             * Get the restoration radius (in miles), calibrated to this game's cities
+             * @returns {number} Radius in miles
+             */
+            getRestorationRadiusMiles() {
+                return this.restorationRadiusMiles || 300;
+            }
+
+            /**
              * Check if timer has started
              * @returns {boolean} True if timer has started
              */
@@ -1188,7 +1259,11 @@
                 
                 // Padding around the map
                 this.padding = 20;
-                
+
+                // Radius (miles) drawn around restored cities; calibrated per-game
+                // by GameController so it matches this country's city spacing
+                this.restorationRadiusMiles = 300;
+
                 // Store cities for tooltip functionality
                 this.cities = [];
                 
@@ -1223,7 +1298,15 @@
                         'world': { minLat: -60, maxLat: 75, minLon: -180, maxLon: 180 },
                         'usa': { minLat: 24, maxLat: 50, minLon: -125, maxLon: -65 },
                         'iran': { minLat: 25, maxLat: 40, minLon: 44, maxLon: 64 },
-                        'israel': { minLat: 29, maxLat: 34, minLon: 34, maxLon: 36 }
+                        'israel': { minLat: 29, maxLat: 34, minLon: 34, maxLon: 36 },
+                        'argentina': { minLat: -57, maxLat: -20, minLon: -75, maxLon: -52 },
+                        'australia': { minLat: -45, maxLat: -9, minLon: 111, maxLon: 155 },
+                        'brazil': { minLat: -35, maxLat: 7, minLon: -75, maxLon: -33 },
+                        'china': { minLat: 17, maxLat: 55, minLon: 72, maxLon: 136 },
+                        'france': { minLat: 40, maxLat: 52, minLon: -6, maxLon: 11 },
+                        'india': { minLat: 7, maxLat: 37, minLon: 67, maxLon: 98 },
+                        'mexico': { minLat: 13, maxLat: 34, minLon: -118, maxLon: -85 },
+                        'uk': { minLat: 48, maxLat: 62, minLon: -9, maxLon: 3 }
                     };
                     this.bounds = defaultBounds[this.country] || defaultBounds['usa'];
                 }
@@ -1566,13 +1649,15 @@
             }
 
             /**
-             * Render 300-mile radius circles around restored cities
+             * Render restoration-radius circles around restored cities, using
+             * this.restorationRadiusMiles (calibrated per-game to the country's
+             * own city spacing rather than a single fixed distance)
              * @param {Array} restoredCities - Array of restored city objects
              */
             renderRadiusCircles(restoredCities) {
                 restoredCities.forEach(city => {
                     const { x, y } = this.projectToCanvas(city.lat, city.lon);
-                    const radius = this.milesToPixels(300);
+                    const radius = this.milesToPixels(this.restorationRadiusMiles);
                     
                     // Draw radius circle
                     this.ctx.beginPath();
@@ -1993,17 +2078,14 @@
                 // Initialize game controller
                 gameController = new GameController(config);
                 
-                // Determine which data file to load based on country selection
-                let dataFile;
-                if (config.country === 'world') {
-                    dataFile = 'kaggle_worldcities.jsonl';
-                } else if (config.country === 'iran') {
-                    dataFile = 'iran_cities.jsonl';
-                } else if (config.country === 'israel') {
-                    dataFile = 'israel_cities.jsonl';
-                } else {
-                    dataFile = 'usmetros.jsonl';
-                }
+                // Determine which data file to load based on country selection.
+                // USA and World use their own curated/aggregate files; every
+                // other country follows the "<country>_cities.jsonl" convention.
+                const specialCaseDataFiles = {
+                    usa: 'usmetros.jsonl',
+                    world: 'kaggle_worldcities.jsonl'
+                };
+                const dataFile = specialCaseDataFiles[config.country] || `${config.country}_cities.jsonl`;
                 
                 // Load city data and initialize game
                 await gameController.initialize(dataFile);
@@ -2042,9 +2124,13 @@
             // Resize canvas now that it's visible
             mapRenderer.resizeCanvas();
 
+            // Use this game's calibrated restoration radius (matches the
+            // country's own city spacing) when drawing restoration circles
+            mapRenderer.restorationRadiusMiles = gameController.getRestorationRadiusMiles();
+
             // Initialize game UI
             updateGameUI();
-            
+
             // Render initial map
             const cities = gameController.getCities();
             console.log(`Rendering ${cities.length} cities on map`);
